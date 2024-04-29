@@ -1,0 +1,8 @@
+#Rewriting engine on
+RewriteEngine on
+
+#Rewrite cond
+RewriteCond %{REQUEST_FILENAME} !-f
+
+#Rewrite each
+RewriteRule ^([^.]+)$ $1.html [NC,L]
