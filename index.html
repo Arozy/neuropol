@@ -301,7 +301,7 @@
                 <a class="btn" href="{{firstButton.action}}">
                   {{firstButton.text}}
                 </a>
-                <a class="btn second" href="{{secondButton.action}}">
+                <a class="btn primary" href="{{secondButton.action}}">
                   {{secondButton.text}}
                   <i class="fa fa-long-arrow-right"></i>
                 </a>
@@ -348,75 +348,31 @@
             <div class="col-lg-4 col-md-6 col-12">
               <div class="single-footer f-link">
                 <h2>
-                  Quick Links
+                  {{columns.1.heading}}
                 </h2>
                 <div class="row">
                   <div class="col-lg-6 col-md-6 col-12">
                     <ul>
-                      <li>
-                        <a href="#">
-                          <i aria-hidden="true" class="fa fa-caret-right"></i>
-                          Home
-                        </a>
-                      </li>
-                      <li>
-                        <a href="#">
-                          <i aria-hidden="true" class="fa fa-caret-right"></i>
-                          About Us
-                        </a>
-                      </li>
-                      <li>
-                        <a href="#">
-                          <i aria-hidden="true" class="fa fa-caret-right"></i>
-                          Services
-                        </a>
-                      </li>
-                      <li>
-                        <a href="#">
-                          <i aria-hidden="true" class="fa fa-caret-right"></i>
-                          Our Cases
-                        </a>
-                      </li>
-                      <li>
-                        <a href="#">
-                          <i aria-hidden="true" class="fa fa-caret-right"></i>
-                          Other Links
-                        </a>
-                      </li>
+                      {{#each columns.1.linkColumns.0.linkList}}
+                        <li>
+                          <a href="{{this.href}}">
+                            <i aria-hidden="true" class="fa fa-caret-right"></i>
+                            {{this.name}}
+                          </a>
+                        </li>
+                      {{/each}}
                     </ul>
                   </div>
                   <div class="col-lg-6 col-md-6 col-12">
                     <ul>
-                      <li>
-                        <a href="#">
-                          <i aria-hidden="true" class="fa fa-caret-right"></i>
-                          Consuling
-                        </a>
-                      </li>
-                      <li>
-                        <a href="#">
-                          <i aria-hidden="true" class="fa fa-caret-right"></i>
-                          Finance
-                        </a>
-                      </li>
-                      <li>
-                        <a href="#">
-                          <i aria-hidden="true" class="fa fa-caret-right"></i>
-                          Testimonials
-                        </a>
-                      </li>
-                      <li>
-                        <a href="#">
-                          <i aria-hidden="true" class="fa fa-caret-right"></i>
-                          FAQ
-                        </a>
-                      </li>
-                      <li>
-                        <a href="#">
-                          <i aria-hidden="true" class="fa fa-caret-right"></i>
-                          Contact Us
-                        </a>
-                      </li>
+                      {{#each columns.1.linkColumns.1.linkList}}
+                        <li>
+                          <a href="{{this.href}}">
+                            <i aria-hidden="true" class="fa fa-caret-right"></i>
+                            {{this.name}}
+                          </a>
+                        </li>
+                      {{/each}}
                     </ul>
                   </div>
                 </div>
@@ -425,31 +381,20 @@
             <div class="col-lg-4 col-md-6 col-12">
               <div class="single-footer">
                 <h2>
-                  Open Hours
+                  {{columns.2.heading}}
                 </h2>
                 <p>
-                  Lorem ipsum dolor sit ame consectetur adipisicing elit do
-                            eiusmod tempor incididunt.
+                  {{columns.2.description}}
                 </p>
                 <ul class="time-sidual">
-                  <li class="day">
-                    Monday - Fridayp
-                    <span>
-                      8.00-20.00
-                    </span>
-                  </li>
-                  <li class="day">
-                    Saturday
-                    <span>
-                      9.00-18.30
-                    </span>
-                  </li>
-                  <li class="day">
-                    Monday - Thusday
-                    <span>
-                      9.00-15.00
-                    </span>
-                  </li>
+                  {{#each columns.2.timeList}}
+                    <li class="day">
+                      {{this.period}}
+                      <span>
+                        {{this.time}}
+                      </span>
+                    </li>
+                  {{/each}}
                 </ul>
               </div>
             </div>

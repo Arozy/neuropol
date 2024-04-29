@@ -1,3 +1,41 @@
+function getShared(selection) {
+    const data = {
+        tel: '+48 600 02 99 07',
+        address: 'Ul. Fordońska 81, 85-647 Bydgoszcz',
+        email: 'rejestracja@neuropol.pl',
+        hours: [
+            {
+                period: 'Poniedziałek - Piątek',
+                time: '8.00 - 20.00'
+            },
+            {
+                period: 'Sobota - niedziela',
+                time: 'nieczynne'
+            },
+            {
+                period: 'Dni świąteczne',
+                time: 'nieczynne'
+            }
+        ],
+        siteLinks: [
+            {href: "", name: "Strona główna"},
+            {href: "about", name: "O nas"},
+            {href: "staff", name: "Nasi specjaliści"},
+            {href: "services", name: "usługi"},
+            {href: "contact", name: "kontakt"},
+            {href: "trainings", name: "szkolenia"}
+        ]
+    }
+    const map = new Map();
+    map.set('tel', data.tel)
+        .set('address', data.address)
+        .set('email', data.email)
+        .set('hours', data.hours)
+        .set('siteLinks', data.siteLinks);
+
+    return map.get(selection) || null;
+}
+
 function runFillers() {
     const homepage = new Page();
     homepage.fillHeaderTemplate();
@@ -49,8 +87,8 @@ class Page {
          */
         const data = {
             additional_links: [],
-            phone_number: "+48021342190",
-            mail_address: "rejestracja@neuropol.pl",
+            phone_number: getShared('tel'),
+            mail_address: getShared('email'),
             link_list: [
                 {href: "", name: "Strona główna", class: "active", sublink: {}},
                 {href: "about", name: "O nas"},
@@ -73,9 +111,9 @@ class Page {
                         "                                <span>Zaufać!</span>",
                     description_text:
                         "Cokolwiek Ci dolega, personel <span>Neuropol</span> zawsze jest gotowy by Ci pomóc",
-                    CTAs:
-                        '<a class="btn" href="#">Umów się na wizytę</a>\n' +
-                        '                                <a class="btn primary" href="#">Dowiedz się więcej</a>',
+                    CTAs: `
+                    <a class="btn" href="tel: ${getShared('tel')}">Umów się na wizytę</a>
+                    <a class="btn primary" href="services">Dowiedz się więcej</a>`,
                 },
                 {
                     image_path: "",
@@ -84,9 +122,9 @@ class Page {
                         "                                <span>Zaufać!</span>",
                     description_text:
                         "Cokolwiek Ci dolega, personel <span>Neuropol</span> zawsze jest gotowy by Ci pomóc",
-                    CTAs:
-                        '<a class="btn" href="#">Umów się na wizytę</a>\n' +
-                        '                                <a class="btn primary" href="#">Dowiedz się więcej</a>',
+                    CTAs: `
+                    <a class="btn" href="tel: ${getShared('tel')}">Umów się na wizytę</a>
+                    <a class="btn primary" href="services">Dowiedz się więcej</a>`,
                 },
                 {
                     image_path: "",
@@ -150,7 +188,7 @@ class Page {
                 {
                     header: 'Umów się na wizytę',
                     description: 'Szybko uzyskaj pomoc, kontaktując się z nami telefonicznie',
-                    hrefLink: 'tel:+48021342190',
+                    hrefLink: `tel: ${getShared('tel')}`,
                     icon: 'fa fa-phone'
                 },
                 {
@@ -174,7 +212,7 @@ class Page {
             description: 'Nasi specjaliści są do Twojej dyspozycji w godzinach pracy ośrodka',
             firstButton: {
                 text: 'Zadzwoń teraz',
-                action: 'tel:+48748481481'
+                action: `tel:${getShared('tel')}`
             },
             secondButton: {
                 text: 'Dowiedz się więcej',
@@ -205,35 +243,23 @@ class Page {
                 },
                 {
                     heading: 'Quick links',
-                    linkList: [
-                        {href: "", name: "Strona główna"},
-                        {href: "about", name: "O nas"},
-                        {href: "staff", name: "Nasi specjaliści"},
-                        {href: "services", name: "usługi"},
-                        {href: "contact", name: "kontakt"},
-                        {href: "trainings", name: "szkolenia"},
-                        {href: 'privacy-policy', name: 'polityka prywatności'},
-                        {href: 'FAQ', name: 'faq'},
-                        {href: 'contact', name: 'kontakt'}
-                    ]
+                    linkColumns: [
+                        {
+                            linkList: getShared('siteLinks')
+                        },
+                        {
+                            linkList: [
+                                {href: 'privacy-policy', name: 'polityka prywatności'},
+                                {href: 'faq', name: 'FAQ'},
+                                {href: "", name: "Inne linki"},
+                            ]
+                        }
+                    ],
                 },
                 {
                     heading: 'Godziny otwarcia',
                     description: 'jesteśmy do Twojej dyspozycji w każdy dzień pracujący',
-                    timeList: [
-                        {
-                            period: 'Poniedziałek - Piątek',
-                            hours: '8.00 - 20.00'
-                        },
-                        {
-                            period: 'Sobota - niedziela',
-                            hours: 'nieczynne'
-                        },
-                        {
-                            period: 'Dni świąteczne',
-                            hours: 'nieczynne'
-                        }
-                    ]
+                    timeList: getShared('hours')
                 }
             ]
         }
