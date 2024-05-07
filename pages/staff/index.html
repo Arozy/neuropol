@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="pl-PL">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Neuropol - Nasi Specjaliści</title>
+
+    <!-- Bootstrap CSS -->
+    <link href="../../css/bootstrap.min.css" rel="stylesheet" />
+    <!-- Nice Select CSS -->
+    <link href="../../css/nice-select.css" rel="stylesheet" />
+    <!-- Font Awesome CSS -->
+    <link href="../../css/font-awesome.min.css" rel="stylesheet" />
+    <!-- icofont CSS -->
+    <link href="../../css/icofont.css" rel="stylesheet" />
+    <!-- Slicknav -->
+    <link href="../../css/slicknav.min.css" rel="stylesheet" />
+    <!-- Owl Carousel CSS -->
+    <link href="../../css/owl-carousel.css" rel="stylesheet" />
+    <!-- Datepicker CSS -->
+    <link href="../../css/datepicker.css" rel="stylesheet" />
+    <!-- Animate CSS -->
+    <link href="../../css/animate.min.css" rel="stylesheet" />
+    <!-- Magnific Popup CSS -->
+    <link href="../../css/magnific-popup.css" rel="stylesheet" />
+
+    <link href="../../css/normalize.css" rel="stylesheet" />
+    <link href="../../style.css" rel="stylesheet" />
+    <link href="../../css/responsive.css" rel="stylesheet" />
+
+    <!-- Handlebars -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.7.8/handlebars.min.js"></script>
+    <script src="handlebars.js"></script>
+  </head>
+  <body onload="runFillers()">
+    <!-- Header Area -->
+    <script id="header-template" type="text/x-handlebars-template">
+      <!-- Topbar -->
+      <div class="topbar">
+        <div class="container">
+          <div class="row">
+            <div class="col-lg-6 col-md-5 col-12">
+              <!-- Contact -->
+              {{#each additional_links}}
+                <a href="{{this.href}}" target="_top">
+                  {{this.name}}
+                </a>
+              {{/each}}
+              <!-- End Contact -->
+            </div>
+            <div class="col-lg-6 col-md-7 col-12">
+              <!-- Top Contact -->
+              <ul class="top-contact">
+                <li>
+                  <i class="fa fa-phone"></i>
+                  <a href="tel://{{phone_number}}">
+                    {{phone_number}}
+                  </a>
+                </li>
+                <li>
+                  <i class="fa fa-envelope"></i>
+                  <a href="mailto://{{mail_address}}">
+                    {{mail_address}}
+                  </a>
+                </li>
+              </ul>
+              <!-- End Top Contact -->
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- End Topbar -->
+      <!-- Header Inner -->
+      <div class="header-inner">
+        <div class="container">
+          <div class="inner">
+            <div class="row">
+              <div class="col-lg-3 col-md-3 col-12">
+                <!-- Start Logo -->
+                <div class="logo">
+                  <a href="">
+                    <img src="../../img/logo.png?v=1" alt="NEUROPOL LOGO" />
+                  </a>
+                </div>
+                <!-- End Logo -->
+                <!-- Mobile Nav -->
+                <div class="mobile-nav"></div>
+                <!-- End Mobile Nav -->
+              </div>
+              <div class="col-lg-9 col-md-9 col-12">
+                <!-- Main Menu -->
+                <div class="main-menu">
+                  <nav class="navigation">
+                    <ul class="nav menu">
+                      {{#each link_list}}
+                        <li class="{{this.class}}">
+                          <a href="{{this.href}}">
+                            {{this.name}}
+                          </a>
+                        </li>
+                      {{/each}}
+                    </ul>
+                  </nav>
+                </div>
+                <!--/ End Main Menu -->
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </script>
+    <!--/ End Header Inner -->
+    <header class="header" id="header-output"></header>
+
+    <!-- Footer Area -->
+    <script id="footer-template" type="text/x-handlebars-template">
+      <!-- Footer Top -->
+      <div class="footer-top">
+        <div class="container">
+          <div class="row">
+            <div class="col-lg-4 col-md-6 col-12">
+              <div class="single-footer">
+                <h2>
+                  {{columns.0.heading}}
+                </h2>
+                <p>
+                  {{columns.0.description}}
+                </p>
+                <!-- Social -->
+                <ul class="social">
+                  {{#each columns.0.socialLinks}}
+                    <li title="{{this.title}}">
+                      <a href="{{this.href}}">
+                        <i class="{{this.icon}}"></i>
+                      </a>
+                    </li>
+                  {{/each}}
+                </ul>
+                <!-- End Social -->
+              </div>
+            </div>
+            <div class="col-lg-4 col-md-6 col-12">
+              <div class="single-footer f-link">
+                <h2>
+                  {{columns.1.heading}}
+                </h2>
+                <div class="row">
+                  <div class="col-lg-6 col-md-6 col-12">
+                    <ul>
+                      {{#each columns.1.linkColumns.0.linkList}}
+                        <li>
+                          <a href="{{this.href}}">
+                            <i aria-hidden="true" class="fa fa-caret-right"></i>
+                            {{this.name}}
+                          </a>
+                        </li>
+                      {{/each}}
+                    </ul>
+                  </div>
+                  <div class="col-lg-6 col-md-6 col-12">
+                    <ul>
+                      {{#each columns.1.linkColumns.1.linkList}}
+                        <li>
+                          <a href="{{this.href}}">
+                            <i aria-hidden="true" class="fa fa-caret-right"></i>
+                            {{this.name}}
+                          </a>
+                        </li>
+                      {{/each}}
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-4 col-md-6 col-12">
+              <div class="single-footer">
+                <h2>
+                  {{columns.2.heading}}
+                </h2>
+                <p>
+                  {{columns.2.description}}
+                </p>
+                <ul class="time-sidual">
+                  {{#each columns.2.timeList}}
+                    <li class="day">
+                      {{this.period}}
+                      <span>
+                        {{this.time}}
+                      </span>
+                    </li>
+                  {{/each}}
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!--/ End Footer Top -->
+    </script>
+    <footer class="footer" id="footer-output">
+      <!-- Copyright -->
+      <div class="copyright">
+        <div class="container">
+          <div class="row">
+            <div class="col-lg-12 col-md-12 col-12">
+              <div class="copyright-content">
+                <p>
+                  © Copyright 2018 | All Rights Reserved by
+                  <a href="https://www.wpthemesgrid.com" target="_blank"
+                    >wpthemesgrid.com</a
+                  >
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!--/ End Copyright -->
+    </footer>
+    <!--/ End Footer Area -->
+  </body>
+</html>

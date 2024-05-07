@@ -8,6 +8,8 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="library" name="handlebars.js" level="application" />
+    <orderEntry type="library" name="waypoints" level="application" />
     <orderEntry type="library" name="waypoints" level="application" />
   </component>
 </module>

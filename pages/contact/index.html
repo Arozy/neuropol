@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="pl-PL">
+  <head>
+    <!-- Meta Tags -->
+    <meta charset="utf-8" />
+    <meta content="IE=edge" http-equiv="X-UA-Compatible" />
+    <meta content="Site keywords here" name="keywords" />
+    <meta content="" name="description" />
+    <meta content="" name="copyright" />
+    <meta
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+      name="viewport"
+    />
+
+    <!-- Title -->
+    <title>Neuropol - Skontaktuj się z nami</title>
+
+    <!-- Favicon -->
+    <link href="img/favicon.png" rel="icon" />
+
+    <!-- Google Fonts -->
+    <link
+      href="https://fonts.googleapis.com/css?family=Poppins:200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i&display=swap"
+      rel="stylesheet"
+    />
+
+    <link href="../../css/bootstrap.min.css" rel="stylesheet" />
+    <link href="../../css/nice-select.css" rel="stylesheet" />
+    <link href="../../css/font-awesome.min.css" rel="stylesheet" />
+    <link href="../../css/icofont.css" rel="stylesheet" />
+    <link href="../../css/slicknav.min.css" rel="stylesheet" />
+    <link href="../../css/owl-carousel.css" rel="stylesheet" />
+    <link href="../../css/datepicker.css" rel="stylesheet" />
+    <link href="../../css/animate.min.css" rel="stylesheet" />
+    <link href="../../css/magnific-popup.css" rel="stylesheet" />
+    <link href="../../css/normalize.css" rel="stylesheet" />
+    <link href="../../style.css" rel="stylesheet" />
+    <link href="../../css/responsive.css" rel="stylesheet" />
+
+    <!-- Handlebars -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.7.8/handlebars.min.js"></script>
+    <script src="handlebars.js"></script>
+  </head>
+  <body onload="runFillers()">
+    <!-- Preloader -->
+    <div class="preloader">
+      <div class="loader">
+        <div class="loader-outter"></div>
+        <div class="loader-inner"></div>
+
+        <div class="indicator">
+          <svg height="12px" width="16px">
+            <polyline id="back" points="1 6 4 6 6 11 10 1 12 6 15 6"></polyline>
+            <polyline
+              id="front"
+              points="1 6 4 6 6 11 10 1 12 6 15 6"
+            ></polyline>
+          </svg>
+        </div>
+      </div>
+    </div>
+    <!-- End Preloader -->
+
+    <!-- Header Area -->
+    <script id="header-template" type="text/x-handlebars-template">
+      <!-- Topbar -->
+      <div class="topbar">
+        <div class="container">
+          <div class="row">
+            <div class="col-lg-6 col-md-5 col-12">
+              <!-- Contact -->
+              {{#each additional_links}}
+                <a href="{{this.href}}">
+                  {{this.name}}
+                </a>
+              {{/each}}
+              <!-- End Contact -->
+            </div>
+            <div class="col-lg-6 col-md-7 col-12">
+              <!-- Top Contact -->
+              <ul class="top-contact">
+                <li>
+                  <i class="fa fa-phone"></i>
+                  <a href="tel://{{phone_number}}">
+                    {{phone_number}}
+                  </a>
+                </li>
+                <li>
+                  <i class="fa fa-envelope"></i>
+                  <a href="mailto://{{mail_address}}">
+                    {{mail_address}}
+                  </a>
+                </li>
+              </ul>
+              <!-- End Top Contact -->
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- End Topbar -->
+      <!-- Header Inner -->
+      <div class="header-inner">
+        <div class="container">
+          <div class="inner">
+            <div class="row">
+              <div class="col-lg-3 col-md-3 col-12">
+                <!-- Start Logo -->
+                <div class="logo">
+                  <a href="">
+                    <!-- TODO: trzeba to będzie zautomatyzować                    -->
+                    <img src="../../img/logo.png" alt="NEUROPOL LOGO" />
+                  </a>
+                </div>
+                <!-- End Logo -->
+                <!-- Mobile Nav -->
+                <div class="mobile-nav"></div>
+                <!-- End Mobile Nav -->
+              </div>
+              <div class="col-lg-9 col-md-9 col-12">
+                <!-- Main Menu -->
+                <div class="main-menu">
+                  <nav class="navigation">
+                    <ul class="nav menu">
+                      {{#each link_list}}
+                        <li class="{{this.class}}">
+                          <a href="{{this.href}}">
+                            {{this.name}}
+                          </a>
+                        </li>
+                      {{/each}}
+                    </ul>
+                  </nav>
+                </div>
+                <!--/ End Main Menu -->
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </script>
+    <!--/ End Header Inner -->
+    <header class="header" id="header-output"></header>
+
+    <!-- End Header Area -->
+
+    <!-- Breadcrumbs -->
+    <div class="breadcrumbs overlay">
+      <div class="container">
+        <div class="bread-inner">
+          <div class="row">
+            <div class="col-12">
+              <h2>Contact Us</h2>
+              <ul class="bread-list">
+                <!--            TODO: ustawić poniższe przekierowania prawidłowo    -->
+                <li><a href="../home/index.html">Strona domowa</a></li>
+                <li><i class="icofont-simple-right"></i></li>
+                <li class="active">Skontaktuj się z nami</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- End Breadcrumbs -->
+
+    <!-- Start Contact Us -->
+    <section class="contact-us section">
+      <div class="container">
+        <div class="inner">
+          <div class="row">
+            <div class="col-lg-6">
+              <div class="contact-us-left">
+                <!--Start Google-map -->
+                <div id="myMap"></div>
+                <!--/End Google-map -->
+              </div>
+            </div>
+            <div class="col-lg-6">
+              <div class="contact-us-form">
+                <h2>Contact With Us</h2>
+                <p>
+                  If you have any questions please fell free to contact with us.
+                </p>
+                <!-- Form -->
+                <form action="../../mail/mail.php" class="form" method="post">
+                  <div class="row">
+                    <div class="col-lg-6">
+                      <div class="form-group">
+                        <input
+                          name="name"
+                          placeholder="Name"
+                          required=""
+                          type="text"
+                        />
+                      </div>
+                    </div>
+                    <div class="col-lg-6">
+                      <div class="form-group">
+                        <input
+                          name="email"
+                          placeholder="Email"
+                          required=""
+                          type="email"
+                        />
+                      </div>
+                    </div>
+                    <div class="col-lg-6">
+                      <div class="form-group">
+                        <input
+                          name="phone"
+                          placeholder="Phone"
+                          required=""
+                          type="text"
+                        />
+                      </div>
+                    </div>
+                    <div class="col-lg-6">
+                      <div class="form-group">
+                        <input
+                          name="subject"
+                          placeholder="Subject"
+                          required=""
+                          type="text"
+                        />
+                      </div>
+                    </div>
+                    <div class="col-lg-12">
+                      <div class="form-group">
+                        <textarea
+                          name="message"
+                          placeholder="Your Message"
+                          required=""
+                        ></textarea>
+                      </div>
+                    </div>
+                    <div class="col-12">
+                      <div class="form-group login-btn">
+                        <button class="btn" type="submit">Send</button>
+                      </div>
+                      <div class="checkbox">
+                        <label class="checkbox-inline" for="2"
+                          ><input id="2" name="news" type="checkbox" />Do you
+                          want to subscribe our Newsletter ?</label
+                        >
+                      </div>
+                    </div>
+                  </div>
+                </form>
+                <!--/ End Form -->
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="contact-info">
+          <div class="row">
+            <!-- single-info -->
+            <div class="col-lg-4 col-12">
+              <div class="single-info">
+                <i class="icofont icofont-ui-call"></i>
+                <div class="content">
+                  <h3>+(000) 1234 56789</h3>
+                  <p>info@company.com</p>
+                </div>
+              </div>
+            </div>
+            <!--/End single-info -->
+            <!-- single-info -->
+            <div class="col-lg-4 col-12">
+              <div class="single-info">
+                <i class="icofont-google-map"></i>
+                <div class="content">
+                  <h3>2 Fir e Brigade Road</h3>
+                  <p>Chittagonj, Lakshmipur</p>
+                </div>
+              </div>
+            </div>
+            <!--/End single-info -->
+            <!-- single-info -->
+            <div class="col-lg-4 col-12">
+              <div class="single-info">
+                <i class="icofont icofont-wall-clock"></i>
+                <div class="content">
+                  <h3>Mon - Sat: 8am - 5pm</h3>
+                  <p>Sunday Closed</p>
+                </div>
+              </div>
+            </div>
+            <!--/End single-info -->
+          </div>
+        </div>
+      </div>
+    </section>
+    <!--/ End Contact Us -->
+
+    <!-- Footer Area -->
+    <script id="footer-template" type="text/x-handlebars-template">
+      <!-- Footer Top -->
+      <div class="footer-top">
+        <div class="container">
+          <div class="row">
+            <div class="col-lg-4 col-md-6 col-12">
+              <div class="single-footer">
+                <h2>
+                  {{columns.0.heading}}
+                </h2>
+                <p>
+                  {{columns.0.description}}
+                </p>
+                <!-- Social -->
+                <ul class="social">
+                  {{#each columns.0.socialLinks}}
+                    <li title="{{this.title}}">
+                      <a href="{{this.href}}">
+                        <i class="{{this.icon}}"></i>
+                      </a>
+                    </li>
+                  {{/each}}
+                </ul>
+                <!-- End Social -->
+              </div>
+            </div>
+            <div class="col-lg-4 col-md-6 col-12">
+              <div class="single-footer f-link">
+                <h2>
+                  {{columns.1.heading}}
+                </h2>
+                <div class="row">
+                  <div class="col-lg-6 col-md-6 col-12">
+                    <ul>
+                      {{#each columns.1.linkColumns.0.linkList}}
+                        <li>
+                          <a href="{{this.href}}">
+                            <i aria-hidden="true" class="fa fa-caret-right"></i>
+                            {{this.name}}
+                          </a>
+                        </li>
+                      {{/each}}
+                    </ul>
+                  </div>
+                  <div class="col-lg-6 col-md-6 col-12">
+                    <ul>
+                      {{#each columns.1.linkColumns.1.linkList}}
+                        <li>
+                          <a href="{{this.href}}">
+                            <i aria-hidden="true" class="fa fa-caret-right"></i>
+                            {{this.name}}
+                          </a>
+                        </li>
+                      {{/each}}
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-4 col-md-6 col-12">
+              <div class="single-footer">
+                <h2>
+                  {{columns.2.heading}}
+                </h2>
+                <p>
+                  {{columns.2.description}}
+                </p>
+                <ul class="time-sidual">
+                  {{#each columns.2.timeList}}
+                    <li class="day">
+                      {{this.period}}
+                      <span>
+                        {{this.time}}
+                      </span>
+                    </li>
+                  {{/each}}
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!--/ End Footer Top -->
+    </script>
+    <footer class="footer" id="footer-output">
+      <!-- Copyright -->
+      <div class="copyright">
+        <div class="container">
+          <div class="row">
+            <div class="col-lg-12 col-md-12 col-12">
+              <div class="copyright-content">
+                <p>
+                  © Copyright 2018 | All Rights Reserved by
+                  <a href="https://www.wpthemesgrid.com" target="_blank"
+                    >wpthemesgrid.com</a
+                  >
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!--/ End Copyright -->
+    </footer>
+    <!--/ End Footer Area -->
+
+    <!-- jquery Min JS -->
+    <script src="../../js/jquery.min.js"></script>
+    <!-- jquery Migrate JS -->
+    <script src="../../js/jquery-migrate-3.0.0.js"></script>
+    <!-- jquery Ui JS -->
+    <script src="../../js/jquery-ui.min.js"></script>
+    <!-- Easing JS -->
+    <script src="../../js/easing.js"></script>
+    <!-- Color JS -->
+    <script src="../../js/colors.js"></script>
+    <!-- Popper JS -->
+    <script src="../../js/popper.min.js"></script>
+    <!-- Bootstrap Datepicker JS -->
+    <script src="../../js/bootstrap-datepicker.js"></script>
+    <!-- Jquery Nav JS -->
+    <script src="../../js/jquery.nav.js"></script>
+    <!-- Slicknav JS -->
+    <script src="../../js/slicknav.min.js"></script>
+    <!-- ScrollUp JS -->
+    <script src="../../js/jquery.scrollUp.min.js"></script>
+    <!-- Niceselect JS -->
+    <script src="../../js/niceselect.js"></script>
+    <!-- Tilt Jquery JS -->
+    <script src="../../js/tilt.jquery.min.js"></script>
+    <!-- Owl Carousel JS -->
+    <script src="../../js/owl-carousel.js"></script>
+    <!-- counterup JS -->
+    <script src="../../js/jquery.counterup.min.js"></script>
+    <!-- Steller JS -->
+    <script src="../../js/steller.js"></script>
+    <!-- Wow JS -->
+    <script src="../../js/wow.min.js"></script>
+    <!-- Magnific Popup JS -->
+    <script src="../../js/jquery.magnific-popup.min.js"></script>
+    <!-- Counter Up CDN JS -->
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/waypoints/2.0.3/waypoints.min.js"></script>
+    <!-- Google Map API Key JS -->
+    <script src="https://maps.google.com/maps/api/js?key=AIzaSyDGqTyqoPIvYxhn_Sa7ZrK5bENUWhpCo0w"></script>
+    <!-- Gmaps JS -->
+    <script src="../../js/gmaps.min.js"></script>
+    <!-- Map Active JS -->
+    <script src="../../js/map-active.js"></script>
+    <!-- Bootstrap JS -->
+    <script src="../../js/bootstrap.min.js"></script>
+    <!-- Main JS -->
+    <script src="../../js/main.js"></script>
+  </body>
+</html>

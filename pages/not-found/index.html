@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="pl-PL">
+  <head>
+    <!-- Meta Tags -->
+    <meta charset="utf-8" />
+    <meta content="IE=edge" http-equiv="X-UA-Compatible" />
+    <meta content="Site keywords here" name="keywords" />
+    <meta content="" name="description" />
+    <meta content="" name="copyright" />
+    <meta
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+      name="viewport"
+    />
+
+    <!-- Title -->
+    <title>Neuropol | 404</title>
+
+    <!-- Favicon -->
+    <link href="img/favicon.png" rel="icon" />
+
+    <!-- Google Fonts -->
+    <link
+      href="https://fonts.googleapis.com/css?family=Poppins:200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i&display=swap"
+      rel="stylesheet"
+    />
+
+    <link href="../../css/bootstrap.min.css" rel="stylesheet" />
+    <link href="../../css/nice-select.css" rel="stylesheet" />
+    <link href="../../css/font-awesome.min.css" rel="stylesheet" />
+    <link href="../../css/icofont.css" rel="stylesheet" />
+    <link href="../../css/slicknav.min.css" rel="stylesheet" />
+    <link href="../../css/owl-carousel.css" rel="stylesheet" />
+    <link href="../../css/datepicker.css" rel="stylesheet" />
+    <link href="../../css/animate.min.css" rel="stylesheet" />
+    <link href="../../css/magnific-popup.css" rel="stylesheet" />
+
+    <link href="../../css/normalize.css" rel="stylesheet" />
+    <link href="../../style.css" rel="stylesheet" />
+    <link href="../../css/responsive.css" rel="stylesheet" />
+
+    <!-- Handlebars -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.7.8/handlebars.min.js"></script>
+    <script src="handlebars.js"></script>
+  </head>
+  <body onload="runFillers()">
+    <!-- Preloader -->
+    <div class="preloader">
+      <div class="loader">
+        <div class="loader-outter"></div>
+        <div class="loader-inner"></div>
+
+        <div class="indicator">
+          <svg height="12px" width="16px">
+            <polyline id="back" points="1 6 4 6 6 11 10 1 12 6 15 6"></polyline>
+            <polyline
+              id="front"
+              points="1 6 4 6 6 11 10 1 12 6 15 6"
+            ></polyline>
+          </svg>
+        </div>
+      </div>
+    </div>
+    <!-- End Preloader -->
+
+    <!-- Header Area -->
+    <script id="header-template" type="text/x-handlebars-template">
+      <!-- Topbar -->
+      <div class="topbar">
+        <div class="container">
+          <div class="row">
+            <div class="col-lg-6 col-md-5 col-12">
+              <!-- Contact -->
+              {{#each additional_links}}
+                <a href="{{this.href}}">
+                  {{this.name}}
+                </a>
+              {{/each}}
+              <!-- End Contact -->
+            </div>
+            <div class="col-lg-6 col-md-7 col-12">
+              <!-- Top Contact -->
+              <ul class="top-contact">
+                <li>
+                  <i class="fa fa-phone"></i>
+                  <a href="tel://{{phone_number}}">
+                    {{phone_number}}
+                  </a>
+                </li>
+                <li>
+                  <i class="fa fa-envelope"></i>
+                  <a href="mailto://{{mail_address}}">
+                    {{mail_address}}
+                  </a>
+                </li>
+              </ul>
+              <!-- End Top Contact -->
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- End Topbar -->
+      <!-- Header Inner -->
+      <div class="header-inner">
+        <div class="container">
+          <div class="inner">
+            <div class="row">
+              <div class="col-lg-3 col-md-3 col-12">
+                <!-- Start Logo -->
+                <div class="logo">
+                  <a href="">
+                    <img src="../../img/logo.png" alt="NEUROPOL LOGO" />
+                  </a>
+                </div>
+                <!-- End Logo -->
+                <!-- Mobile Nav -->
+                <div class="mobile-nav"></div>
+                <!-- End Mobile Nav -->
+              </div>
+              <div class="col-lg-9 col-md-9 col-12">
+                <!-- Main Menu -->
+                <div class="main-menu">
+                  <nav class="navigation">
+                    <ul class="nav menu">
+                      {{#each link_list}}
+                        <li class="{{this.class}}">
+                          <a href="{{this.href}}">
+                            {{this.name}}
+                          </a>
+                        </li>
+                      {{/each}}
+                    </ul>
+                  </nav>
+                </div>
+                <!--/ End Main Menu -->
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </script>
+    <!--/ End Header Inner -->
+    <header class="header" id="header-output"></header>
+
+    <!-- Error Page -->
+    <section class="error-page section">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-6 offset-lg-3 col-12">
+            <!-- Error Inner -->
+            <div class="error-inner">
+              <h1>404<span>Ups... Nic tu nie ma!</span></h1>
+              <p>
+                Wygląda na to, że to czego szukasz już nie istnieje lub po
+                prostu nigdy tego nie było. Kliknij poniżej, aby wrócić na
+                stronę domową
+              </p>
+              <div class="button">
+                <a class="btn primary" href="../home/index.html"
+                  >Powrót na stronę domową</a
+                >
+              </div>
+            </div>
+            <!--/ End Error Inner -->
+          </div>
+        </div>
+      </div>
+    </section>
+    <!--/ End Error Page -->
+
+    <!-- jquery Min JS -->
+    <script src="../../js/jquery.min.js"></script>
+    <!-- jquery Migrate JS -->
+    <script src="../../js/jquery-migrate-3.0.0.js"></script>
+    <!-- jquery Ui JS -->
+    <script src="../../js/jquery-ui.min.js"></script>
+    <!-- Easing JS -->
+    <script src="../../js/easing.js"></script>
+    <!-- Color JS -->
+    <script src="../../js/colors.js"></script>
+    <!-- Popper JS -->
+    <script src="../../js/popper.min.js"></script>
+    <!-- Bootstrap Datepicker JS -->
+    <script src="../../js/bootstrap-datepicker.js"></script>
+    <!-- Jquery Nav JS -->
+    <script src="../../js/jquery.nav.js"></script>
+    <!-- Slicknav JS -->
+    <script src="../../js/slicknav.min.js"></script>
+    <!-- ScrollUp JS -->
+    <script src="../../js/jquery.scrollUp.min.js"></script>
+    <!-- Niceselect JS -->
+    <script src="../../js/niceselect.js"></script>
+    <!-- Tilt Jquery JS -->
+    <script src="../../js/tilt.jquery.min.js"></script>
+    <!-- Owl Carousel JS -->
+    <script src="../../js/owl-carousel.js"></script>
+    <!-- counterup JS -->
+    <script src="../../js/jquery.counterup.min.js"></script>
+    <!-- Steller JS -->
+    <script src="../../js/steller.js"></script>
+    <!-- Wow JS -->
+    <script src="../../js/wow.min.js"></script>
+    <!-- Magnific Popup JS -->
+    <script src="../../js/jquery.magnific-popup.min.js"></script>
+    <!-- Counter Up CDN JS -->
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/waypoints/2.0.3/waypoints.min.js"></script>
+    <!-- Bootstrap JS -->
+    <script src="../../js/bootstrap.min.js"></script>
+    <!-- Main JS -->
+    <script src="../../js/main.js"></script>
+  </body>
+</html>

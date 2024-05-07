@@ -91,11 +91,11 @@ class Page {
             mail_address: getShared('email'),
             link_list: [
                 {href: "", name: "Strona główna", class: "active", sublink: {}},
-                {href: "about", name: "O nas"},
-                {href: "staff", name: "Nasi specjaliści"},
-                {href: "services", name: "usługi"},
-                {href: "contact", name: "kontakt"},
-                {href: "trainings", name: "szkolenia"}
+                {href: ".././about", name: "O nas"},
+                {href: ".././staff", name: "Nasi specjaliści"},
+                {href: ".././services", name: "usługi"},
+                {href: ".././contact", name: "kontakt"},
+                {href: ".././trainings", name: "szkolenia"}
             ],
         };
         this.useFiller(data, "header");
