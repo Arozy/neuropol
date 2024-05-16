@@ -2,7 +2,7 @@
 <html lang="pl-PL">
   <head>
     <meta charset="UTF-8" />
-    <title>Neuropol - O nas</title>
+    <title>Neuropol | Usługi</title>
 
     <!-- Bootstrap CSS -->
     <link href="../../css/bootstrap.min.css" rel="stylesheet" />
@@ -32,6 +32,24 @@
     <script src="handlebars.js"></script>
   </head>
   <body onload="runFillers()">
+    <!-- Preloader -->
+    <div class="preloader">
+      <div class="loader">
+        <div class="loader-outter"></div>
+        <div class="loader-inner"></div>
+
+        <div class="indicator">
+          <svg height="12px" width="16px">
+            <polyline id="back" points="1 6 4 6 6 11 10 1 12 6 15 6"></polyline>
+            <polyline
+              id="front"
+              points="1 6 4 6 6 11 10 1 12 6 15 6"
+            ></polyline>
+          </svg>
+        </div>
+      </div>
+    </div>
+    <!-- End Preloader -->
     <!-- Header Area -->
     <script id="header-template" type="text/x-handlebars-template">
       <!-- Topbar -->
@@ -78,7 +96,7 @@
                 <!-- Start Logo -->
                 <div class="logo">
                   <a href="">
-                    <img src="../../img/logo.png?v=1" alt="NEUROPOL LOGO" />
+                    <img src="../../img/logo.png" alt="NEUROPOL LOGO" />
                   </a>
                 </div>
                 <!-- End Logo -->
@@ -110,6 +128,151 @@
     </script>
     <!--/ End Header Inner -->
     <header class="header" id="header-output"></header>
+
+    <!-- Pricing Table -->
+    <section class="pricing-table section">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-12">
+            <div class="section-title">
+              <h2>
+                Oferujemy wiele szkoleń z zakresu Lorem ipsum dolor sit amet,
+                consectetur adipisicing elit.
+              </h2>
+              <img alt="#" src="../../img/section-img.png" />
+              <p>
+                W Neuropol nie tylko leczymy, ale też edukujemy o zdrowiu. Lorem
+                ipsum dolor sit amet, consectetur adipisicing elit. Distinctio
+                doloribus enim explicabo fuga ipsa numquam pariatur perspiciatis
+                repudiandae temporibus veniam.
+              </p>
+            </div>
+          </div>
+        </div>
+        <hr />
+        <h3 class="font-weight-bold py-4">Szkolenia z pierwszej pomocy</h3>
+        <div class="row">
+          <!-- Single Table -->
+          <div class="col-lg-4 col-md-12 col-12">
+            <div class="single-table">
+              <!-- Table Head -->
+              <div class="table-head">
+                <div class="icon">
+                  <i class="icofont icofont-ui-cut"></i>
+                </div>
+                <h4 class="title">Plastic Suggery</h4>
+                <div class="price">
+                  <p class="amount">$199<span>/ Per Visit</span></p>
+                </div>
+              </div>
+              <!-- Table List -->
+              <ul class="table-list">
+                <li>
+                  <i class="icofont icofont-ui-check"></i>Lorem ipsum dolor sit
+                </li>
+                <li>
+                  <i class="icofont icofont-ui-check"></i>Cubitur sollicitudin
+                  fentum
+                </li>
+                <li class="cross">
+                  <i class="icofont icofont-ui-close"></i>Nullam interdum enim
+                </li>
+                <li class="cross">
+                  <i class="icofont icofont-ui-close"></i>Donec ultricies metus
+                </li>
+                <li class="cross">
+                  <i class="icofont icofont-ui-close"></i>Pellentesque eget nibh
+                </li>
+              </ul>
+              <div class="table-bottom">
+                <a class="btn" href="#">Book Now</a>
+              </div>
+              <!-- Table Bottom -->
+            </div>
+          </div>
+          <!-- End Single Table-->
+          <!-- Single Table -->
+          <div class="col-lg-4 col-md-12 col-12">
+            <div class="single-table">
+              <!-- Table Head -->
+              <div class="table-head">
+                <div class="icon">
+                  <i class="icofont icofont-tooth"></i>
+                </div>
+                <h4 class="title">Teeth Whitening</h4>
+                <div class="price">
+                  <p class="amount">$299<span>/ Per Visit</span></p>
+                </div>
+              </div>
+              <!-- Table List -->
+              <ul class="table-list">
+                <li>
+                  <i class="icofont icofont-ui-check"></i>Lorem ipsum dolor sit
+                </li>
+                <li>
+                  <i class="icofont icofont-ui-check"></i>Cubitur sollicitudin
+                  fentum
+                </li>
+                <li>
+                  <i class="icofont icofont-ui-check"></i>Nullam interdum enim
+                </li>
+                <li class="cross">
+                  <i class="icofont icofont-ui-close"></i>Donec ultricies metus
+                </li>
+                <li class="cross">
+                  <i class="icofont icofont-ui-close"></i>Pellentesque eget nibh
+                </li>
+              </ul>
+              <div class="table-bottom">
+                <a class="btn" href="#">Book Now</a>
+              </div>
+              <!-- Table Bottom -->
+            </div>
+          </div>
+          <!-- End Single Table-->
+          <!-- Single Table -->
+          <div class="col-lg-4 col-md-12 col-12">
+            <div class="single-table">
+              <!-- Table Head -->
+              <div class="table-head">
+                <div class="icon">
+                  <i class="icofont-heart-beat"></i>
+                </div>
+                <h4 class="title">Heart Suggery</h4>
+                <div class="price">
+                  <p class="amount">$399<span>/ Per Visit</span></p>
+                </div>
+              </div>
+              <!-- Table List -->
+              <ul class="table-list">
+                <li>
+                  <i class="icofont icofont-ui-check"></i>Lorem ipsum dolor sit
+                </li>
+                <li>
+                  <i class="icofont icofont-ui-check"></i>Cubitur sollicitudin
+                  fentum
+                </li>
+                <li>
+                  <i class="icofont icofont-ui-check"></i>Nullam interdum enim
+                </li>
+                <li>
+                  <i class="icofont icofont-ui-check"></i>Donec ultricies metus
+                </li>
+                <li>
+                  <i class="icofont icofont-ui-check"></i>Pellentesque eget nibh
+                </li>
+              </ul>
+              <div class="table-bottom">
+                <a class="btn" href="#">Book Now</a>
+              </div>
+              <!-- Table Bottom -->
+            </div>
+          </div>
+          <!-- End Single Table-->
+        </div>
+      </div>
+    </section>
+    <!--/ End Pricing Table -->
 
     <!-- Footer Area -->
     <script id="footer-template" type="text/x-handlebars-template">
@@ -217,5 +380,46 @@
       <!--/ End Copyright -->
     </footer>
     <!--/ End Footer Area -->
+
+    <!-- jquery Min JS -->
+    <script src="../../js/jquery.min.js"></script>
+    <!-- jquery Migrate JS -->
+    <script src="../../js/jquery-migrate-3.0.0.js"></script>
+    <!-- jquery Ui JS -->
+    <script src="../../js/jquery-ui.min.js"></script>
+    <!-- Easing JS -->
+    <script src="../../js/easing.js"></script>
+    <!-- Color JS -->
+    <script src="../../js/colors.js"></script>
+    <!-- Popper JS -->
+    <script src="../../js/popper.min.js"></script>
+    <!-- Bootstrap Datepicker JS -->
+    <script src="../../js/bootstrap-datepicker.js"></script>
+    <!-- Jquery Nav JS -->
+    <script src="../../js/jquery.nav.js"></script>
+    <!-- Slicknav JS -->
+    <script src="../../js/slicknav.min.js"></script>
+    <!-- ScrollUp JS -->
+    <script src="../../js/jquery.scrollUp.min.js"></script>
+    <!-- Niceselect JS -->
+    <script src="../../js/niceselect.js"></script>
+    <!-- Tilt Jquery JS -->
+    <script src="../../js/tilt.jquery.min.js"></script>
+    <!-- Owl Carousel JS -->
+    <script src="../../js/owl-carousel.js"></script>
+    <!-- counterup JS -->
+    <script src="../../js/jquery.counterup.min.js"></script>
+    <!-- Steller JS -->
+    <script src="../../js/steller.js"></script>
+    <!-- Wow JS -->
+    <script src="../../js/wow.min.js"></script>
+    <!-- Magnific Popup JS -->
+    <script src="../../js/jquery.magnific-popup.min.js"></script>
+    <!-- Counter Up CDN JS -->
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/waypoints/2.0.3/waypoints.min.js"></script>
+    <!-- Bootstrap JS -->
+    <script src="../../js/bootstrap.min.js"></script>
+    <!-- Main JS -->
+    <script src="../../js/main.js"></script>
   </body>
 </html>

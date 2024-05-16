@@ -81,7 +81,9 @@ class Page {
             services: [
                 {
                     title: 'Miastenia Gravis',
-                    description: 'Analizujemy każdy przypadek osobno, pomagamy stanąć na nogi i przywracamy naszym pacjentom siłę, której tak bardzo im brakuje'
+                    description: 'Analizujemy każdy przypadek osobno, pomagamy stanąć na nogi i przywracamy naszym pacjentom siłę, której tak bardzo im brakuje',
+                    video: 'https://www.youtube.com/embed/tgbNymZ7vqY',
+                    modal_description: 'Miastenia Gravis to pojebana choroba'
                 },
                 {
                     title: 'Miastenia Gravis',

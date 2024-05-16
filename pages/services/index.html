@@ -32,6 +32,24 @@
     <script src="handlebars.js"></script>
   </head>
   <body onload="runFillers()">
+    <!-- Preloader -->
+    <div class="preloader">
+      <div class="loader">
+        <div class="loader-outter"></div>
+        <div class="loader-inner"></div>
+
+        <div class="indicator">
+          <svg height="12px" width="16px">
+            <polyline id="back" points="1 6 4 6 6 11 10 1 12 6 15 6"></polyline>
+            <polyline
+              id="front"
+              points="1 6 4 6 6 11 10 1 12 6 15 6"
+            ></polyline>
+          </svg>
+        </div>
+      </div>
+    </div>
+    <!-- End Preloader -->
     <!-- Header Area -->
     <script id="header-template" type="text/x-handlebars-template">
       <!-- Topbar -->
@@ -249,6 +267,90 @@
     </section>
     <!--/ End Pricing Table -->
 
+    <!-- Start Contact Us -->
+    <section class="contact-us section">
+      <div class="container">
+        <div class="inner">
+          <div class="row">
+            <div class="col-lg-6">
+              <div class="d-flex align-items-center contact-us-left">
+                <img
+                  alt=""
+                  src="https://tse3.mm.bing.net/th/id/OIG3.1xJi9H7nVFJyJardw3aK?pid=ImgGn"
+                />
+              </div>
+            </div>
+            <div class="col-lg-6">
+              <div class="contact-us-form">
+                <h5>Uzyskaj ofertę dla swojej firmy</h5>
+                <!-- Form -->
+                <form action="../../mail/mail.php" class="form" method="post">
+                  <div class="row">
+                    <div class="col-lg-6">
+                      <div class="form-group">
+                        <input
+                          name="name"
+                          placeholder="Imię"
+                          required=""
+                          type="text"
+                        />
+                      </div>
+                    </div>
+                    <div class="col-lg-6">
+                      <div class="form-group">
+                        <input
+                          name="email"
+                          placeholder="Nazwisko"
+                          required=""
+                          type="email"
+                        />
+                      </div>
+                    </div>
+                    <div class="col-lg-12">
+                      <div class="form-group">
+                        <input
+                          name="company"
+                          placeholder="Nazwa firmy"
+                          required=""
+                          type="text"
+                        />
+                      </div>
+                    </div>
+                    <div class="col-lg-12">
+                      <div class="form-group">
+                        <input
+                          name="subject"
+                          placeholder="Adres e-mail"
+                          required=""
+                          type="text"
+                        />
+                      </div>
+                    </div>
+                    <div class="col-lg-12">
+                      <div class="form-group">
+                        <textarea
+                          name="message"
+                          placeholder="Wiadomość do nas"
+                          required=""
+                        ></textarea>
+                      </div>
+                    </div>
+                    <div class="col-12">
+                      <div class="form-group login-btn">
+                        <button class="btn" type="submit">Send</button>
+                      </div>
+                    </div>
+                  </div>
+                </form>
+                <!--/ End Form -->
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!--/ End Contact Us -->
+
     <!-- Footer Area -->
     <script id="footer-template" type="text/x-handlebars-template">
       <!-- Footer Top -->
@@ -355,5 +457,46 @@
       <!--/ End Copyright -->
     </footer>
     <!--/ End Footer Area -->
+
+    <!-- jquery Min JS -->
+    <script src="../../js/jquery.min.js"></script>
+    <!-- jquery Migrate JS -->
+    <script src="../../js/jquery-migrate-3.0.0.js"></script>
+    <!-- jquery Ui JS -->
+    <script src="../../js/jquery-ui.min.js"></script>
+    <!-- Easing JS -->
+    <script src="../../js/easing.js"></script>
+    <!-- Color JS -->
+    <script src="../../js/colors.js"></script>
+    <!-- Popper JS -->
+    <script src="../../js/popper.min.js"></script>
+    <!-- Bootstrap Datepicker JS -->
+    <script src="../../js/bootstrap-datepicker.js"></script>
+    <!-- Jquery Nav JS -->
+    <script src="../../js/jquery.nav.js"></script>
+    <!-- Slicknav JS -->
+    <script src="../../js/slicknav.min.js"></script>
+    <!-- ScrollUp JS -->
+    <script src="../../js/jquery.scrollUp.min.js"></script>
+    <!-- Niceselect JS -->
+    <script src="../../js/niceselect.js"></script>
+    <!-- Tilt Jquery JS -->
+    <script src="../../js/tilt.jquery.min.js"></script>
+    <!-- Owl Carousel JS -->
+    <script src="../../js/owl-carousel.js"></script>
+    <!-- counterup JS -->
+    <script src="../../js/jquery.counterup.min.js"></script>
+    <!-- Steller JS -->
+    <script src="../../js/steller.js"></script>
+    <!-- Wow JS -->
+    <script src="../../js/wow.min.js"></script>
+    <!-- Magnific Popup JS -->
+    <script src="../../js/jquery.magnific-popup.min.js"></script>
+    <!-- Counter Up CDN JS -->
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/waypoints/2.0.3/waypoints.min.js"></script>
+    <!-- Bootstrap JS -->
+    <script src="../../js/bootstrap.min.js"></script>
+    <!-- Main JS -->
+    <script src="../../js/main.js"></script>
   </body>
 </html>
