@@ -49,13 +49,15 @@
 
     <!-- Handlebars -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.7.8/handlebars.min.js"></script>
-    <script defer src="handlebars.js"></script>
     <script src="https://www.google.com/recaptcha/api.js"></script>
-    <script>
-      function onSubmit(token) {
-        document.getElementById("purchase-form").submit();
-      }
+    <script
+      src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"
+      type="text/javascript"
+    ></script>
+    <script type="text/javascript">
+      emailjs.init("VyO71KKJqhM4YiCWO");
     </script>
+    <script src="handlebars.js"></script>
   </head>
   <body onload="runFillers()">
     <!-- Preloader -->
@@ -193,8 +195,8 @@
                                       <p class="amount text-basic">
                                           {{this.price}}zł
                                           <span>
-                                                                                                          / Za osobę
-                                                                                                        </span>
+                                                                                                                                                                                                                                  / Za osobę
+                                                                                                                                                                                                                                </span>
                                       </p>
                                   </div>
                               </div>
@@ -224,7 +226,13 @@
                                       </button>
                                       <div class="mx-2 my-auto">X</div>
                                       <input type="number" value="1" min="0" id="amount_{{type}}_{{../name}}"
-                                             class="mx-2 w-25" required>
+                                             class="mx-2 w-25" data-amount-selection required>
+                                  </div>
+                                  <div class="d-flex">
+                                      <button class="btn bg-secondary d w-100 mx-2 my-2 h-100"
+                                              onclick="clearCurrentSelector({{json type}}, {{json ../name}})">
+                                          Wyczyść
+                                      </button>
                                   </div>
                               </div>
                               <!-- Table Bottom -->
@@ -243,129 +251,159 @@
     <!-- Start Purchase -->
     <script id="purchase-template" type="text/x-handlebars-template">
       <div class="container">
-        <div class="inner">
-          <div class="row">
-            <div class="col-lg-6">
-              <div class="d-flex align-items-center contact-us-left form-image">
-                <img alt="" src="../../img/form-side-image.jpg" />
-              </div>
-            </div>
-            <div class="col-lg-6">
-              <div class="contact-us-form">
-                <h5>
-                  {{this.heading}}
-                </h5>
-                <!-- Form -->
-                <form
-                  action="../../mail/mail.php"
-                  class="form"
-                  method="post"
-                  id="purchase-form"
-                >
-                  <div class="row">
-                    <div class="col-lg-6">
-                      <div class="form-group">
-                        <label class="w-100">
-                          Imię
-                          <input
-                            autocomplete="given-name"
-                            name="name"
-                            placeholder="np. Jan / Elżbieta"
-                            required
-                            type="text"
-                          />
-                        </label>
+          <div class="inner">
+              <div class="row">
+                  <div class="col-lg-6">
+                      <div class="d-flex align-items-center contact-us-left form-image">
+                          <img alt="" src="../../img/form-side-image.jpg"/>
                       </div>
-                    </div>
-                    <div class="col-lg-6">
-                      <div class="form-group">
-                        <label class="w-100">
-                          Nazwisko
-                          <input
-                            autocomplete="family-name"
-                            name="surname"
-                            placeholder="np. Kowalski / Kowalska"
-                            required
-                            type="text"
-                          />
-                        </label>
-                      </div>
-                    </div>
-                    <div class="col-lg-12">
-                      <div class="form-group">
-                        <label class="w-100">
-                          Nazwa firmy
-                          <input
-                            name="company"
-                            placeholder="Twoja firma, Bydgoszcz ul. Przykładowa 10"
-                            required
-                            type="text"
-                          />
-                        </label>
-                      </div>
-                    </div>
-                    <div class="col-lg-12">
-                      <div class="form-group">
-                        <label class="w-100">
-                          Adres e-mail
-                          <input
-                            autocomplete="email"
-                            name="email"
-                            placeholder="np. imie.nazwisko@domena.pl"
-                            required
-                            type="email"
-                          />
-                        </label>
-                      </div>
-                    </div>
-                    <div class="col-lg-12">
-                      <div class="form-group">
-                        <label class="w-100">
-                          Wiadomość do nas
-                          <textarea
-                            autocomplete="organization street-adress postal-code"
-                            class="form-textarea"
-                            name="message"
-                            placeholder="np. Kontaktuję się w sprawie oferty na pakiet Standard"
-                            rows="3"
-                          ></textarea>
-                        </label>
-                      </div>
-                    </div>
-                    <div class="col-12">
-                      <div class="form-group">
-                        <label class="w-100">
-                          Wybrane pakiety:
-                          <input
-                            type="text"
-                            name="packets"
-                            data-selection-input
-                            readonly
-                          />
-                        </label>
-                      </div>
-                    </div>
-                    <div class="col-12">
-                      <div class="form-group">
-                        <button
-                          class="btn"
-                          type="submit"
-                          class="g-recaptcha"
-                          data-sitekey="6LdAi-EpAAAAAAqF0oIioozjUq96uHMlIdYU9iCX"
-                          data-callback="onSubmit"
-                          data-action="submit"
-                        >
-                          Uzyskaj ofertę
-                        </button>
-                      </div>
-                    </div>
                   </div>
-                </form>
-                <!--/ End Form -->
+                  <div class="col-lg-6">
+                      <div class="contact-us-form">
+                          <h5 class="my-2">
+                              {{this.heading}}
+                          </h5>
+                          <!-- Form -->
+                          <form
+                                  onreset="resetStorage()"
+                                  onsubmit="submitForm()"
+                                  class="form"
+                                  method="post"
+                                  id="purchase-form"
+                          >
+                              <div class="row">
+                                  <div class="col-lg-6">
+                                      <div class="form-group">
+                                          <label class="w-100">
+                                              Imię
+                                              <input
+                                                      autocomplete="given-name"
+                                                      name="name"
+                                                      placeholder="np. Jan / Elżbieta"
+                                                      required
+                                                      type="text"
+                                              />
+                                          </label>
+                                      </div>
+                                  </div>
+                                  <div class="col-lg-6">
+                                      <div class="form-group">
+                                          <label class="w-100">
+                                              Nazwisko
+                                              <input
+                                                      autocomplete="family-name"
+                                                      name="surname"
+                                                      placeholder="np. Kowalski / Kowalska"
+                                                      required
+                                                      type="text"
+                                              />
+                                          </label>
+                                      </div>
+                                  </div>
+                                  <div class="col-lg-12">
+                                      <div class="form-group">
+                                          <label class="w-100">
+                                              Nazwa firmy
+                                              <input
+                                                      name="company"
+                                                      placeholder="Twoja firma, Bydgoszcz ul. Przykładowa 10"
+                                                      required
+                                                      type="text"
+                                              />
+                                          </label>
+                                      </div>
+                                  </div>
+                                  <div class="col-lg-12">
+                                      <div class="form-group">
+                                          <label class="w-100">
+                                              Adres e-mail
+                                              <input
+                                                      autocomplete="email"
+                                                      name="email"
+                                                      placeholder="np. imie.nazwisko@domena.pl"
+                                                      required
+                                                      type="email"
+                                              />
+                                          </label>
+                                      </div>
+                                  </div>
+                                  <div class="col-lg-12">
+                                      <div class="form-group">
+                                          <label class="w-100">
+                                              Wiadomość do nas
+                                              <textarea
+                                                      autocomplete="organization street-adress postal-code"
+                                                      class="form-textarea"
+                                                      name="message"
+                                                      placeholder="np. Kontaktuję się w sprawie oferty na pakiet Standard"
+                                                      rows="3"
+                                                      maxlength="400"
+                                              ></textarea>
+                                          </label>
+                                      </div>
+                                  </div>
+                                  <div class="col-12">
+                                      <div class="form-group">
+                                          <label class="w-100">
+                                              Wybrane pakiety:
+                                              <input
+                                                      type="text"
+                                                      name="packets"
+                                                      data-selection-input
+                                                      required
+                                                      readonly
+                                              />
+                                          </label>
+                                      </div>
+                                  </div>
+                                  <div class="col-6">
+                                      <div class="form-group">
+                                          <button
+                                                  class="btn bg-danger"
+                                                  type="reset"
+                                          >
+                                              Wyczyść
+                                          </button>
+                                      </div>
+                                  </div>
+                                  <div class="col-6">
+                                      <div class="form-group">
+                                          <button
+                                                  class="btn"
+                                                  type="submit"
+                                                  class="g-recaptcha"
+                                                  data-sitekey="6LdAi-EpAAAAAAqF0oIioozjUq96uHMlIdYU9iCX"
+                                                  data-callback="onSubmit"
+                                                  data-action="submit"
+                                          >
+                                              Uzyskaj ofertę
+                                          </button>
+                                      </div>
+                                  </div>
+                                  <div class="col-12">
+                                      <div class="d-none flex-column" data-purchase-sending>
+                                          <span class="font-weight-bold text-info">Wysyłamy Twoją wiadomość, momencik...</span>
+                                      </div>
+                                  </div>
+                                  <div class="col-12">
+                                      <div class="d-none flex-column" data-purchase-error>
+                                                  <span class="font-weight-bold text-danger">Coś się nie udało, prosimy spróbować ponownie lub skontaktować się z nami bezpośrednio na adres
+                                                    <a class="text-dark" href="mailto://rozycka@neuropol.pl">rozycka@neuropol.pl</a>
+                                                  </span>
+                                      </div>
+                                  </div>
+                                  <div class="col-12">
+                                      <div class="d-none flex-column" data-purchase-confirmation>
+                                          <span class="font-weight-bold text-success">Wiadomość wysłana!</span>
+                                          <span>Wkrótce odpowiemy na Twojego maila</span>
+                                      </div>
+                                  </div>
+                          </form>
+                          <!--/ End Form -->
+                      </div>
+                  </div>
               </div>
-            </div>
           </div>
-        </div>
       </div>
     </script>
     <section class="contact-us section" id="purchase-output"></section>

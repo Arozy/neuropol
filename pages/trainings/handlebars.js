@@ -175,6 +175,7 @@ class Page {
             heading: 'Uzyskaj ofertę dla swojej firmy',
         }
         this.useFiller(data, 'purchase');
+        readData();
     }
 
     fillFooterTemplate() {
@@ -234,20 +235,28 @@ async function readData() {
     const formData = JSON.parse(localStorage.getItem('purchase_form_data'));
     const form = document.getElementById('purchase-form');
     if (formData) {
-        Object.entries(formData).forEach(([key, value]) => {
+        Object.entries(formData).forEach(([key, input]) => {
             const element = form.elements.namedItem(key)
             if (element) {
-                element.value = value;
+                element.value = input.value;
             }
         })
     }
 }
 
-function handlePacketSelection(packet, training) {
+function resetStorage() {
+    const amountSelectors = document.querySelectorAll('[data-amount-selection]')
+    amountSelectors.forEach(selector => {
+        selector.value = 1;
+    })
+    localStorage.clear();
+}
+
+function handlePacketSelection(packet, training, disableButtonClickAnnouncer) {
     const amountInput = document.querySelector(`#amount_${packet}_${training}`);
     const selectionInput = document.querySelector('[data-selection-input]');
     const selectionButton = document.querySelector(`[data-selection-button="${packet} | ${training}"]`)
-    _announceButtonClick(selectionButton);
+    if (!disableButtonClickAnnouncer) _announceButtonClick(selectionButton);
     let currentlySelectedPackets = JSON.parse(localStorage.getItem('selectedPackets')) || [];
     if (!currentlySelectedPackets.includes({packet, training, amount: Number(amountInput.value)})) {
         currentlySelectedPackets.push(
@@ -283,6 +292,50 @@ function handlePacketSelection(packet, training) {
     _saveData();
 }
 
+function clearCurrentSelector(packet, training) {
+    const selector = document.querySelector(`#amount_${packet}_${training}`);
+    selector.value = 0;
+    handlePacketSelection(packet, training, true)
+    selector.value = 1;
+}
+
+function submitForm() {
+    event.preventDefault();
+    const form = document.querySelector('#purchase-form');
+    const confirmationBox = document.querySelector('[data-purchase-confirmation]');
+    const sendingBox = document.querySelector('[data-purchase-sending]');
+    const errorBox = document.querySelector('[data-purchase-error]');
+    const params = {
+        email: form.elements.email.value,
+        from_name: `${form.elements.name.value} ${form.elements.surname.value}`,
+        message: form.elements.message.value || 'Brak wiadomości od klienta.',
+        company: form.elements.company.value,
+        summary: form.elements.packets.value,
+    };
+    sendingBox.classList.remove('d-none');
+    sendingBox.classList.add('d-flex');
+    emailjs.send("service_msro0uq", "template_wqr1dxn", params).then(() => {
+        sendingBox.classList.remove('d-flex');
+        sendingBox.classList.add('d-none');
+        confirmationBox.classList.remove('d-none');
+        confirmationBox.classList.add('d-flex');
+        setTimeout(() => {
+            confirmationBox.classList.add('d-none');
+            confirmationBox.classList.remove('d-flex');
+        }, 10000)
+        form.reset();
+    }).catch(() => {
+        sendingBox.classList.remove('d-flex');
+        sendingBox.classList.add('d-none');
+        errorBox.classList.remove('d-none');
+        errorBox.classList.add('d-flex');
+        setTimeout(() => {
+            errorBox.classList.add('d-none')
+            errorBox.classList.remove('d-flex');
+        }, 10000);
+    })
+}
+
 function _announceButtonClick(selectionButton) {
     selectionButton.innerHTML = 'Wybrano!';
     setTimeout(() => {
@@ -313,5 +366,3 @@ function _saveData() {
     localStorage.removeItem('purchase_form_data');
     localStorage.setItem('purchase_form_data', JSON.stringify(savedData));
 }
-
-readData();
