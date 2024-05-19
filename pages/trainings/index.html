@@ -1,8 +1,28 @@
 <!DOCTYPE html>
 <html lang="pl-PL">
   <head>
-    <meta charset="UTF-8" />
-    <title>Neuropol | Usługi</title>
+    <!-- Meta Tags -->
+    <meta charset="utf-8" />
+    <meta content="IE=edge" http-equiv="X-UA-Compatible" />
+    <meta content="Neuropol" name="title" />
+    <meta
+      content="Neuropol - profesjonalne szkolenia medyczne"
+      name="description"
+    />
+    <meta
+      content="neuropol, ośrodek zdrowia, osrodek zdrowia, szkolenia medyczne, szkolenia medyczne bydgoszcz, bydgoszcz rko, bydgoszcz first aid, first, aid, bydgoszcz pierwsza pomoc"
+      name="keywords"
+    />
+    <meta content="index, follow" name="robots" />
+    <meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+    <meta content="1 days" name="revisit-after" />
+
+    <meta
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+      name="viewport"
+    />
+
+    <title>Neuropol | Szkolenia</title>
 
     <!-- Bootstrap CSS -->
     <link href="../../css/bootstrap.min.css" rel="stylesheet" />
@@ -29,7 +49,13 @@
 
     <!-- Handlebars -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.7.8/handlebars.min.js"></script>
-    <script src="handlebars.js"></script>
+    <script defer src="handlebars.js"></script>
+    <script src="https://www.google.com/recaptcha/api.js"></script>
+    <script>
+      function onSubmit(token) {
+        document.getElementById("purchase-form").submit();
+      }
+    </script>
   </head>
   <body onload="runFillers()">
     <!-- Preloader -->
@@ -130,149 +156,220 @@
     <header class="header" id="header-output"></header>
 
     <!-- Pricing Table -->
-    <section class="pricing-table section">
+    <script id="training-template" type="text/x-handlebars-template">
       <div class="container">
-        <div class="row">
-          <div class="col-lg-12">
-            <div class="section-title">
-              <h2>
-                Oferujemy wiele szkoleń z zakresu Lorem ipsum dolor sit amet,
-                consectetur adipisicing elit.
-              </h2>
-              <img alt="#" src="../../img/section-img.png" />
-              <p>
-                W Neuropol nie tylko leczymy, ale też edukujemy o zdrowiu. Lorem
-                ipsum dolor sit amet, consectetur adipisicing elit. Distinctio
-                doloribus enim explicabo fuga ipsa numquam pariatur perspiciatis
-                repudiandae temporibus veniam.
-              </p>
+          <div class="row">
+              <div class="col-lg-12">
+                  <div class="section-title">
+                      <h2>
+                          {{this.heading}}
+                      </h2>
+                      <img alt="#" src="../../img/section-img.png"/>
+                      <p>
+                          {{this.description}}
+                      </p>
+                  </div>
+              </div>
+          </div>
+          <hr/>
+          {{#each this.sections}}
+              <h3 class="font-weight-bold py-4">
+                  {{this.heading}}
+              </h3>
+              <div class="row">
+                  <!-- Single Table -->
+                  {{#each this.columns}}
+                      <div class="col-lg-4 col-md-12 col-12">
+                          <div class="single-table">
+                              <!-- Table Head -->
+                              <div class="table-head">
+                                  <div class="icon">
+                                      <i class="icofont icofont-safety text-{{this.type}}"></i>
+                                  </div>
+                                  <h4 class="title">
+                                      {{this.title}}
+                                  </h4>
+                                  <div class="price">
+                                      <p class="amount text-basic">
+                                          {{this.price}}zł
+                                          <span>
+                                                                                                          / Za osobę
+                                                                                                        </span>
+                                      </p>
+                                  </div>
+                              </div>
+                              <!-- Table List -->
+                              <ul class="table-list">
+                                  {{#each this.items}}
+                                      <li>
+                                          <i class="icofont icofont-ui-check"></i>
+                                          {{this}}
+                                      </li>
+                                  {{/each}}
+                                  {{#each this.out}}
+                                      <li class="cross">
+                                          <i class="icofont icofont-ui-close"></i>
+                                          {{this}}
+                                      </li>
+                                  {{/each}}
+                              </ul>
+                              <div class="table-bottom">
+                                  <div class="d-flex">
+                                      <button
+                                              class="btn mx-2 w-75 h-100"
+                                              onclick="handlePacketSelection({{json type}}, {{json ../name}})"
+                                              data-selection-button="{{type}} | {{../name}}"
+                                      >
+                                          Wybieram
+                                      </button>
+                                      <div class="mx-2 my-auto">X</div>
+                                      <input type="number" value="1" min="0" id="amount_{{type}}_{{../name}}"
+                                             class="mx-2 w-25" required>
+                                  </div>
+                              </div>
+                              <!-- Table Bottom -->
+                          </div>
+                      </div>
+                  {{/each}}
+                  <!-- End Single Table-->
+              </div>
+              <hr/>
+          {{/each}}
+      </div>
+    </script>
+    <section class="pricing-table section" id="training-output"></section>
+    <!--/ End Pricing Table -->
+
+    <!-- Start Purchase -->
+    <script id="purchase-template" type="text/x-handlebars-template">
+      <div class="container">
+        <div class="inner">
+          <div class="row">
+            <div class="col-lg-6">
+              <div class="d-flex align-items-center contact-us-left form-image">
+                <img alt="" src="../../img/form-side-image.jpg" />
+              </div>
+            </div>
+            <div class="col-lg-6">
+              <div class="contact-us-form">
+                <h5>
+                  {{this.heading}}
+                </h5>
+                <!-- Form -->
+                <form
+                  action="../../mail/mail.php"
+                  class="form"
+                  method="post"
+                  id="purchase-form"
+                >
+                  <div class="row">
+                    <div class="col-lg-6">
+                      <div class="form-group">
+                        <label class="w-100">
+                          Imię
+                          <input
+                            autocomplete="given-name"
+                            name="name"
+                            placeholder="np. Jan / Elżbieta"
+                            required
+                            type="text"
+                          />
+                        </label>
+                      </div>
+                    </div>
+                    <div class="col-lg-6">
+                      <div class="form-group">
+                        <label class="w-100">
+                          Nazwisko
+                          <input
+                            autocomplete="family-name"
+                            name="surname"
+                            placeholder="np. Kowalski / Kowalska"
+                            required
+                            type="text"
+                          />
+                        </label>
+                      </div>
+                    </div>
+                    <div class="col-lg-12">
+                      <div class="form-group">
+                        <label class="w-100">
+                          Nazwa firmy
+                          <input
+                            name="company"
+                            placeholder="Twoja firma, Bydgoszcz ul. Przykładowa 10"
+                            required
+                            type="text"
+                          />
+                        </label>
+                      </div>
+                    </div>
+                    <div class="col-lg-12">
+                      <div class="form-group">
+                        <label class="w-100">
+                          Adres e-mail
+                          <input
+                            autocomplete="email"
+                            name="email"
+                            placeholder="np. imie.nazwisko@domena.pl"
+                            required
+                            type="email"
+                          />
+                        </label>
+                      </div>
+                    </div>
+                    <div class="col-lg-12">
+                      <div class="form-group">
+                        <label class="w-100">
+                          Wiadomość do nas
+                          <textarea
+                            autocomplete="organization street-adress postal-code"
+                            class="form-textarea"
+                            name="message"
+                            placeholder="np. Kontaktuję się w sprawie oferty na pakiet Standard"
+                            rows="3"
+                          ></textarea>
+                        </label>
+                      </div>
+                    </div>
+                    <div class="col-12">
+                      <div class="form-group">
+                        <label class="w-100">
+                          Wybrane pakiety:
+                          <input
+                            type="text"
+                            name="packets"
+                            data-selection-input
+                            readonly
+                          />
+                        </label>
+                      </div>
+                    </div>
+                    <div class="col-12">
+                      <div class="form-group">
+                        <button
+                          class="btn"
+                          type="submit"
+                          class="g-recaptcha"
+                          data-sitekey="6LdAi-EpAAAAAAqF0oIioozjUq96uHMlIdYU9iCX"
+                          data-callback="onSubmit"
+                          data-action="submit"
+                        >
+                          Uzyskaj ofertę
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </form>
+                <!--/ End Form -->
+              </div>
             </div>
           </div>
-        </div>
-        <hr />
-        <h3 class="font-weight-bold py-4">Szkolenia z pierwszej pomocy</h3>
-        <div class="row">
-          <!-- Single Table -->
-          <div class="col-lg-4 col-md-12 col-12">
-            <div class="single-table">
-              <!-- Table Head -->
-              <div class="table-head">
-                <div class="icon">
-                  <i class="icofont icofont-ui-cut"></i>
-                </div>
-                <h4 class="title">Plastic Suggery</h4>
-                <div class="price">
-                  <p class="amount">$199<span>/ Per Visit</span></p>
-                </div>
-              </div>
-              <!-- Table List -->
-              <ul class="table-list">
-                <li>
-                  <i class="icofont icofont-ui-check"></i>Lorem ipsum dolor sit
-                </li>
-                <li>
-                  <i class="icofont icofont-ui-check"></i>Cubitur sollicitudin
-                  fentum
-                </li>
-                <li class="cross">
-                  <i class="icofont icofont-ui-close"></i>Nullam interdum enim
-                </li>
-                <li class="cross">
-                  <i class="icofont icofont-ui-close"></i>Donec ultricies metus
-                </li>
-                <li class="cross">
-                  <i class="icofont icofont-ui-close"></i>Pellentesque eget nibh
-                </li>
-              </ul>
-              <div class="table-bottom">
-                <a class="btn" href="#">Book Now</a>
-              </div>
-              <!-- Table Bottom -->
-            </div>
-          </div>
-          <!-- End Single Table-->
-          <!-- Single Table -->
-          <div class="col-lg-4 col-md-12 col-12">
-            <div class="single-table">
-              <!-- Table Head -->
-              <div class="table-head">
-                <div class="icon">
-                  <i class="icofont icofont-tooth"></i>
-                </div>
-                <h4 class="title">Teeth Whitening</h4>
-                <div class="price">
-                  <p class="amount">$299<span>/ Per Visit</span></p>
-                </div>
-              </div>
-              <!-- Table List -->
-              <ul class="table-list">
-                <li>
-                  <i class="icofont icofont-ui-check"></i>Lorem ipsum dolor sit
-                </li>
-                <li>
-                  <i class="icofont icofont-ui-check"></i>Cubitur sollicitudin
-                  fentum
-                </li>
-                <li>
-                  <i class="icofont icofont-ui-check"></i>Nullam interdum enim
-                </li>
-                <li class="cross">
-                  <i class="icofont icofont-ui-close"></i>Donec ultricies metus
-                </li>
-                <li class="cross">
-                  <i class="icofont icofont-ui-close"></i>Pellentesque eget nibh
-                </li>
-              </ul>
-              <div class="table-bottom">
-                <a class="btn" href="#">Book Now</a>
-              </div>
-              <!-- Table Bottom -->
-            </div>
-          </div>
-          <!-- End Single Table-->
-          <!-- Single Table -->
-          <div class="col-lg-4 col-md-12 col-12">
-            <div class="single-table">
-              <!-- Table Head -->
-              <div class="table-head">
-                <div class="icon">
-                  <i class="icofont-heart-beat"></i>
-                </div>
-                <h4 class="title">Heart Suggery</h4>
-                <div class="price">
-                  <p class="amount">$399<span>/ Per Visit</span></p>
-                </div>
-              </div>
-              <!-- Table List -->
-              <ul class="table-list">
-                <li>
-                  <i class="icofont icofont-ui-check"></i>Lorem ipsum dolor sit
-                </li>
-                <li>
-                  <i class="icofont icofont-ui-check"></i>Cubitur sollicitudin
-                  fentum
-                </li>
-                <li>
-                  <i class="icofont icofont-ui-check"></i>Nullam interdum enim
-                </li>
-                <li>
-                  <i class="icofont icofont-ui-check"></i>Donec ultricies metus
-                </li>
-                <li>
-                  <i class="icofont icofont-ui-check"></i>Pellentesque eget nibh
-                </li>
-              </ul>
-              <div class="table-bottom">
-                <a class="btn" href="#">Book Now</a>
-              </div>
-              <!-- Table Bottom -->
-            </div>
-          </div>
-          <!-- End Single Table-->
         </div>
       </div>
-    </section>
-    <!--/ End Pricing Table -->
+    </script>
+    <section class="contact-us section" id="purchase-output"></section>
+    <!--/ End Purchase -->
 
     <!-- Footer Area -->
     <script id="footer-template" type="text/x-handlebars-template">
