@@ -1,4 +1,7 @@
-export class Page {
+class Page {
+    constructor(pageName) {
+        this.currentPageName = pageName;
+    }
 
     useFiller(data, uniqueName) {
         const template = `${uniqueName}-template`;
@@ -17,15 +20,14 @@ export class Page {
             additional_links: [],
             phone_number: getShared('tel'),
             mail_address: getShared('email'),
-            link_list: [
-                {href: ".././home", name: "Strona główna", sublink: {}},
-                {href: ".././about", name: "O nas", class: "active"},
-                {href: ".././staff", name: "Nasi specjaliści"},
-                {href: ".././services", name: "usługi"},
-                {href: ".././contact", name: "kontakt"},
-                {href: ".././trainings", name: "szkolenia"}
-            ],
+            link_list: getShared('siteLinks')
         };
+        data.link_list = data.link_list.map(element => {
+            if (element.id === this.currentPageName) {
+                return {...element, class: 'active'};
+            }
+            return element;
+        });
         this.useFiller(data, "header");
     }
 
@@ -65,7 +67,7 @@ export class Page {
                 },
                 {
                     heading: 'Godziny otwarcia',
-                    description: 'jesteśmy do Twojej dyspozycji w każdy dzień pracujący',
+                    description: 'Jesteśmy do Twojej dyspozycji w każdy dzień pracujący',
                     timeList: getShared('hours')
                 }
             ]
