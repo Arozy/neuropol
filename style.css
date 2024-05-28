@@ -65,15 +65,12 @@ body {
     color: #888;
 }
 
-.staff-stack {
+.staff-stack:nth-child(even) {
+    flex-direction: row-reverse;
+}
 
-    & :nth-child(even) {
-        flex-direction: row-reverse;
-    }
-    
-    & :nth-child(odd) {
-        flex-direction: row;
-    }
+.staff-stack:nth-child(odd) {
+    flex-direction: row;
 }
 
 .contact-card {
