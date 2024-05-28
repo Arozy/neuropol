@@ -27,6 +27,11 @@ function getShared(selection) {
             {href: ".././contact", name: "kontakt", id: 'contact'},
             {href: ".././trainings", name: "szkolenia", id: 'trainings'}
         ],
+        otherLinks: [
+            {href: 'privacy-policy', name: 'polityka prywatności'},
+            {href: 'faq', name: 'FAQ'},
+            {href: "", name: "Inne linki"},
+        ]
     }
     const map = new Map();
     map.set('tel', data.tel)
@@ -35,7 +40,8 @@ function getShared(selection) {
         .set('facebook', data.facebook)
         .set('instagram', data.instagram)
         .set('hours', data.hours)
-        .set('siteLinks', data.siteLinks);
+        .set('siteLinks', data.siteLinks)
+        .set('otherLinks', data.otherLinks)
 
     return map.get(selection) || null;
 }

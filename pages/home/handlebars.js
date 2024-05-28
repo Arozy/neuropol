@@ -149,7 +149,7 @@ class Home extends Page {
             },
             secondButton: {
                 text: 'Dowiedz się więcej',
-                action: 'about'
+                action: './../staff'
             }
         }
         this.useFiller(data, 'cta');

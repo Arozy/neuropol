@@ -65,6 +65,17 @@ body {
     color: #888;
 }
 
+.staff-stack {
+
+    & :nth-child(even) {
+        flex-direction: row-reverse;
+    }
+    
+    & :nth-child(odd) {
+        flex-direction: row;
+    }
+}
+
 .contact-card {
     background: var(--primary-background-color);
 }

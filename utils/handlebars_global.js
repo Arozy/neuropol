@@ -57,11 +57,7 @@ class Page {
                             linkList: getShared('siteLinks')
                         },
                         {
-                            linkList: [
-                                {href: 'privacy-policy', name: 'polityka prywatności'},
-                                {href: 'faq', name: 'FAQ'},
-                                {href: "", name: "Inne linki"},
-                            ]
+                            linkList: getShared('otherLinks')
                         }
                     ],
                 },
