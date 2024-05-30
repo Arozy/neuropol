@@ -53,6 +53,7 @@ Version:	1.1
     --primary-color: #fff;
     --accent-color: #df3653;
     --primary-background-color: #0591c8;
+    --secondary-background-color: #0e6a8d;
     --premium-color: goldenrod;
     --standard-color: seagreen;
     --basic-color: var(--primary-background-color);
@@ -63,6 +64,14 @@ body {
     font-weight: 400;
     font-size: 14px;
     color: #888;
+}
+
+.placeholder {
+    gap: 1.5rem;
+}
+
+.placeholder-text {
+    text-shadow: 1px 2px 4px rgba(0, 0, 0, 0.6);
 }
 
 .staff-stack:nth-child(even) {

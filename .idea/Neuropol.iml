@@ -15,5 +15,7 @@
     <orderEntry type="library" name="handlebars.js" level="application" />
     <orderEntry type="library" name="api" level="application" />
     <orderEntry type="library" name="@emailjs/browser" level="application" />
+    <orderEntry type="library" name="credit-tag-black" level="application" />
+    <orderEntry type="library" name="flipdown" level="application" />
   </component>
 </module>
