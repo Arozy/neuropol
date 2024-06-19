@@ -87,7 +87,7 @@ class Home extends Page {
                     icon: "fa fa-ambulance",
                     heading: "Nasze usługi",
                     content: "<p>\n" +
-                        "                                    Świadczymy usługi z zakresu leczenia dolegliwości neurologiczych i jesteśmy w tym zajebiści\n" +
+                        "                                    Świadczymy usługi z zakresu leczenia dolegliwości neurologiczych lore ipsum dolor sit\n" +
                         "                                </p>",
                     cta: 'Dowiedz się więcej',
                     ctaHref: 'services'

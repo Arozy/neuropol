@@ -10,7 +10,7 @@ class Services extends Page {
         const data = {
             heading: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.',
             description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iure provident quae quam quo tempore ullam.',
-            class: 'col-lg-8 col-md-12 col-12 offset-2',
+            class: 'col-12 col-lg-8 offset-lg-2',
             columns: [
                 //             {
                 //                 icon: 'icofont icofont-price',

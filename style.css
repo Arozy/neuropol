@@ -58,6 +58,10 @@ Version:	1.1
     --basic-color: var(--primary-background-color);
 }
 
+a:focus-visible, button:focus-visible, .button:focus-visible, .btn:focus-visible {
+    outline: 1px dashed !important;
+}
+
 body {
     font-family: 'Poppins', sans-serif;
     font-weight: 400;
@@ -888,6 +892,7 @@ body {
 }
 
 .schedule .single-schedule .inner {
+    height: 100%;
     overflow: hidden;
     position: relative;
     padding: 30px;
