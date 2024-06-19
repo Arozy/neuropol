@@ -59,20 +59,20 @@ Version:	1.1
 			$('.pro-features').toggleClass('active');
 		});
 
+		 /*====================================
+             Mobile Menu
+         ======================================*/
+		 $('.menu').slicknav({
+			 prependTo:".mobile-nav",
+			 duration: 300,
+			 closeOnClick:true,
+		 });
+
 		/*====================================
 			Search JS
 		======================================*/
 		$('.search a').on( "click", function(){
 			$('.search-top').toggleClass('active');
-		});
-
-		/*====================================
-			Mobile Menu
-		======================================*/
-		$('.menu').slicknav({
-			prependTo:".mobile-nav",
-			duration: 300,
-			closeOnClick:true,
 		});
 
 		/*===============================
@@ -325,6 +325,17 @@ Version:	1.1
 	======================*/
 	$(window).on('load', function() {
 		$('.preloader').addClass('preloader-deactivate');
+	});
+
+	$('#header-outer').on('load', function(){
+		/*====================================
+			Mobile Menu
+		======================================*/
+		$('.menu').slicknav({
+			prependTo:".mobile-nav",
+			duration: 300,
+			closeOnClick:true,
+		});
 	});
 
 

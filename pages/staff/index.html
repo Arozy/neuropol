@@ -92,7 +92,7 @@
             <div class="col-lg-6 col-md-5 col-12">
               <!-- Contact -->
               {{#each additional_links}}
-                <a href="{{this.href}}" target="_top">
+                <a href="{{this.href}}">
                   {{this.name}}
                 </a>
               {{/each}}
@@ -105,12 +105,6 @@
                   <i class="fa fa-phone"></i>
                   <a href="tel://{{phone_number}}">
                     {{phone_number}}
-                  </a>
-                </li>
-                <li>
-                  <i class="fa fa-envelope"></i>
-                  <a href="mailto://{{mail_address}}">
-                    {{mail_address}}
                   </a>
                 </li>
               </ul>
@@ -128,7 +122,7 @@
               <div class="col-lg-3 col-md-3 col-12">
                 <!-- Start Logo -->
                 <div class="logo">
-                  <a href="">
+                  <a href="/pages/home">
                     <img src="../../img/logo.png?v=1" alt="NEUROPOL LOGO" />
                   </a>
                 </div>
