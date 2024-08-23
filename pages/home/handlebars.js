@@ -40,30 +40,12 @@ class Home extends Page {
                 {
                     image_path: "",
                     header_text:
-                        "Dostarczamy Rozwiązania <span>Medyczne</span> Którym Możesz\n" +
-                        "                                <span>Zaufać!</span>",
-                    description_text:
-                        "Cokolwiek Ci dolega, personel <span>Neuropol</span> zawsze jest gotowy by Ci pomóc",
+                        "Już niedługo <span>wielkie otwarcie</span> naszej\n" +
+                        "                                <span>placówki!</span>",
+                    description_text: "",
                     CTAs: `
-                    <a class="btn" href="tel: ${getShared('tel')}">Umów się na wizytę</a>
+                    <a class="btn" href="/contact">Umów się na wizytę</a>
                     <a class="btn primary" href="services">Dowiedz się więcej</a>`,
-                },
-                {
-                    image_path: "",
-                    header_text:
-                        "Dostarczamy Rozwiązania <span>Medyczne</span> Którym Możesz\n" +
-                        "                                <span>Zaufać!</span>",
-                    description_text:
-                        "Cokolwiek Ci dolega, personel <span>Neuropol</span> zawsze jest gotowy by Ci pomóc",
-                    CTAs: `
-                    <a class="btn" href="tel: ${getShared('tel')}">Umów się na wizytę</a>
-                    <a class="btn primary" href="services">Dowiedz się więcej</a>`,
-                },
-                {
-                    image_path: "",
-                    header_text: "Wspieramy <span>Pacjentów</span>",
-                    description_text: "Jesteśmy do <span>Twojej</span> dyspozycji",
-                    CTAs: "",
                 },
             ],
         };
@@ -74,21 +56,16 @@ class Home extends Page {
         const data = {
             card_items: [
                 {
-                    icon: "icofont-prescription",
+                    icon: "icofont-doctor",
                     heading: 'Nasi specjaliści',
-                    content: ' <p>\n' +
-                        '                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab accusantium eveniet\n' +
-                        '                                    impedit inventore ipsam maiores.\n' +
-                        '                                </p>',
+                    content: ' <p>Twoje zdrowie, nasza pasja. Ekspercka opieka, której możesz zaufać.</p>',
                     cta: 'Dowiedz się więcej',
                     ctaHref: 'staff'
                 },
                 {
-                    icon: "fa fa-ambulance",
+                    icon: "fa fa-list-alt",
                     heading: "Nasze usługi",
-                    content: "<p>\n" +
-                        "                                    Świadczymy usługi z zakresu leczenia dolegliwości neurologiczych i jesteśmy w tym zajebiści\n" +
-                        "                                </p>",
+                    content: "<p>Profesjonalne rozwiązania dla Twojego lepszego samopoczucia.</p>",
                     cta: 'Dowiedz się więcej',
                     ctaHref: 'services'
                 },
@@ -98,11 +75,11 @@ class Home extends Page {
                     content:
                         '<ul class="time-sidual">\n' +
                         '                                    <li class="day">\n' +
-                        "                                        Poniedziałek - Piątek <span>8.00-20.00</span>\n" +
+                        "                                        poniedziałek - piątek <span>8.30-16.30</span>\n" +
                         "                                    </li>\n" +
-                        '                                    <li class="day">Sobota - niedziela <span>nieczynne</span></li>\n' +
+                        '                                    <li class="day">sobota - niedziela <span>nieczynne</span></li>\n' +
                         '                                    <li class="day">\n' +
-                        "                                        Dni świąteczne <span>nieczynne</span>\n" +
+                        "                                        dni świąteczne <span>nieczynne</span>\n" +
                         "                                    </li>\n" +
                         "                                </ul>",
                     cta: 'Dowiedz się więcej',
@@ -116,7 +93,7 @@ class Home extends Page {
     fillFeaturesTemplate() {
         const data = {
             header: 'Jesteśmy gotowi by pomagać naszym pacjentom',
-            description: 'Grupa specjalistów, takich jak neurolodzy, fizjoterapueci, pielęgniarki czy rehabilitanci są zawsze gotowi by Ci pomóc.',
+            description: 'Grupa specjalistów, takich jak fizjoterapeuci oraz terapeuci są zawsze gotowi by Ci pomóc.',
             featureItems: [
                 {
                     header: 'Umów się na wizytę',
@@ -141,8 +118,8 @@ class Home extends Page {
 
     fillCTATemplate() {
         const data = {
-            heading: 'Potrzebujesz profesjonalnej porady medycznej? Zadzwoń do nas na numer +48 758 481 481',
-            description: 'Nasi specjaliści są do Twojej dyspozycji w godzinach pracy ośrodka',
+            heading: 'Zrób pierwszy krok ku lepszemu samopoczuciu – umów się na wizytę już dziś!',
+            description: 'Nasi specjaliści są do Twojej dyspozycji w godzinach pracy ośrodka.',
             firstButton: {
                 text: 'Zadzwoń teraz',
                 action: `tel:${getShared('tel')}`

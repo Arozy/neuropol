@@ -24,13 +24,13 @@ class Contact extends Page {
                 {
                     icon: 'fa fa-facebook',
                     heading: 'Facebook',
-                    summary: getShared('facebook'),
+                    summary: 'Nasz FP',
                     link: getShared('facebook'),
                 },
                 {
                     icon: 'fa fa-instagram',
                     heading: 'Instagram:',
-                    summary: getShared('instagram'),
+                    summary: 'Nasze insta',
                     link: getShared('instagram'),
                 }
             ]

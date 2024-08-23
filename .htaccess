@@ -1,8 +1,33 @@
-#Rewriting engine on
-RewriteEngine on
+RewriteEngine On
 
-#Rewrite cond
+#Redirect traffic
+RewriteCond %{SERVER_PORT} 80
+RewriteRule ^(.*)$ https://www.neuropol.pl/$1 [R,L]
+
+#Rewrite pages to flat structure
+
+RewriteRule ^$ pages/placeholder/index.html [L]
+RewriteRule ^not-found$ pages/not-found/index.html [L]
+RewriteRule ^home$ pages/home/index.html [L]
+RewriteRule ^about$ pages/about/index.html [L]
+RewriteRule ^staff$ pages/staff/index.html [L]
+RewriteRule ^services$ pages/services/index.html [L]
+RewriteRule ^contact$ pages/contact/index.html [L]
+RewriteRule ^trainings$ pages/trainings/index.html [L]
+
+#Friendly urls
+
 RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^(.*)$ $1.html [L, QSA]
 
-#Rewrite each
-RewriteRule ^([^.]+)$ $1.html [NC,L]
+#Safely get image data
+<FilesMatch "\.(?i:jpg|gif|png)$">
+  Header set Content-Disposition attachment
+</FilesMatch>
+
+# ERRORS HANDLING
+ErrorDocument 404 http://neuropol.pl/not-found
+
+#! USE TO DISABLE PAGE
+#RewriteRule .? - [F]

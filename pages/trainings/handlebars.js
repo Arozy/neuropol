@@ -17,10 +17,8 @@ function runFillers() {
 class Training extends Page {
     fillTrainingsTemplate() {
         const data = {
-            heading: 'Oferujemy wiele szkoleń z zakresu Lorem ipsum dolor sit amet consectetur adipisicing elit.',
-            description: 'W Neuropol nie tylko leczymy, ale też edukujemy o zdrowiu. ' +
-                'Lorem ipsum dolor sit amet, consectetur adipisicing elit. ' +
-                'Distinctiodoloribus enim explicabo fuga ipsa numquam pariatur perspiciatisrepudiandae temporibus veniam.',
+            heading: 'Oferujemy wiele szkoleń z zakresu pierwszej pomocy.',
+            description: 'W Neuropol nie tylko leczymy, ale też edukujemy o zdrowiu.',
             sections: [
                 {
                     name: 'pierwsza-pomoc',

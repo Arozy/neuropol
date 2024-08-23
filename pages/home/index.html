@@ -21,12 +21,14 @@
       content="width=device-width, initial-scale=1, shrink-to-fit=no"
       name="viewport"
     />
+    
+    <meta http-equiv="Cache-Control" content="public, max-age=1, must-revalidate" />
 
     <!-- Title -->
     <title>Neuropol | Strona Główna</title>
 
     <!-- Favicon -->
-    <link href="img/favicon.png" rel="icon" />
+   <link rel="icon" type="image/x-icon" href="../../img/favicon.ico">
 
     <!-- Google Fonts -->
     <link
@@ -59,12 +61,12 @@
     <link href="../../css/responsive.css" rel="stylesheet" />
 
     <!-- Utils -->
-    <script src="../../utils/handlebars_shared.js"></script>
-    <script src="../../utils/handlebars_global.js"></script>
+    <script src="/utils/handlebars_shared.js?updated=6"></script>
+    <script src="/utils/handlebars_global.js?updated=6"></script>
 
     <!-- Handlebars -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.7.8/handlebars.min.js"></script>
-    <script src="handlebars.js"></script>
+    <script src="../../pages/home/handlebars.js?updated=6"></script>
   </head>
   <body onload="runFillers()">
     <!-- Preloader -->
@@ -72,14 +74,24 @@
       <div class="loader">
         <div class="loader-outter"></div>
         <div class="loader-inner"></div>
-
         <div class="indicator">
-          <svg height="12px" width="16px">
-            <polyline id="back" points="1 6 4 6 6 11 10 1 12 6 15 6"></polyline>
-            <polyline
-              id="front"
-              points="1 6 4 6 6 11 10 1 12 6 15 6"
-            ></polyline>
+          <svg width="1rem" height="12px" viewBox="0 0 296 296">
+            <g transform="matrix(1,0,0,1,-194.426,-2737.12)">
+              <g transform="matrix(4.16667,0,0,4.16667,0,0)">
+                <g transform="matrix(1,0,0,1,72.2683,705.152)">
+                  <path
+                    d="M0,-48.242L19.805,-48.242C21.324,-48.242 22.574,-47.03 22.635,-45.524C22.528,-20.532 2.104,-0.108 -22.888,0C-24.394,-0.062 -25.606,-1.311 -25.606,-2.831L-25.606,-22.636C-25.606,-24.194 -24.331,-25.469 -22.773,-25.469L-2.833,-25.469L-2.833,-45.409C-2.833,-46.967 -1.558,-48.242 0,-48.242"
+                    style="fill: rgb(223, 54, 83)"
+                  />
+                </g>
+                <g transform="matrix(1,0,0,1,92.073,679.685)">
+                  <path
+                    d="M0,48.242L-19.805,48.242C-21.324,48.242 -22.574,47.03 -22.635,45.524C-22.528,20.532 -2.104,0.107 22.889,0C24.394,0.061 25.606,1.311 25.606,2.831L25.606,22.636C25.606,24.194 24.331,25.469 22.773,25.469L2.833,25.469L2.833,45.409C2.833,46.967 1.558,48.242 0,48.242"
+                    style="fill: rgb(22, 162, 217)"
+                  />
+                </g>
+              </g>
+            </g>
           </svg>
         </div>
       </div>
@@ -110,12 +122,6 @@
                     {{phone_number}}
                   </a>
                 </li>
-                <li>
-                  <i class="fa fa-envelope"></i>
-                  <a href="mailto://{{mail_address}}">
-                    {{mail_address}}
-                  </a>
-                </li>
               </ul>
               <!-- End Top Contact -->
             </div>
@@ -131,7 +137,7 @@
               <div class="col-lg-3 col-md-3 col-12">
                 <!-- Start Logo -->
                 <div class="logo">
-                  <a href="">
+                  <a href="/pages/home">
                     <img src="../../img/logo.png?v=1" alt="NEUROPOL LOGO" />
                   </a>
                 </div>
@@ -227,7 +233,7 @@
             {{#each card_items}}
               <div class="col-lg-4 col-md-6 col-12">
                 <!-- single-schedule -->
-                <div class="single-schedule first">
+                <div class="single-schedule first h-100">
                   <div class="inner">
                     <div class="icon">
                       <i class="{{this.icon}} text-danger"></i>
@@ -311,11 +317,11 @@
               <p>
                 {{description}}
               </p>
-              <div class="button">
-                <a class="btn" href="{{firstButton.action}}">
+              <div class="d-flex justify-content-center flex-wrap">
+                <a class="btn m-2" href="{{firstButton.action}}">
                   {{firstButton.text}}
                 </a>
-                <a class="btn primary" href="{{secondButton.action}}">
+                <a class="btn primary m-2" href="{{secondButton.action}}">
                   {{secondButton.text}}
                   <i class="fa fa-long-arrow-right"></i>
                 </a>
@@ -350,7 +356,7 @@
                 <ul class="social">
                   {{#each columns.0.socialLinks}}
                     <li title="{{this.title}}">
-                      <a href="{{this.href}}">
+                      <a href="{{this.href}}" target="blank">
                         <i class="{{this.icon}}"></i>
                       </a>
                     </li>
@@ -456,7 +462,7 @@
     <!-- Jquery Nav JS -->
     <script src="../../js/jquery.nav.js"></script>
     <!-- Slicknav JS -->
-    <script src="../../js/slicknav.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/SlickNav/1.0.0/jquery.slicknav.js" integrity="sha512-DPQx/CONfKUHRqCgc6mz0/Jc+dBmBpmbDdSUY/IF2TLmIZ8l12ImNkaaL1ApppB6ZgtiflZWw+rVw2y1XbIoRw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <!-- ScrollUp JS -->
     <script src="../../js/jquery.scrollUp.min.js"></script>
     <!-- Niceselect JS -->

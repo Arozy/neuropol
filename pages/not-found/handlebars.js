@@ -1,4 +1,4 @@
-function runFillers() {
+ function runFillers() {
     const notFound = new NotFound('not found');
     notFound.fillHeaderTemplate();
     notFound.fillFooterTemplate();

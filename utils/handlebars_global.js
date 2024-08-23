@@ -36,22 +36,22 @@ class Page {
             columns: [
                 {
                     heading: 'Śledź nas',
-                    description: 'Odwiedź nasze social media i zobacz jak działamy od kuchni oraz co jeszcze robimy by wspierać naszych pacjentów',
+                    description: 'Odwiedź nasze social media i zobacz jak działamy "od kuchni" oraz co jeszcze robimy by wspierać naszych pacjentów.',
                     socialLinks: [
                         {
                             icon: 'icofont-facebook',
-                            href: 'fb.com/neuropol',
+                            href: getShared('facebook'),
                             title: 'Odwiedź naszego facebooka'
                         },
                         {
                             icon: 'icofont-instagram',
-                            href: 'insta.com/neuropol',
+                            href: getShared('instagram'),
                             title: 'Rzuć okiem na nasze insta'
                         }
                     ]
                 },
                 {
-                    heading: 'Quick links',
+                    heading: 'Szybkie łącza',
                     linkColumns: [
                         {
                             linkList: getShared('siteLinks')
