@@ -4,45 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="df00d2db-a962-4d0b-abb6-00d44fa2f36d" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/neuropol.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.well-known/pki-validation/19B762971DFF6A0E7B312D99A02E3932.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/img/android-chrome-192x192.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/img/android-chrome-512x512.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/img/apple-touch-icon.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/img/favicon-16x16.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/img/favicon-32x32.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/img/favicon.ico" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/img/site.webmanifest" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/robots.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/sitemap.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.htaccess" beforeDir="false" afterPath="$PROJECT_DIR$/.htaccess" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
+    <list default="true" id="df00d2db-a962-4d0b-abb6-00d44fa2f36d" name="Changes" comment="adjust FE to use cms (WIP)">
       <change beforePath="$PROJECT_DIR$/.idea/Neuropol.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/deployment.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/git_toolbox_prj.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/jsLibraryMappings.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/prettier.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/js/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/main.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/about/handlebars.js" beforeDir="false" afterPath="$PROJECT_DIR$/pages/about/handlebars.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/about/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/pages/about/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/contact/handlebars.js" beforeDir="false" afterPath="$PROJECT_DIR$/pages/contact/handlebars.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/contact/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/pages/contact/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/home/handlebars.js" beforeDir="false" afterPath="$PROJECT_DIR$/pages/home/handlebars.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/home/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/pages/home/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/not-found/handlebars.js" beforeDir="false" afterPath="$PROJECT_DIR$/pages/not-found/handlebars.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/not-found/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/pages/not-found/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/placeholder/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/pages/placeholder/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/services/handlebars.js" beforeDir="false" afterPath="$PROJECT_DIR$/pages/services/handlebars.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/services/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/pages/services/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/staff/handlebars.js" beforeDir="false" afterPath="$PROJECT_DIR$/pages/staff/handlebars.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/staff/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/pages/staff/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/trainings/handlebars.js" beforeDir="false" afterPath="$PROJECT_DIR$/pages/trainings/handlebars.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/trainings/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/pages/trainings/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/utils/handlebars_global.js" beforeDir="false" afterPath="$PROJECT_DIR$/utils/handlebars_global.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/utils/handlebars_shared.js" beforeDir="false" afterPath="$PROJECT_DIR$/utils/handlebars_shared.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -53,39 +17,39 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
-  "lastFilter": {
-    "state": "OPEN",
-    "assignee": "Arozy"
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;Arozy&quot;
   }
-}]]></component>
-  <component name="GithubPullRequestsUISettings"><![CDATA[{
-  "selectedUrlAndAccountId": {
-    "url": "https://github.com/Arozy/neuropol.git",
-    "accountId": "aa4147a5-cfce-4a3c-a529-5ea85ddd31c8"
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/Arozy/neuropol.git&quot;,
+    &quot;accountId&quot;: &quot;aa4147a5-cfce-4a3c-a529-5ea85ddd31c8&quot;
   }
-}]]></component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "associatedIndex": 8
-}]]></component>
+}</component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 8
+}</component>
   <component name="ProjectId" id="2l0nnxLB5FBu332LTVp8uy2rQ18" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "placeholder",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "reference.settings.ide.settings.web.browsers",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;placeholder&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;reference.settings.ide.settings.web.browsers&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
@@ -101,8 +65,18 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1724326031234</updated>
-      <workItem from="1724326032383" duration="4894000" />
+      <workItem from="1724326032383" duration="4930000" />
+      <workItem from="1724665306059" duration="10746000" />
     </task>
+    <task id="LOCAL-00001" summary="adjust FE to use cms (WIP)">
+      <option name="closed" value="true" />
+      <created>1724415945414</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1724415945414</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -118,5 +92,10 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="adjust FE to use cms" />
+    <MESSAGE value="adjust FE to use cms (WIP)" />
+    <option name="LAST_COMMIT_MESSAGE" value="adjust FE to use cms (WIP)" />
   </component>
 </project>
