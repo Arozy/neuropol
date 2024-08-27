@@ -12,15 +12,15 @@ class Page {
         document.querySelector(`#${output}`).innerHTML = compileTemplate(data);
     }
 
-    fillHeaderTemplate() {
+    async fillHeaderTemplate() {
         /**
          * @param {[{name: string, href: string}]} additional_links
          */
         const data = {
             additional_links: [],
-            phone_number: getShared('tel'),
-            mail_address: getShared('email'),
-            link_list: getShared('siteLinks')
+            phone_number: await getShared('tel'),
+            mail_address: await getShared('email'),
+            link_list: await getShared('siteLinks')
         };
         data.link_list = data.link_list.map(element => {
             if (element.id === this.currentPageName) {
@@ -31,7 +31,7 @@ class Page {
         this.useFiller(data, "header");
     }
 
-    fillFooterTemplate() {
+    async fillFooterTemplate() {
         const data = {
             columns: [
                 {
@@ -40,12 +40,12 @@ class Page {
                     socialLinks: [
                         {
                             icon: 'icofont-facebook',
-                            href: getShared('facebook'),
+                            href: await getShared('facebook'),
                             title: 'Odwiedź naszego facebooka'
                         },
                         {
                             icon: 'icofont-instagram',
-                            href: getShared('instagram'),
+                            href: await getShared('instagram'),
                             title: 'Rzuć okiem na nasze insta'
                         }
                     ]
@@ -54,20 +54,22 @@ class Page {
                     heading: 'Szybkie łącza',
                     linkColumns: [
                         {
-                            linkList: getShared('siteLinks')
+                            linkList: await getShared('siteLinks')
                         },
                         {
-                            linkList: getShared('otherLinks')
+                            linkList: await getShared('otherLinks')
                         }
                     ],
                 },
                 {
                     heading: 'Godziny otwarcia',
                     description: 'Jesteśmy do Twojej dyspozycji w każdy dzień pracujący',
-                    timeList: getShared('hours')
+                    timeList: await getShared('hours')
                 }
             ]
         }
+        console.log(data)
+
         this.useFiller(data, 'footer');
     }
 }
