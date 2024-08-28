@@ -4,9 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="df00d2db-a962-4d0b-abb6-00d44fa2f36d" name="Changes" comment="adjust FE to use cms (WIP 2)">
+    <list default="true" id="df00d2db-a962-4d0b-abb6-00d44fa2f36d" name="Changes" comment="adjust FE to use cms (WIP 3): shared (not fully work)">
       <change beforePath="$PROJECT_DIR$/.idea/neuropol.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/neuropol.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/home/handlebars.js" beforeDir="false" afterPath="$PROJECT_DIR$/pages/home/handlebars.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pages/home/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/pages/home/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/utils/handlebars_global.js" beforeDir="false" afterPath="$PROJECT_DIR$/utils/handlebars_global.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/utils/handlebars_shared.js" beforeDir="false" afterPath="$PROJECT_DIR$/utils/handlebars_shared.js" afterDir="false" />
@@ -69,7 +70,8 @@
       <updated>1724326031234</updated>
       <workItem from="1724326032383" duration="4930000" />
       <workItem from="1724665306059" duration="12154000" />
-      <workItem from="1724751105938" duration="9402000" />
+      <workItem from="1724751105938" duration="11417000" />
+      <workItem from="1724836876578" duration="7909000" />
     </task>
     <task id="LOCAL-00001" summary="adjust FE to use cms (WIP)">
       <option name="closed" value="true" />
@@ -87,7 +89,15 @@
       <option name="project" value="LOCAL" />
       <updated>1724676882390</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="adjust FE to use cms (WIP 3): shared (not fully work)">
+      <option name="closed" value="true" />
+      <created>1724766309903</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1724766309903</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -108,6 +118,7 @@
     <MESSAGE value="adjust FE to use cms" />
     <MESSAGE value="adjust FE to use cms (WIP)" />
     <MESSAGE value="adjust FE to use cms (WIP 2)" />
-    <option name="LAST_COMMIT_MESSAGE" value="adjust FE to use cms (WIP 2)" />
+    <MESSAGE value="adjust FE to use cms (WIP 3): shared (not fully work)" />
+    <option name="LAST_COMMIT_MESSAGE" value="adjust FE to use cms (WIP 3): shared (not fully work)" />
   </component>
 </project>

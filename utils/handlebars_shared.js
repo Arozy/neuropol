@@ -20,9 +20,9 @@ class Shared {
         })
     }
 
-    getShared(selection) {
-        return new Promise((resolve) => {
-            if (this.fetchAndLoad()) {
+    async getShared(selection) {
+        return this.fetchAndLoad().then(() => {
+            return new Promise((resolve) => {
                 const data = {
                     ...this.response,
                     siteLinks: [
@@ -54,10 +54,11 @@ class Shared {
                     .set('otherLinks', data.otherLinks)
 
                 resolve(map.get(selection) || null)
-            }
+            })
         })
     }
 }
+
 const shared = new Shared()
 
 // getting shared and creating map

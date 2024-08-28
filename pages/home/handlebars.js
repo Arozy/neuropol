@@ -57,22 +57,26 @@ class Home extends Page {
             card_items: [
                 {
                     icon: "icofont-doctor",
-                    heading: 'Nasi specjaliści',
-                    content: ' <p>Twoje zdrowie, nasza pasja. Ekspercka opieka, której możesz zaufać.</p>',
-                    cta: 'Dowiedz się więcej',
-                    ctaHref: 'staff'
+                    title: 'Nasi specjaliści',
+                    description: 'Twoje zdrowie, nasza pasja. Ekspercka opieka, której możesz zaufać.',
+                    cta: {
+                        text: 'Dowiedz się więcej',
+                        href: '/staff'
+                    }
                 },
                 {
                     icon: "fa fa-list-alt",
-                    heading: "Nasze usługi",
-                    content: "<p>Profesjonalne rozwiązania dla Twojego lepszego samopoczucia.</p>",
-                    cta: 'Dowiedz się więcej',
-                    ctaHref: 'services'
+                    title: "Nasze usługi",
+                    description: "Profesjonalne rozwiązania dla Twojego lepszego samopoczucia.",
+                    cta: {
+                        text: 'Dowiedz się więcej',
+                        href: '/services'
+                    }
                 },
                 {
                     icon: "icofont-ui-clock",
-                    heading: "Godziny otwarcia",
-                    content:
+                    title: "Godziny otwarcia",
+                    description:
                         '<ul class="time-sidual">\n' +
                         '                                    <li class="day">\n' +
                         "                                        poniedziałek - piątek <span>8.30-16.30</span>\n" +
@@ -82,8 +86,10 @@ class Home extends Page {
                         "                                        dni świąteczne <span>nieczynne</span>\n" +
                         "                                    </li>\n" +
                         "                                </ul>",
-                    cta: 'Dowiedz się więcej',
-                    ctaHref: 'hours'
+                    cta: {
+                        text: 'Dowiedz się więcej',
+                        href: '/hours'
+                    }
                 },
             ],
         };

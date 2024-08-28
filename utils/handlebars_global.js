@@ -68,7 +68,8 @@ class Page {
                 }
             ]
         }
-        console.log(data)
+
+        console.log(data);
 
         this.useFiller(data, 'footer');
     }
