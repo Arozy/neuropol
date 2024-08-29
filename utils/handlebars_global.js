@@ -17,17 +17,20 @@ class Page {
          * @param {[{name: string, href: string}]} additional_links
          */
         const data = {
-            additional_links: [],
+            additionalLinks: await getShared('otherLinks'),
             phone_number: await getShared('tel'),
             mail_address: await getShared('email'),
-            link_list: await getShared('siteLinks')
+            siteLinks: await getShared('siteLinks')
         };
-        data.link_list = data.link_list.map(element => {
+
+        data.siteLinks = data.siteLinks.data.map(element => {
             if (element.id === this.currentPageName) {
-                return {...element, class: 'active'};
+                return {...element.attributes, class: 'active'};
             }
             return element;
         });
+
+        console.log('fillHeaderTemplate', data);
         this.useFiller(data, "header");
     }
 

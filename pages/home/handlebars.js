@@ -76,16 +76,20 @@ class Home extends Page {
                 {
                     icon: "icofont-ui-clock",
                     title: "Godziny otwarcia",
-                    description:
-                        '<ul class="time-sidual">\n' +
-                        '                                    <li class="day">\n' +
-                        "                                        poniedziałek - piątek <span>8.30-16.30</span>\n" +
-                        "                                    </li>\n" +
-                        '                                    <li class="day">sobota - niedziela <span>nieczynne</span></li>\n' +
-                        '                                    <li class="day">\n' +
-                        "                                        dni świąteczne <span>nieczynne</span>\n" +
-                        "                                    </li>\n" +
-                        "                                </ul>",
+                    hours: [
+                        {
+                            period: 'poniedziałek - piątek',
+                            time: '8:30 - 16:30'
+                        },
+                        {
+                            period: 'sobota - niedziela',
+                            time: 'nieczynne'
+                        },
+                        {
+                            period: 'dni świąteczne',
+                            time: 'nieczynne'
+                        }
+                    ],
                     cta: {
                         text: 'Dowiedz się więcej',
                         href: '/hours'

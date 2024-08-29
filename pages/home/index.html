@@ -22,7 +22,7 @@
       name="viewport"
     />
     
-    <meta http-equiv="Cache-Control" content="public, max-age=1, must-revalidate" />
+    <meta http-equiv="content-type" content="public, max-age=1, must-revalidate" />
 
     <!-- Title -->
     <title>Neuropol | Strona Główna</title>
@@ -104,16 +104,7 @@
       <div class="topbar">
         <div class="container">
           <div class="row">
-            <div class="col-lg-6 col-md-5 col-12">
-              <!-- Contact -->
-              {{#each additional_links}}
-                <a href="{{this.href}}">
-                  {{this.name}}
-                </a>
-              {{/each}}
-              <!-- End Contact -->
-            </div>
-            <div class="col-lg-6 col-md-7 col-12">
+            <div class="offset-6 col-lg-6 col-md-7 col-12">
               <!-- Top Contact -->
               <ul class="top-contact">
                 <li>
@@ -151,10 +142,10 @@
                 <div class="main-menu">
                   <nav class="navigation">
                     <ul class="nav menu">
-                      {{#each link_list}}
-                        <li class="{{this.class}}">
-                          <a href="{{this.href}}">
-                            {{this.name}}
+                      {{#each siteLinks}}
+                        <li class="{{this.attributes.class}}">
+                          <a href="{{this.attributes.href}}">
+                            {{this.attributes.name}}
                           </a>
                         </li>
                       {{/each}}
@@ -247,17 +238,13 @@
                         {{{this.description}}}
                       </p>
                       {{/if}}
-                      {{#if this.table}}
+                      {{#if this.hours}}
                         <ul class="time-sidual">
+                          {{#each this.hours}}
                           <li class="day">
-                            poniedziałek - piątek <span>8.30-16.30</span>
+                            {{this.period}} <span>{{this.time}}</span>
                           </li>
-                          <li class="day">
-                            sobota - niedziela <span>nieczynne</span>
-                          </li>
-                          <li class="day">
-                            dni świąteczne <span>nieczynne</span>
-                          </li>
+                          {{/each}}
                         </ul>
                       {{/if}}
                       {{#if this.cta}}
@@ -392,11 +379,11 @@
                 <div class="row">
                   <div class="col-lg-6 col-md-6 col-12">
                     <ul>
-                      {{#each columns.1.linkColumns.0.linkList}}
+                      {{#each columns.1.linkColumns.0.linkList.data}}
                         <li>
-                          <a href="{{this.href}}">
+                          <a href="{{this.attributes.href}}">
                             <i aria-hidden="true" class="fa fa-caret-right"></i>
-                            {{this.name}}
+                            {{this.attributes.name}}
                           </a>
                         </li>
                       {{/each}}
@@ -404,11 +391,11 @@
                   </div>
                   <div class="col-lg-6 col-md-6 col-12">
                     <ul>
-                      {{#each columns.1.linkColumns.1.linkList}}
+                      {{#each columns.1.linkColumns.1.linkList.data}}
                         <li>
-                          <a href="{{this.href}}">
+                          <a href="{{this.attributes.href}}">
                             <i aria-hidden="true" class="fa fa-caret-right"></i>
-                            {{this.name}}
+                            {{this.attributes.name}}
                           </a>
                         </li>
                       {{/each}}
