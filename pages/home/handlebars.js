@@ -35,6 +35,8 @@ class Home extends Page {
     }
 
     fillHeroSliderTemplate() {
+
+
         const data = {
             slider_elements: [
                 {
