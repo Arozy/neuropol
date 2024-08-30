@@ -4,19 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="df00d2db-a962-4d0b-abb6-00d44fa2f36d" name="Changes" comment="adjust FE to use cms (WIP 3): shared + nav (WIP)">
-      <change afterPath="$PROJECT_DIR$/utils/fetch.js" afterDir="false" />
+    <list default="true" id="df00d2db-a962-4d0b-abb6-00d44fa2f36d" name="Changes" comment="adjust FE to use cms (WIP 3): shared + homepage (WIP)">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/about/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/pages/about/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/contact/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/pages/contact/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/js/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/main.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pages/home/handlebars.js" beforeDir="false" afterPath="$PROJECT_DIR$/pages/home/handlebars.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/home/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/pages/home/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/not-found/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/pages/not-found/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/placeholder/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/pages/placeholder/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/services/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/pages/services/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/staff/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/pages/staff/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/trainings/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/pages/trainings/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/utils/handlebars_shared.js" beforeDir="false" afterPath="$PROJECT_DIR$/utils/shared.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/utils/fetch.js" beforeDir="false" afterPath="$PROJECT_DIR$/utils/fetch.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/utils/handlebars_global.js" beforeDir="false" afterPath="$PROJECT_DIR$/utils/handlebars_global.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/utils/shared.js" beforeDir="false" afterPath="$PROJECT_DIR$/utils/shared.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -49,6 +43,7 @@
   &quot;associatedIndex&quot;: 8
 }</component>
   <component name="ProjectId" id="2l0nnxLB5FBu332LTVp8uy2rQ18" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -69,7 +64,7 @@
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-js-predefined-d6986cc7102b-410509235cf1-JavaScript-WS-242.20224.342" />
+        <option value="bundled-js-predefined-1d06a55b98c1-91d5c284f522-JavaScript-WS-241.15989.105" />
       </set>
     </attachedChunks>
   </component>

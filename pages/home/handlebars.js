@@ -1,11 +1,13 @@
 function runFillers() {
-    const homepage = new Home('home');
+    const homepage = new Home('home', 'pages/1', '?populate[content][populate]=*');
     homepage.fillHeaderTemplate();
     homepage.fillHeroSliderTemplate();
     homepage.fillCardsTemplate();
     homepage.fillFeaturesTemplate();
     homepage.fillCTATemplate();
-    homepage.fillFooterTemplate();
+    homepage.fillFooterTemplate().then(() => {
+        document.querySelector('.preloader').classList.add('preloader-deactivate');
+    })
 }
 
 class Home extends Page {

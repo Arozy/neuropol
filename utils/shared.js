@@ -1,10 +1,10 @@
 class Shared extends Fetch {
-    response = {};
-    _apiUrl = 'https://amazing-fitness-8cfda28910.strapiapp.com/api';
-    _apiReadToken = '6062991c7c24e19b40659d91b3483bbe9fc08c5263afc9807af44632bb8f3f49723dec5b859bd3573a97c72e4b0857a60119b865e5ffb071a37f26974b3ce02de23c477878786b4e5f009b98120ebeaf48a8110147565529329beb6545d44899a42e6ca647aa6251c977585f49ab05764e57409fd76d2603b470bec0f3baace7';
+    constructor() {
+        super('shared-datum', '?populate=*')
+    }
 
     async getShared(selection) {
-        return this.fetchAndLoad().then(() => {
+        if (await this.fetchAndLoad()) {
             return new Promise((resolve) => {
                 const data = {
                     ...this.response,
@@ -21,15 +21,17 @@ class Shared extends Fetch {
                     .set('instagram', data.instagram)
                     .set('hours', data.hours)
                     .set('siteLinks', data.site_links)
-                    .set('otherLinks', data.other_links)
+                    .set('otherLinks', data.other_links);
 
-                resolve(map.get(selection) || null)
-            })
-        })
+                resolve(map.get(selection) || null);
+            });
+        } else {
+            throw new Error('Could not resolve these data');
+        }
     }
 }
 
-const shared = new Shared('shared-datum')
+const shared = new Shared();
 
 // getting shared and creating map
 const getShared = (selection) => shared.getShared(selection)
