@@ -18,11 +18,23 @@ class Fetch {
     }
 
     async fetchAndLoad() {
-        return this.fetchData().then((response) => {
-            return response.json();
-        }).then(body => {
-            this.response = {...body.data.attributes};
-            console.log(this.response);
-        }).then(() => true);
+        if (sessionStorage.getItem(this._query)) {
+            return new Promise((resolve) => {
+                const cachedData = JSON.parse(sessionStorage.getItem(this._query));
+
+                this.response = {...cachedData};
+                resolve(cachedData);
+            })
+        } else {
+            return this.fetchData().then((response) => {
+                return response.json();
+            }).then(body => {
+                this.response = {...body.data.attributes};
+                console.log(this.response);
+            }).then(() => {
+                sessionStorage.setItem(this._query, JSON.stringify(this.response));
+                return this.response
+            });
+        }
     }
 }

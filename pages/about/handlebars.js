@@ -1,5 +1,5 @@
 function runFillers() {
-    const about = new About('about');
+    const about = new About('o-nas');
     about.fillHeaderTemplate();
     about.fillServicesTemplate()
     about.fillFooterTemplate();

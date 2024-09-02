@@ -91,8 +91,6 @@ class Page extends Fetch {
             ]
         }
 
-        console.log(data);
-
         this.useFiller(data, 'footer');
     }
 }

@@ -1,5 +1,5 @@
  function runFillers() {
-    const notFound = new NotFound('not found');
+    const notFound = new NotFound('404');
     notFound.fillHeaderTemplate();
     notFound.fillFooterTemplate();
 }

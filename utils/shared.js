@@ -3,6 +3,20 @@ class Shared extends Fetch {
         super('shared-datum', '?populate=*')
     }
 
+    fetchSharedAndCache() {
+        const isSharedItemExisting = !!sessionStorage.getItem('shared');
+
+        if (isSharedItemExisting) {
+            return new Promise((resolve) => {
+                resolve(sessionStorage.getItem('shared'));
+            });
+        } else {
+            return this.fetchAndLoad().then(data => {
+                sessionStorage.setItem('shared', JSON.stringify(data));
+            });
+        }
+    }
+
     async getShared(selection) {
         if (await this.fetchAndLoad()) {
             return new Promise((resolve) => {
@@ -25,8 +39,6 @@ class Shared extends Fetch {
 
                 resolve(map.get(selection) || null);
             });
-        } else {
-            throw new Error('Could not resolve these data');
         }
     }
 }

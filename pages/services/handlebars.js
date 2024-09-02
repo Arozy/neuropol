@@ -1,5 +1,5 @@
 function runFillers() {
-    const services = new Services('services');
+    const services = new Services('uslugi');
     services.fillHeaderTemplate();
     services.fillPricingTemplate();
     services.fillFooterTemplate();
@@ -9,7 +9,7 @@ class Services extends Page {
     fillPricingTemplate() {
         const data = {
             heading: 'Skorzystaj z naszych usług',
-            description: 'Dajemy Ci dostęp do wykwalifikowanej kadry medycznej, w rozsądnej cenie!', 
+            description: 'Dajemy Ci dostęp do wykwalifikowanej kadry medycznej, w rozsądnej cenie!',
             class: 'col-12 col-lg-8 offset-lg-2',
             columns: [
                 {

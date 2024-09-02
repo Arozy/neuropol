@@ -7,7 +7,7 @@ onchange = () => {
 }
 
 function runFillers() {
-    const training = new Training('trainings');
+    const training = new Training('szkolenia');
     training.fillHeaderTemplate();
     training.fillTrainingsTemplate();
     training.fillFormTemplate();

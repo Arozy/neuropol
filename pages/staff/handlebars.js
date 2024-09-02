@@ -1,5 +1,5 @@
 function runFillers() {
-    const staff = new Staff('staff');
+    const staff = new Staff('nasi-specjalisci');
     staff.fillHeaderTemplate();
     staff.fillSpecialistsTemplate();
     staff.fillFooterTemplate();

@@ -1,5 +1,5 @@
 function runFillers() {
-    const homepage = new Home('home', 'pages/1', '?populate[content][populate]=*');
+    const homepage = new Home('strona-glowna', 'pages/1', '?populate[content][populate]=*');
     homepage.fillHeaderTemplate();
     homepage.fillHeroSliderTemplate();
     homepage.fillCardsTemplate();
@@ -104,7 +104,7 @@ class Home extends Page {
         this.useFiller(data, 'cards')
     }
 
-    fillFeaturesTemplate() {
+    async fillFeaturesTemplate() {
         const data = {
             header: 'Jesteśmy gotowi by pomagać naszym pacjentom',
             description: 'Grupa specjalistów, takich jak fizjoterapeuci oraz terapeuci są zawsze gotowi by Ci pomóc.',
@@ -112,7 +112,7 @@ class Home extends Page {
                 {
                     header: 'Umów się na wizytę',
                     description: 'Szybko uzyskaj pomoc, kontaktując się z nami telefonicznie',
-                    hrefLink: `tel: ${getShared('tel')}`,
+                    hrefLink: `tel: ${await getShared('tel')}`,
                     icon: 'fa fa-phone'
                 },
                 {
@@ -130,13 +130,13 @@ class Home extends Page {
         this.useFiller(data, 'feature');
     }
 
-    fillCTATemplate() {
+    async fillCTATemplate() {
         const data = {
             heading: 'Zrób pierwszy krok ku lepszemu samopoczuciu – umów się na wizytę już dziś!',
             description: 'Nasi specjaliści są do Twojej dyspozycji w godzinach pracy ośrodka.',
             firstButton: {
                 text: 'Zadzwoń teraz',
-                action: `tel:${getShared('tel')}`
+                action: `tel:${await getShared('tel')}`
             },
             secondButton: {
                 text: 'Dowiedz się więcej',

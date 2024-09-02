@@ -1,37 +1,37 @@
 function runFillers() {
-    const contact = new Contact('contact');
+    const contact = new Contact('kontakt');
     contact.fillHeaderTemplate();
     contact.fillContactCardTemplate();
-    contact.fillFooterTemplate();
+    contact.fillFooterTemplate().then(() => document.querySelector('.preloader').classList.add('preloader-deactivate'))
 }
 
 class Contact extends Page {
-    fillContactCardTemplate() {
+    async fillContactCardTemplate() {
         const data = {
             header: 'Skontaktuj się',
             items: [
                 {
                     icon: 'fa fa-map-marker',
                     heading: 'Adres',
-                    summary: getShared('address'),
+                    summary: await getShared('address'),
                 },
                 {
                     icon: 'fa fa-phone',
                     heading: 'Telefon',
-                    summary: getShared('tel'),
-                    link: `tel:${getShared('tel')}`,
+                    summary: await getShared('tel'),
+                    link: `tel:${await getShared('tel')}`,
                 },
                 {
                     icon: 'fa fa-facebook',
                     heading: 'Facebook',
                     summary: 'Nasz FP',
-                    link: getShared('facebook'),
+                    link: await getShared('facebook'),
                 },
                 {
                     icon: 'fa fa-instagram',
                     heading: 'Instagram:',
                     summary: 'Nasze insta',
-                    link: getShared('instagram'),
+                    link: await getShared('instagram'),
                 }
             ]
         };
