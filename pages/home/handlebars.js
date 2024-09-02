@@ -18,42 +18,53 @@ class Home extends Page {
             const sliderHeading = slider.querySelector("h1");
             const sliderDescription = slider.querySelector("p");
             const sliderCTAContainer = slider.querySelector(".button");
+            const primaryButton = sliderCTAContainer.querySelector(".btn-primary");
+            const secondaryButton = sliderCTAContainer.querySelector(".btn-secondary");
 
             data[index] === undefined ? (index = 0) : index;
 
             // Setting essential content:
-            data[index]?.image_path
+            data[index]?.image
                 ? slider.setAttribute(
                     "style",
-                    `background-image: url(${data[index].image_path})`
+                    `background-image: url(${data[index].image.data.attributes.url})`
                 )
                 : slider.setAttribute("style", `background-color: #fff`);
-            sliderHeading.innerHTML = data[index].header_text;
-            sliderDescription.innerHTML = data[index].description_text;
+            sliderHeading.innerHTML = data[index]?.title;
+            sliderDescription.innerHTML = data[index]?.description ?? '';
 
-            // Generating CTA buttons:
-            sliderCTAContainer.innerHTML = data[index].CTAs;
+            if (data[index]?.primary) {
+                primaryButton.innerHTML = data[index].primary.text;
+                primaryButton.href = data[index].primary.action;
+            } else {
+                primaryButton.remove();
+            }
+
+            if (data[index]?.secondary) {
+                secondaryButton.innerHTML = data[index].secondary.text;
+                secondaryButton.href = data[index].secondary.action;
+            } else {
+                secondaryButton.remove();
+            }
+
+            if (!/Mobi|Android/i.test(navigator.userAgent)) {
+                document.querySelectorAll('a[href*="tel:"]').forEach(el => {
+                    el.href = '/kontakt';
+                })
+            }
         });
     }
 
-    fillHeroSliderTemplate() {
+    async fillHeroSliderTemplate() {
+        if (await this.fetchAndLoad()) {
+            //todo: remove it after development is done
+            const heroSliderData = await this.getExact('header.header')
+            console.log('heroSliderData:', heroSliderData);
 
-
-        const data = {
-            slider_elements: [
-                {
-                    image_path: "",
-                    header_text:
-                        "Już niedługo <span>wielkie otwarcie</span> naszej\n" +
-                        "                                <span>placówki!</span>",
-                    description_text: "",
-                    CTAs: `
-                    <a class="btn" href="/contact">Umów się na wizytę</a>
-                    <a class="btn primary" href="services">Dowiedz się więcej</a>`,
-                },
-            ],
-        };
-        this.useHeroSliderFiller(data.slider_elements, "hero-slider-heading");
+            const data = heroSliderData;
+    ``
+            this.useHeroSliderFiller(data, "hero-slider-heading");
+        }
     }
 
     fillCardsTemplate() {

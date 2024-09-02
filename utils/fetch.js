@@ -30,11 +30,16 @@ class Fetch {
                 return response.json();
             }).then(body => {
                 this.response = {...body.data.attributes};
-                console.log(this.response);
             }).then(() => {
                 sessionStorage.setItem(this._query, JSON.stringify(this.response));
                 return this.response
             });
         }
+    }
+
+    getExact(name, key = '__component') {
+        return new Promise((resolve) => {
+            resolve(this.response.content.filter(obj => obj[key] === name))
+        })
     }
 }

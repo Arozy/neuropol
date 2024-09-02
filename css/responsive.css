@@ -195,6 +195,7 @@ Version:	1.1
 
     .slider .single-slider .text {
         margin-top: 80px;
+
     }
 
     .slider.index2 .single-slider .text {
@@ -579,7 +580,7 @@ Version:	1.1
     }
 
     .slicknav_menu .slicknav_icon-bar {
-        background-color: #1A76D1;
+        background-color: var(--basic-color);
         box-shadow: none;
         text-shadow: none;
     }
@@ -1359,7 +1360,7 @@ Version:	1.1
     }
 
     .slider .single-slider .text {
-        margin-top: 20px;
+        margin-top: 200px;
     }
 
     .slider .single-slider .button .btn {

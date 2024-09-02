@@ -22,15 +22,6 @@ class Page extends Fetch {
         }
     }
 
-    useFiller(data, uniqueName) {
-        const template = `${uniqueName}-template`;
-        const output = `${uniqueName}-output`;
-        const compileTemplate = Handlebars.compile(
-            document.querySelector(`#${template}`).innerHTML
-        );
-        document.querySelector(`#${output}`).innerHTML = compileTemplate(data);
-    }
-
     async fillHeaderTemplate() {
         /**
          * @param {[{name: string, href: string}]} additional_links
@@ -92,5 +83,14 @@ class Page extends Fetch {
         }
 
         this.useFiller(data, 'footer');
+    }
+
+    useFiller(data, uniqueName) {
+        const template = `${uniqueName}-template`;
+        const output = `${uniqueName}-output`;
+        const compileTemplate = Handlebars.compile(
+            document.querySelector(`#${template}`).innerHTML
+        );
+        document.querySelector(`#${output}`).innerHTML = compileTemplate(data);
     }
 }
