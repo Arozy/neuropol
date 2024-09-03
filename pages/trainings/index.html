@@ -99,16 +99,7 @@
       <div class="topbar">
         <div class="container">
           <div class="row">
-            <div class="col-lg-6 col-md-5 col-12">
-              <!-- Contact -->
-              {{#each additional_links}}
-                <a href="{{this.href}}">
-                  {{this.name}}
-                </a>
-              {{/each}}
-              <!-- End Contact -->
-            </div>
-            <div class="col-lg-6 col-md-7 col-12">
+            <div class="offset-lg-6 col-lg-6 col-md-7 col-12">
               <!-- Top Contact -->
               <ul class="top-contact">
                 <li>
@@ -146,10 +137,10 @@
                 <div class="main-menu">
                   <nav class="navigation">
                     <ul class="nav menu">
-                      {{#each link_list}}
-                        <li class="{{this.class}}">
-                          <a href="{{this.href}}">
-                            {{this.name}}
+                      {{#each siteLinks}}
+                        <li class="{{this.attributes.class}}">
+                          <a href="{{this.attributes.href}}">
+                            {{this.attributes.name}}
                           </a>
                         </li>
                       {{/each}}
@@ -165,6 +156,7 @@
     </script>
     <!--/ End Header Inner -->
     <header class="header" id="header-output"></header>
+    <!-- End Header Area -->
 
     <!-- Pricing Table -->
     <script id="training-template" type="text/x-handlebars-template">
@@ -436,7 +428,7 @@
                 <ul class="social">
                   {{#each columns.0.socialLinks}}
                     <li title="{{this.title}}">
-                      <a href="{{this.href}}">
+                      <a href="{{this.href}}" target="blank">
                         <i class="{{this.icon}}"></i>
                       </a>
                     </li>
@@ -453,11 +445,11 @@
                 <div class="row">
                   <div class="col-lg-6 col-md-6 col-12">
                     <ul>
-                      {{#each columns.1.linkColumns.0.linkList}}
+                      {{#each columns.1.linkColumns.0.linkList.data}}
                         <li>
-                          <a href="{{this.href}}">
+                          <a href="{{this.attributes.href}}">
                             <i aria-hidden="true" class="fa fa-caret-right"></i>
-                            {{this.name}}
+                            {{this.attributes.name}}
                           </a>
                         </li>
                       {{/each}}
@@ -465,11 +457,11 @@
                   </div>
                   <div class="col-lg-6 col-md-6 col-12">
                     <ul>
-                      {{#each columns.1.linkColumns.1.linkList}}
+                      {{#each columns.1.linkColumns.1.linkList.data}}
                         <li>
-                          <a href="{{this.href}}">
+                          <a href="{{this.attributes.href}}">
                             <i aria-hidden="true" class="fa fa-caret-right"></i>
-                            {{this.name}}
+                            {{this.attributes.name}}
                           </a>
                         </li>
                       {{/each}}
@@ -487,11 +479,11 @@
                   {{columns.2.description}}
                 </p>
                 <ul class="time-sidual">
-                  {{#each columns.2.timeList}}
+                  {{#each columns.2.timeList.data}}
                     <li class="day">
-                      {{this.period}}
+                      {{this.attributes.period}}
                       <span>
-                        {{this.time}}
+                        {{this.attributes.time}}
                       </span>
                     </li>
                   {{/each}}
@@ -513,7 +505,7 @@
                 <p>
                   © Copyright 2018 | All Rights Reserved by
                   <a href="https://www.wpthemesgrid.com" target="_blank"
-                    >wpthemesgrid.com</a
+                  >wpthemesgrid.com</a
                   >
                 </p>
               </div>

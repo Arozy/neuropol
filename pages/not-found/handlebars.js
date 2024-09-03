@@ -1,8 +1,10 @@
  function runFillers() {
     const notFound = new NotFound('404');
-    notFound.fillHeaderTemplate();
-    notFound.fillFooterTemplate();
+    notFound.build().finally();
 }
 
-class NotFound extends Page {
+class NotFound {
+    async build() {
+        document.querySelector('.preloader').classList.add('preloader-deactivate');
+    }
 }

@@ -4,24 +4,6 @@ class Page extends Fetch {
         this.currentPageName = pageName;
     }
 
-    async build() {
-        const methods = Object.getOwnPropertyNames(Object.getPrototypeOf(this))
-            .filter(name => name !== 'constructor'
-                && typeof this[name] === 'function'
-                && this[name].constructor.name === 'AsyncFunction'
-            );
-
-        const promises = methods.map(method => this[method]);
-
-        try {
-            await Promise.all(promises).then(() => {
-                document.querySelector('.preloader').classList.add('preloader-deactivate');
-            });
-        } catch (e) {
-            console.error('Error in build()', e);
-        }
-    }
-
     async fillHeaderTemplate() {
         /**
          * @param {[{name: string, href: string}]} additional_links
