@@ -24,8 +24,6 @@ class Shared extends Fetch {
                     ...this.response,
                 }
 
-                console.log('data in getShared', data);
-
                 const map = new Map();
 
                 map.set('tel', data.tel)

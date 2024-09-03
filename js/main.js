@@ -320,7 +320,7 @@ Version:	1.1
 		});
 	});
 
-	$('#header-outer').on('load', function(){
+	$('body').on('load', function(){
 		/*====================================
 			Mobile Menu
 		======================================*/

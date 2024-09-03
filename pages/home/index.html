@@ -253,9 +253,9 @@
                       <h4>
                         {{this.title}}
                       </h4>
-                      {{#if this.description}}
+                      {{#if this.Description}}
                       <p>
-                        {{{this.description}}}
+                        {{{this.Description}}}
                       </p>
                       {{/if}}
                       {{#if this.hours}}
@@ -268,7 +268,7 @@
                         </ul>
                       {{/if}}
                       {{#if this.cta}}
-                      <a href="{{this.cta.href}}">
+                      <a href="{{this.cta.action}}">
                         {{this.cta.text}}<i class="fa fa-long-arrow-right"></i>
                       </a>
                       {{/if}}
@@ -510,6 +510,6 @@
     <!-- Bootstrap JS -->
     <script src="../../js/bootstrap.min.js"></script>
     <!-- Main JS -->
-    <script src="../../js/main.js"></script>
+    <script src="../../js/main.js" async></script>
   </body>
 </html>

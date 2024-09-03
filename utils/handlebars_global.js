@@ -39,8 +39,7 @@ class Page extends Fetch {
             }
             return element;
         });
-
-        console.log('fillHeaderTemplate', data);
+        
         this.useFiller(data, "header");
     }
 

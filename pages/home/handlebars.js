@@ -57,61 +57,13 @@ class Home extends Page {
 
     async fillHeroSliderTemplate() {
         if (await this.fetchAndLoad()) {
-            //todo: remove it after development is done
-            const heroSliderData = await this.getExact('header.header')
-            console.log('heroSliderData:', heroSliderData);
-
-            const data = heroSliderData;
-    ``
-            this.useHeroSliderFiller(data, "hero-slider-heading");
+            this.useHeroSliderFiller(await this.getExact('header.header'), "hero-slider-heading");
         }
     }
 
-    fillCardsTemplate() {
-        const data = {
-            card_items: [
-                {
-                    icon: "icofont-doctor",
-                    title: 'Nasi specjaliści',
-                    description: 'Twoje zdrowie, nasza pasja. Ekspercka opieka, której możesz zaufać.',
-                    cta: {
-                        text: 'Dowiedz się więcej',
-                        href: '/staff'
-                    }
-                },
-                {
-                    icon: "fa fa-list-alt",
-                    title: "Nasze usługi",
-                    description: "Profesjonalne rozwiązania dla Twojego lepszego samopoczucia.",
-                    cta: {
-                        text: 'Dowiedz się więcej',
-                        href: '/services'
-                    }
-                },
-                {
-                    icon: "icofont-ui-clock",
-                    title: "Godziny otwarcia",
-                    hours: [
-                        {
-                            period: 'poniedziałek - piątek',
-                            time: '8:30 - 16:30'
-                        },
-                        {
-                            period: 'sobota - niedziela',
-                            time: 'nieczynne'
-                        },
-                        {
-                            period: 'dni świąteczne',
-                            time: 'nieczynne'
-                        }
-                    ],
-                    cta: {
-                        text: 'Dowiedz się więcej',
-                        href: '/hours'
-                    }
-                },
-            ],
-        };
+    async fillCardsTemplate() {
+        const data = { card_items: await this.getExact('cards.card') };
+
         this.useFiller(data, 'cards')
     }
 
