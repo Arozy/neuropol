@@ -206,13 +206,13 @@
                                   {{#each this.training_entities.data}}
                                       <li>
                                           <i class="icofont icofont-ui-check"></i>
-                                          {{this}}
+                                          {{this.attributes.item}}
                                       </li>
                                   {{/each}}
-                                  {{#each this.out}}
+                                  {{#each this.outs}}
                                       <li class="cross">
                                           <i class="icofont icofont-ui-close"></i>
-                                          {{this}}
+                                          {{this.attributes.item}}
                                       </li>
                                   {{/each}}
                               </ul>

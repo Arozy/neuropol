@@ -23,6 +23,14 @@ class Page extends Fetch {
         });
 
         this.useFiller(data, "header");
+
+        (function ($) {
+            $('.menu').slicknav({
+                prependTo:".mobile-nav",
+                duration: 300,
+                closeOnClick:true,
+            });
+        })(jQuery);
     }
 
     async fillFooterTemplate() {
