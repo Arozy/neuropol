@@ -37,9 +37,11 @@ class Fetch {
         }
     }
 
-    getExact(name, key = '__component') {
-        return new Promise((resolve) => {
-            resolve(this.response.content.filter(obj => obj[key] === name))
-        })
+    async getExact(name, key = '__component') {
+        if (await this.fetchAndLoad()) {
+            return new Promise((resolve) => {
+                resolve(this.response.content.filter(obj => obj[key] === name))
+            })
+        }
     }
 }

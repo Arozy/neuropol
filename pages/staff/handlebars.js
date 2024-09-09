@@ -1,5 +1,5 @@
 function runFillers() {
-    const staff = new Staff('nasi-specjalisci', 'pages/3', '?populate[content][populate]=*');
+    const staff = new Staff('nasi-specjalisci', 'pages/3', '?populate=deep');
     staff.build().finally();
 }
 

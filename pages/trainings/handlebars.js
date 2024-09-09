@@ -7,15 +7,19 @@ onchange = () => {
 }
 
 function runFillers() {
-    const training = new Training('szkolenia');
-    training.fillHeaderTemplate();
-    training.fillTrainingsTemplate();
-    training.fillFormTemplate();
-    training.fillFooterTemplate();
+    const training = new Training('szkolenia', 'pages/6', '?populate[2]=content.item.training_entities');
+    training.build().finally();
 }
 
 class Training extends Page {
-    fillTrainingsTemplate() {
+    async fillTrainingsTemplate() {
+        if (await this.fetchAndLoad()) {
+            this.useFiller(this.response, 'training');
+        }
+
+        //dev: fix
+        // const outs = await this._resolveOuts(this.response.content[0].item)
+
         const data = {
             heading: 'Oferujemy wiele szkoleń z zakresu pierwszej pomocy.',
             description: 'W Neuropol nie tylko leczymy, ale też edukujemy o zdrowiu.',
@@ -97,15 +101,51 @@ class Training extends Page {
             ]
 
         }
-        this.useFiller(data, 'training');
     }
 
-    fillFormTemplate() {
+    async fillFormTemplate() {
         const data = {
             heading: 'Uzyskaj ofertę dla swojej firmy',
         }
         this.useFiller(data, 'purchase');
-        readData();
+        await readData();
+    }
+
+    async build() {
+        const allMethods = [
+            this.fillHeaderTemplate(),
+            this.fillTrainingsTemplate(),
+            this.fillFormTemplate(),
+            this.fillFooterTemplate()
+        ];
+
+        for (const method of allMethods) {
+            await method;
+        }
+
+        document.querySelector('.preloader').classList.add('preloader-deactivate');
+    }
+
+    async _resolveOuts(items) {
+        if(await this.fetchAndLoad()) {
+            const allElements = (items.slice(-1).pop()).training_entities.data
+
+            items.forEach(item => {
+                console.log(item.training_entities.data);
+            })
+
+            const outItems = items.map(item => {
+                return Object.fromEntries(
+                    Object.entries(item.training_entities.data).filter(
+                        ([key, value]) => !allElements.some((element) => element[key] === value)
+                    )
+                );
+            })
+
+            console.log('out:', outItems);
+
+            return outItems;
+        }
     }
 }
 

@@ -16,12 +16,12 @@ class Page extends Fetch {
         };
 
         data.siteLinks = data.siteLinks.data.map(element => {
-            if (element.id === this.currentPageName) {
-                return {...element.attributes, class: 'active'};
+            if (element.attributes['idName'] === this.currentPageName) {
+                Object.defineProperty(element.attributes, 'class', {value: 'active'});
             }
             return element;
         });
-        
+
         this.useFiller(data, "header");
     }
 

@@ -150,33 +150,33 @@
     <!-- End Header Area -->
 
     <!-- Pricing Table -->
-    <script id="pricing-template" type="text/x-handlebars-template">
+    <script id="services-template" type="text/x-handlebars-template">
       <div class="container">
           <div class="row">
               <div class="col-lg-12">
                   <div class="section-title">
                       <h2>
-                          {{this.heading}}
+                          {{this.title}}
                       </h2>
                       <img
                               alt="zakrzywiona linia przedstawiająca bicie serca"
                               src="../../img/section-img.png"
                       />
                       <p>
-                          {{this.description}}
+                          {{this.Description}}
                       </p>
                   </div>
               </div>
           </div>
-          <div class="row">
+        {{#each content}}
+          <div class="row align-items-center justify-content-center">
               <!-- Single Table -->
-              {{#each columns}}
-                  <div class="{{../class}}">
+                  <div class="col-lg-6 col-12">
                       <div class="single-table">
                           <!-- Table Head -->
                           <div class="table-head">
                               <div class="icon">
-                                  <i class="{{this.icon}}"></i>
+                                  <i class="fa fa-tag"></i>
                               </div>
                               <h4 class="title">
                                   {{this.title}}
@@ -185,13 +185,13 @@
                           <!-- Table List -->
                           <table class="table table-striped table-white">
                               <tbody>
-                              {{#each items}}
+                              {{#each service_item}}
                                   <tr>
                                       <td>
                                           {{this.name}}
                                       </td>
-                                      {{#if this.value}}
-                                          <td>{{this.value}}</td>
+                                      {{#if this.price}}
+                                          <td>{{this.price}}zł</td>
                                       {{/if}}
                                   </tr>
                               {{/each}}
@@ -201,12 +201,12 @@
                           <!-- Table Bottom -->
                       </div>
                   </div>
-              {{/each}}
               <!-- End Single Table-->
           </div>
+        {{/each}}
       </div>
     </script>
-    <section class="pricing-table section" id="pricing-output"></section>
+    <section class="pricing-table section" id="services-output"></section>
     <!--/ End Pricing Table -->
 
     <!-- Footer Area -->

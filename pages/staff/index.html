@@ -191,9 +191,9 @@
                       >
                           <div class="p-4" style="">
                               <img
-                                      alt="{{this.alt}}"
+                                      alt="{{this.photo.data.attributes.alternativeText}}"
                                       class="img-fluid p-2 rounded"
-                                      src="{{placeholder this.image}}"
+                                      src="{{placeholder this.photo.data.attributes.formats.small.url}}"
                                       width="300"
                               />
                           </div>
@@ -202,9 +202,10 @@
                                   {{this.name}}
                               </h3>
                               <span style="color: var(--basic-color)">
-                                            {{../this.singleItemTitle}} {{#if this.specialization}}
-                                  | {{this.specialization}}{{/if}}
-                                        </span>
+                                {{#if position}}
+                                  {{position}}
+                                {{/if}}
+                              </span>
                               <hr class="my-2"/>
                               <p class="my-2">
                                   {{this.description}}

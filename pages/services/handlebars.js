@@ -1,37 +1,26 @@
 function runFillers() {
-    const services = new Services('uslugi');
-    services.fillHeaderTemplate();
-    services.fillPricingTemplate();
-    services.fillFooterTemplate();
+    const services = new Services('uslugi', 'pages/4', '?populate=deep');
+    services.build().finally();
 }
 
 class Services extends Page {
-    fillPricingTemplate() {
-        const data = {
-            heading: 'Skorzystaj z naszych usług',
-            description: 'Dajemy Ci dostęp do wykwalifikowanej kadry medycznej, w rozsądnej cenie!',
-            class: 'col-12 col-lg-8 offset-lg-2',
-            columns: [
-                {
-                    icon: 'fa fa-tag',
-                    title: 'Usługi Prywatne',
-                    items: [
-                        {
-                            name: 'Konsultacja Fizjoterapeutyczna',
-                            value: '180zł'
-                        },
-                        {
-                            name: 'Konsultacja Neurologopedyczna',
-                            value: '180zł'
-                        },
-                        {
-                            name: 'Terapia zajęciowa',
-                            value: '180zł'
-                        }
-                    ]
-                }
-            ]
-        };
-        this.useFiller(data, 'pricing');
+    async fillPricingTemplate() {
+        if (await this.fetchAndLoad()) {
+            this.useFiller(this.response, 'services');
+        }
+    }
+
+    async build() {
+        const allMethods = [
+            this.fillHeaderTemplate(),
+            this.fillPricingTemplate(),
+            this.fillFooterTemplate()
+        ];
+
+        for (const method of allMethods) {
+            await method;
+        }
+
+        document.querySelector('.preloader').classList.add('preloader-deactivate');
     }
 }
