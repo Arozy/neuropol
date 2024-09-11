@@ -1626,6 +1626,7 @@ body {
 }
 
 .services .single-service h4 a:hover {
+    cursor: pointer;
     color: var(--primary-background-color);
 }
 

@@ -173,9 +173,16 @@
               <!-- Start Single Service -->
               <div class="single-service">
                 <h4>
-                  <span data-toggle="modal" data-target="#modal-{{@index}}">
+                {{#if this.modal_description}}
+                  <a data-toggle="modal" data-target="#modal-{{@index}}">
+                    {{this.title}}
+                  </a>
+                {{/if}}
+                {{#unless this.modal_description}}
+                  <span>
                     {{this.title}}
                   </span>
+                {{/unless}}
                 </h4>
                 <p>
                   {{this.Description}}
