@@ -280,7 +280,7 @@ Preloader Area CSS
 
 .preloader .loader .loader-outter {
   position: absolute;
-  border: 4px solid #ffffff;
+  border: 4px solid var(--basic-color);
   border-left-color: transparent;
   border-bottom: 0;
   width: 100%;
@@ -292,7 +292,7 @@ Preloader Area CSS
 
 .preloader .loader .loader-inner {
   position: absolute;
-  border: 4px solid #ffffff;
+  border: 4px solid var(--basic-color);
   border-radius: 50%;
   width: 60px;
   height: 60px;
@@ -340,7 +340,7 @@ Preloader Area CSS
   height: 100%;
   width: 60%;
   z-index: -1;
-  background: #1A76D1;
+  background: #fff;
   -webkit-transition: .9s;
   transition: .9s;
 }
