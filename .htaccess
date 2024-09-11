@@ -2,18 +2,18 @@ RewriteEngine On
 
 #Redirect traffic
 RewriteCond %{SERVER_PORT} 80
-RewriteRule ^(.*)$ https://www.neuropol.pl/$1 [R,L]
+RewriteRule ^(.*)$ https://neuropol.pl/$1 [R,L]
 
 #Rewrite pages to flat structure
 
-RewriteRule ^$ pages/placeholder/index.html [L]
 RewriteRule ^not-found$ pages/not-found/index.html [L]
-RewriteRule ^home$ pages/home/index.html [L]
-RewriteRule ^about$ pages/about/index.html [L]
-RewriteRule ^staff$ pages/staff/index.html [L]
-RewriteRule ^services$ pages/services/index.html [L]
-RewriteRule ^contact$ pages/contact/index.html [L]
-RewriteRule ^trainings$ pages/trainings/index.html [L]
+RewriteRule ^strona-glowna$ pages/home/index.html [L]
+RewriteRule ^o-nas$ pages/about/index.html [L]
+RewriteRule ^nasi-specjalisci$ pages/staff/index.html [L]
+RewriteRule ^uslugi$ pages/services/index.html [L]
+RewriteRule ^kontakt$ pages/contact/index.html [L]
+RewriteRule ^szkolenia$ pages/trainings/index.html [L]
+RewriteRule ^$ pages/home/index.html [L]
 
 #Friendly urls
 
@@ -27,7 +27,7 @@ RewriteRule ^(.*)$ $1.html [L, QSA]
 </FilesMatch>
 
 # ERRORS HANDLING
-ErrorDocument 404 http://neuropol.pl/not-found
+ErrorDocument 404 https://neuropol.pl/not-found
 
 #! USE TO DISABLE PAGE
 #RewriteRule .? - [F]
