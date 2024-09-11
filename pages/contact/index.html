@@ -27,7 +27,7 @@
     <title>Neuropol - Skontaktuj się z nami</title>
 
     <!-- Favicon -->
-    <link href="img/favicon.png" rel="icon" />
+    <link rel="icon" type="image/x-icon" href="../../img/favicon.ico">
 
     <!-- Google Fonts -->
     <link
@@ -49,7 +49,8 @@
     <link href="../../css/responsive.css" rel="stylesheet" />
 
     <!-- Utils -->
-    <script src="../../utils/handlebars_shared.js?updated=1"></script>
+    <script src="../../utils/fetch.js?updated=1"></script>
+    <script src="../../utils/shared.js?updated=2"></script>
     <script src="../../utils/handlebars_global.js?updated=1"></script>
 
     <!-- Handlebars -->
@@ -92,16 +93,7 @@
       <div class="topbar">
         <div class="container">
           <div class="row">
-            <div class="col-lg-6 col-md-5 col-12">
-              <!-- Contact -->
-              {{#each additional_links}}
-                <a href="{{this.href}}">
-                  {{this.name}}
-                </a>
-              {{/each}}
-              <!-- End Contact -->
-            </div>
-            <div class="col-lg-6 col-md-7 col-12">
+            <div class="offset-lg-6 col-lg-6 col-md-7 col-12">
               <!-- Top Contact -->
               <ul class="top-contact">
                 <li>
@@ -139,10 +131,10 @@
                 <div class="main-menu">
                   <nav class="navigation">
                     <ul class="nav menu">
-                      {{#each link_list}}
-                        <li class="{{this.class}}">
-                          <a href="{{this.href}}">
-                            {{this.name}}
+                      {{#each siteLinks}}
+                        <li class="{{this.attributes.class}}">
+                          <a href="{{this.attributes.href}}">
+                            {{this.attributes.name}}
                           </a>
                         </li>
                       {{/each}}
@@ -158,6 +150,8 @@
     </script>
     <!--/ End Header Inner -->
     <header class="header" id="header-output"></header>
+
+    <!-- End Header Area -->
 
     <!-- End Header Area -->
 
@@ -182,27 +176,27 @@
             <div class="d-flex flex-column contact-card w-100 h-100 rounded">
               <div class="mx-5 my-2">
                 <h3 class="text-white font-weight-bold my-4">
-                  {{header}}
+                  {{this.title}}
                 </h3>
-                {{#each items}}
+                {{#each content}}
                   <div class="d-flex align-items-center my-3">
                     <div
                       class="contact-card-circle d-flex align-items-center justify-content-center mr-2 rounded"
                     >
-                      <i class="{{icon}}"></i>
+                      <i class="{{this.icon}}"></i>
                     </div>
                     <div class="d-flex flex-column text-light">
                       <div class="text-white font-weight-bold">
-                        {{heading}}:
+                        {{this.name}}:
                       </div>
-                      {{#if link}}
-                        <a href="{{link}}">
-                          {{summary}}
+                      {{#if this.action}}
+                        <a href="{{this.action}}">
+                          {{this.value}}
                         </a>
                       {{/if}}
-                      {{#unless link}}
+                      {{#unless action}}
                         <div>
-                          {{summary}}
+                          {{this.value}}
                         </div>
                       {{/unless}}
                     </div>
@@ -235,7 +229,7 @@
                 <ul class="social">
                   {{#each columns.0.socialLinks}}
                     <li title="{{this.title}}">
-                      <a href="{{this.href}}">
+                      <a href="{{this.href}}" target="blank">
                         <i class="{{this.icon}}"></i>
                       </a>
                     </li>
@@ -252,11 +246,11 @@
                 <div class="row">
                   <div class="col-lg-6 col-md-6 col-12">
                     <ul>
-                      {{#each columns.1.linkColumns.0.linkList}}
+                      {{#each columns.1.linkColumns.0.linkList.data}}
                         <li>
-                          <a href="{{this.href}}">
+                          <a href="{{this.attributes.href}}">
                             <i aria-hidden="true" class="fa fa-caret-right"></i>
-                            {{this.name}}
+                            {{this.attributes.name}}
                           </a>
                         </li>
                       {{/each}}
@@ -264,11 +258,11 @@
                   </div>
                   <div class="col-lg-6 col-md-6 col-12">
                     <ul>
-                      {{#each columns.1.linkColumns.1.linkList}}
+                      {{#each columns.1.linkColumns.1.linkList.data}}
                         <li>
-                          <a href="{{this.href}}">
+                          <a href="{{this.attributes.href}}">
                             <i aria-hidden="true" class="fa fa-caret-right"></i>
-                            {{this.name}}
+                            {{this.attributes.name}}
                           </a>
                         </li>
                       {{/each}}
@@ -286,11 +280,11 @@
                   {{columns.2.description}}
                 </p>
                 <ul class="time-sidual">
-                  {{#each columns.2.timeList}}
+                  {{#each columns.2.timeList.data}}
                     <li class="day">
-                      {{this.period}}
+                      {{this.attributes.period}}
                       <span>
-                        {{this.time}}
+                        {{this.attributes.time}}
                       </span>
                     </li>
                   {{/each}}
@@ -312,7 +306,7 @@
                 <p>
                   © Copyright 2018 | All Rights Reserved by
                   <a href="https://www.wpthemesgrid.com" target="_blank"
-                    >wpthemesgrid.com</a
+                  >wpthemesgrid.com</a
                   >
                 </p>
               </div>
@@ -359,7 +353,7 @@
     <!-- Magnific Popup JS -->
     <script src="../../js/jquery.magnific-popup.min.js"></script>
     <!-- Counter Up CDN JS -->
-    <script src="http://cdnjs.cloudflare.com/ajax/libs/waypoints/2.0.3/waypoints.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/waypoints/2.0.3/waypoints.min.js"></script>
     <!-- Google Map API Key JS -->
     <script src="https://maps.google.com/maps/api/js?key=AIzaSyDGqTyqoPIvYxhn_Sa7ZrK5bENUWhpCo0w"></script>
     <!-- Gmaps JS -->

@@ -8,12 +8,8 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="library" name="handlebars.js" level="application" />
+    <orderEntry type="library" name="SlickNav" level="application" />
     <orderEntry type="library" name="waypoints" level="application" />
-    <orderEntry type="library" name="handlebars.js" level="application" />
-    <orderEntry type="library" name="toastr.js" level="application" />
-    <orderEntry type="library" name="api" level="application" />
-    <orderEntry type="library" name="handlebars.js" level="application" />
-    <orderEntry type="library" name="api" level="application" />
-    <orderEntry type="library" name="@emailjs/browser" level="application" />
   </component>
 </module>

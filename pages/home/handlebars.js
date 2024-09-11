@@ -1,11 +1,6 @@
 function runFillers() {
-    const homepage = new Home('home');
-    homepage.fillHeaderTemplate();
-    homepage.fillHeroSliderTemplate();
-    homepage.fillCardsTemplate();
-    homepage.fillFeaturesTemplate();
-    homepage.fillCTATemplate();
-    homepage.fillFooterTemplate();
+    const homepage = new Home('strona-glowna', 'pages/1', '?populate[content][populate]=*');
+    homepage.build().finally();
 }
 
 class Home extends Page {
@@ -16,142 +11,75 @@ class Home extends Page {
             const sliderHeading = slider.querySelector("h1");
             const sliderDescription = slider.querySelector("p");
             const sliderCTAContainer = slider.querySelector(".button");
+            const primaryButton = sliderCTAContainer.querySelector(".btn-primary");
+            const secondaryButton = sliderCTAContainer.querySelector(".btn-secondary");
 
             data[index] === undefined ? (index = 0) : index;
 
             // Setting essential content:
-            data[index]?.image_path
+            data[index]?.image
                 ? slider.setAttribute(
                     "style",
-                    `background-image: url(${data[index].image_path})`
+                    `background-image: url(${data[index].image.data.attributes.url})`
                 )
                 : slider.setAttribute("style", `background-color: #fff`);
-            sliderHeading.innerHTML = data[index].header_text;
-            sliderDescription.innerHTML = data[index].description_text;
+            sliderHeading.innerHTML = data[index]?.title;
+            sliderDescription.innerHTML = data[index]?.description ?? '';
 
-            // Generating CTA buttons:
-            sliderCTAContainer.innerHTML = data[index].CTAs;
+            if (data[index]?.primary) {
+                primaryButton.innerHTML = data[index].primary.text;
+                primaryButton.href = data[index].primary.action;
+            } else {
+                primaryButton.remove();
+            }
+
+            if (data[index]?.secondary) {
+                secondaryButton.innerHTML = data[index].secondary.text;
+                secondaryButton.href = data[index].secondary.action;
+            } else {
+                secondaryButton.remove();
+            }
+
+            if (!/Mobi|Android/i.test(navigator.userAgent)) {
+                document.querySelectorAll('a[href*="tel:"]').forEach(el => {
+                    el.href = '/kontakt';
+                })
+            }
         });
     }
 
-    fillHeroSliderTemplate() {
-        const data = {
-            slider_elements: [
-                {
-                    image_path: "",
-                    header_text:
-                        "Dostarczamy Rozwiązania <span>Medyczne</span> Którym Możesz\n" +
-                        "                                <span>Zaufać!</span>",
-                    description_text:
-                        "Cokolwiek Ci dolega, personel <span>Neuropol</span> zawsze jest gotowy by Ci pomóc",
-                    CTAs: `
-                    <a class="btn" href="tel: ${getShared('tel')}">Umów się na wizytę</a>
-                    <a class="btn primary" href="services">Dowiedz się więcej</a>`,
-                },
-                {
-                    image_path: "",
-                    header_text:
-                        "Dostarczamy Rozwiązania <span>Medyczne</span> Którym Możesz\n" +
-                        "                                <span>Zaufać!</span>",
-                    description_text:
-                        "Cokolwiek Ci dolega, personel <span>Neuropol</span> zawsze jest gotowy by Ci pomóc",
-                    CTAs: `
-                    <a class="btn" href="tel: ${getShared('tel')}">Umów się na wizytę</a>
-                    <a class="btn primary" href="services">Dowiedz się więcej</a>`,
-                },
-                {
-                    image_path: "",
-                    header_text: "Wspieramy <span>Pacjentów</span>",
-                    description_text: "Jesteśmy do <span>Twojej</span> dyspozycji",
-                    CTAs: "",
-                },
-            ],
-        };
-        this.useHeroSliderFiller(data.slider_elements, "hero-slider-heading");
-    }
-
-    fillCardsTemplate() {
-        const data = {
-            card_items: [
-                {
-                    icon: "icofont-prescription",
-                    heading: 'Nasi specjaliści',
-                    content: ' <p>\n' +
-                        '                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab accusantium eveniet\n' +
-                        '                                    impedit inventore ipsam maiores.\n' +
-                        '                                </p>',
-                    cta: 'Dowiedz się więcej',
-                    ctaHref: 'staff'
-                },
-                {
-                    icon: "fa fa-ambulance",
-                    heading: "Nasze usługi",
-                    content: "<p>\n" +
-                        "                                    Świadczymy usługi z zakresu leczenia dolegliwości neurologiczych lore ipsum dolor sit\n" +
-                        "                                </p>",
-                    cta: 'Dowiedz się więcej',
-                    ctaHref: 'services'
-                },
-                {
-                    icon: "icofont-ui-clock",
-                    heading: "Godziny otwarcia",
-                    content:
-                        '<ul class="time-sidual">\n' +
-                        '                                    <li class="day">\n' +
-                        "                                        Poniedziałek - Piątek <span>8.00-20.00</span>\n" +
-                        "                                    </li>\n" +
-                        '                                    <li class="day">Sobota - niedziela <span>nieczynne</span></li>\n' +
-                        '                                    <li class="day">\n' +
-                        "                                        Dni świąteczne <span>nieczynne</span>\n" +
-                        "                                    </li>\n" +
-                        "                                </ul>",
-                    cta: 'Dowiedz się więcej',
-                    ctaHref: 'hours'
-                },
-            ],
-        };
-        this.useFiller(data, 'cards')
-    }
-
-    fillFeaturesTemplate() {
-        const data = {
-            header: 'Jesteśmy gotowi by pomagać naszym pacjentom',
-            description: 'Grupa specjalistów, takich jak neurolodzy, fizjoterapueci, pielęgniarki czy rehabilitanci są zawsze gotowi by Ci pomóc.',
-            featureItems: [
-                {
-                    header: 'Umów się na wizytę',
-                    description: 'Szybko uzyskaj pomoc, kontaktując się z nami telefonicznie',
-                    hrefLink: `tel: ${getShared('tel')}`,
-                    icon: 'fa fa-phone'
-                },
-                {
-                    header: 'Otrzymaj pomoc',
-                    description: 'Twój komfort w kontakcie z naszym personelem jest dla nas bardzo ważny',
-                    icon: 'icofont icofont-stethoscope'
-                },
-                {
-                    header: 'Poczuj się zdrowo',
-                    description: 'Nie tylko leczymy, ale też doradzamy jak dbać o swoje zdrowie',
-                    icon: 'icofont icofont-heart-beat'
-                }
-            ]
+    async fillHeroSliderTemplate() {
+        if (await this.fetchAndLoad()) {
+            this.useHeroSliderFiller(await this.getExact('header.header'), "hero-slider-heading");
         }
-        this.useFiller(data, 'feature');
     }
 
-    fillCTATemplate() {
-        const data = {
-            heading: 'Potrzebujesz profesjonalnej porady medycznej? Zadzwoń do nas na numer +48 758 481 481',
-            description: 'Nasi specjaliści są do Twojej dyspozycji w godzinach pracy ośrodka',
-            firstButton: {
-                text: 'Zadzwoń teraz',
-                action: `tel:${getShared('tel')}`
-            },
-            secondButton: {
-                text: 'Dowiedz się więcej',
-                action: './../staff'
-            }
+    async fillCardsTemplate() {
+        this.useFiller(await this.getExact('cards.card'), 'cards')
+    }
+
+    async fillFeaturesTemplate() {
+        this.useFiller(await this.getExact('steps.steps'), 'feature');
+    }
+
+    async fillCTATemplate() {
+        this.useFiller(await this.getExact('ctas.cta-banner'), 'cta');
+    }
+
+    async build() {
+        const allMethods = [
+            this.fillHeaderTemplate(),
+            this.fillHeroSliderTemplate(),
+            this.fillCardsTemplate(),
+            this.fillFeaturesTemplate(),
+            this.fillCTATemplate(),
+            this.fillFooterTemplate()
+        ];
+
+        for (const method of allMethods) {
+            await method;
         }
-        this.useFiller(data, 'cta');
+
+        document.querySelector('.preloader').classList.add('preloader-deactivate');
     }
 }

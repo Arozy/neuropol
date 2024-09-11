@@ -22,11 +22,13 @@
       name="viewport"
     />
 
+    <meta http-equiv="content-type" content="public, max-age=1, must-revalidate" />
+
     <!-- Title -->
     <title>Neuropol | Strona Główna</title>
 
     <!-- Favicon -->
-    <link href="img/favicon.png" rel="icon" />
+   <link rel="icon" type="image/x-icon" href="../../img/favicon.ico">
 
     <!-- Google Fonts -->
     <link
@@ -59,12 +61,13 @@
     <link href="../../css/responsive.css" rel="stylesheet" />
 
     <!-- Utils -->
-    <script src="/utils/handlebars_shared.js?updated=1"></script>
-    <script src="/utils/handlebars_global.js?updated=1"></script>
+    <script src="../../utils/fetch.js?updated=1"></script>
+    <script src="../../utils/shared.js?updated=6"></script>
+    <script src="../../utils/handlebars_global.js?updated=6"></script>
 
     <!-- Handlebars -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.7.8/handlebars.min.js"></script>
-    <script src="../../pages/home/handlebars.js?updated=1"></script>
+    <script src="../../pages/home/handlebars.js?updated=6"></script>
   </head>
   <body onload="runFillers()">
     <!-- Preloader -->
@@ -102,16 +105,7 @@
       <div class="topbar">
         <div class="container">
           <div class="row">
-            <div class="col-lg-6 col-md-5 col-12">
-              <!-- Contact -->
-              {{#each additional_links}}
-                <a href="{{this.href}}">
-                  {{this.name}}
-                </a>
-              {{/each}}
-              <!-- End Contact -->
-            </div>
-            <div class="col-lg-6 col-md-7 col-12">
+            <div class="offset-lg-6 col-lg-6 col-md-7 col-12">
               <!-- Top Contact -->
               <ul class="top-contact">
                 <li>
@@ -149,10 +143,10 @@
                 <div class="main-menu">
                   <nav class="navigation">
                     <ul class="nav menu">
-                      {{#each link_list}}
-                        <li class="{{this.class}}">
-                          <a href="{{this.href}}">
-                            {{this.name}}
+                      {{#each siteLinks}}
+                        <li class="{{this.attributes.class}}">
+                          <a href="{{this.attributes.href}}">
+                            {{this.attributes.name}}
                           </a>
                         </li>
                       {{/each}}
@@ -174,7 +168,6 @@
     <!-- Slider Area -->
     <section class="slider">
       <div class="hero-slider" id="hero-slider-heading">
-        <!-- Start Single Slider -->
         <div class="single-slider">
           <div class="container">
             <div class="row">
@@ -182,14 +175,15 @@
                 <div class="text">
                   <h1></h1>
                   <p></p>
-                  <div class="button"></div>
+                  <div class="button">
+                    <a class="btn btn-primary"></a>
+                    <a class="btn btn-secondary"></a>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
         </div>
-        <!-- End Single Slider -->
-        <!-- Start Single Slider -->
         <div class="single-slider">
           <div class="container">
             <div class="row">
@@ -197,14 +191,15 @@
                 <div class="text">
                   <h1></h1>
                   <p></p>
-                  <div class="button"></div>
+                  <div class="button">
+                    <a class="btn btn-primary"></a>
+                    <a class="btn btn-secondary"></a>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
         </div>
-        <!-- Start End Slider -->
-        <!-- Start Single Slider -->
         <div class="single-slider">
           <div class="container">
             <div class="row">
@@ -212,13 +207,31 @@
                 <div class="text">
                   <h1></h1>
                   <p></p>
-                  <div class="button"></div>
+                  <div class="button">
+                    <a class="btn btn-primary"></a>
+                    <a class="btn btn-secondary"></a>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
         </div>
-        <!-- End Single Slider -->
+        <div class="single-slider">
+          <div class="container">
+            <div class="row">
+              <div class="col-lg-7">
+                <div class="text">
+                  <h1></h1>
+                  <p></p>
+                  <div class="button">
+                    <a class="btn btn-primary"></a>
+                    <a class="btn btn-secondary"></a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </section>
     <!--/ End Slider Area -->
@@ -228,22 +241,37 @@
       <div class="container">
         <div class="schedule-inner">
           <div class="row">
-            {{#each card_items}}
-              <div class="col-lg-4 col-md-6 col-12">
+            {{#each this}}
+              <div class="col-lg-4 col-md-6 col-12 mb-4">
                 <!-- single-schedule -->
-                <div class="single-schedule first">
+                <div class='single-schedule {{#if @first}}first{{/if}}{{#if @last}}last{{/if}} h-100'>
                   <div class="inner">
                     <div class="icon">
                       <i class="{{this.icon}} text-danger"></i>
                     </div>
                     <div class="single-content">
                       <h4>
-                        {{this.heading}}
+                        {{this.title}}
                       </h4>
-                      {{{this.content}}}
-                      <a href="{{this.ctaHref}}">
-                        {{this.cta}}<i class="fa fa-long-arrow-right"></i>
+                      {{#if this.Description}}
+                      <p>
+                        {{{this.Description}}}
+                      </p>
+                      {{/if}}
+                      {{#if this.hours}}
+                        <ul class="time-sidual">
+                          {{#each this.hours}}
+                          <li class="day">
+                            {{this.period}} <span>{{this.time}}</span>
+                          </li>
+                          {{/each}}
+                        </ul>
+                      {{/if}}
+                      {{#if this.cta}}
+                      <a href="{{this.cta.action}}">
+                        {{this.cta.text}}<i class="fa fa-long-arrow-right"></i>
                       </a>
+                      {{/if}}
                     </div>
                   </div>
                 </div>
@@ -263,35 +291,35 @@
           <div class="col-lg-12">
             <div class="section-title">
               <h2>
-                {{header}}
+                {{this.[0].title}}
               </h2>
               <!-- To musi zostać czymś zastąpione              <img alt="" src="img/section-img.png" />-->
               <p>
-                {{description}}
+                {{this.[0].Description}}
               </p>
             </div>
           </div>
         </div>
         <div class="row">
-          {{#each featureItems}}
+          {{#each [0].step}}
             <div class="col-lg-4 col-12">
               <!-- Start Single features -->
-              <div class="single-features">
+              <div class="single-features {{#if @first}}first{{/if}}{{#if @last}}last{{/if}}">
                 {{#if hrefLink}}
                   <a class="signle-icon" href="{{this.hrefLink}}">
-                    <i class="{{this.icon}}"></i>
+                    <i class="fa {{this.icon}}"></i>
                   </a>
                 {{/if}}
                 {{#unless hrefLink}}
                   <div class="signle-icon">
-                    <i class="{{this.icon}}"></i>
+                    <i class="fa {{this.icon}}"></i>
                   </div>
                 {{/unless}}
                 <h3>
                   {{this.header}}
                 </h3>
                 <p>
-                  {{this.description}}
+                  {{this.Description}}
                 </p>
               </div>
               <!-- End Single features -->
@@ -310,17 +338,17 @@
           <div class="col-lg-12 col-md-12 col-12">
             <div class="content">
               <h2>
-                {{heading}}
+                {{this.[0].title}}
               </h2>
               <p>
-                {{description}}
+                {{this.[0].Description}}
               </p>
               <div class="d-flex justify-content-center flex-wrap">
-                <a class="btn m-2" href="{{firstButton.action}}">
-                  {{firstButton.text}}
+                <a class="btn m-2" href="{{this.[0].left.action}}">
+                  {{this.[0].left.text}}
                 </a>
-                <a class="btn primary m-2" href="{{secondButton.action}}">
-                  {{secondButton.text}}
+                <a class="btn primary m-2" href="{{this.[0].right.action}}">
+                  {{this.[0].right.text}}
                   <i class="fa fa-long-arrow-right"></i>
                 </a>
               </div>
@@ -354,7 +382,7 @@
                 <ul class="social">
                   {{#each columns.0.socialLinks}}
                     <li title="{{this.title}}">
-                      <a href="{{this.href}}">
+                      <a href="{{this.href}}" target="blank">
                         <i class="{{this.icon}}"></i>
                       </a>
                     </li>
@@ -371,11 +399,11 @@
                 <div class="row">
                   <div class="col-lg-6 col-md-6 col-12">
                     <ul>
-                      {{#each columns.1.linkColumns.0.linkList}}
+                      {{#each columns.1.linkColumns.0.linkList.data}}
                         <li>
-                          <a href="{{this.href}}">
+                          <a href="{{this.attributes.href}}">
                             <i aria-hidden="true" class="fa fa-caret-right"></i>
-                            {{this.name}}
+                            {{this.attributes.name}}
                           </a>
                         </li>
                       {{/each}}
@@ -383,11 +411,11 @@
                   </div>
                   <div class="col-lg-6 col-md-6 col-12">
                     <ul>
-                      {{#each columns.1.linkColumns.1.linkList}}
+                      {{#each columns.1.linkColumns.1.linkList.data}}
                         <li>
-                          <a href="{{this.href}}">
+                          <a href="{{this.attributes.href}}">
                             <i aria-hidden="true" class="fa fa-caret-right"></i>
-                            {{this.name}}
+                            {{this.attributes.name}}
                           </a>
                         </li>
                       {{/each}}
@@ -405,11 +433,11 @@
                   {{columns.2.description}}
                 </p>
                 <ul class="time-sidual">
-                  {{#each columns.2.timeList}}
+                  {{#each columns.2.timeList.data}}
                     <li class="day">
-                      {{this.period}}
+                      {{this.attributes.period}}
                       <span>
-                        {{this.time}}
+                        {{this.attributes.time}}
                       </span>
                     </li>
                   {{/each}}
@@ -478,7 +506,7 @@
     <!-- Magnific Popup JS -->
     <script src="../../js/jquery.magnific-popup.min.js"></script>
     <!-- Counter Up CDN JS -->
-    <script src="http://cdnjs.cloudflare.com/ajax/libs/waypoints/2.0.3/waypoints.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/waypoints/2.0.3/waypoints.min.js"></script>
     <!-- Bootstrap JS -->
     <script src="../../js/bootstrap.min.js"></script>
     <!-- Main JS -->

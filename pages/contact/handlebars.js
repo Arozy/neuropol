@@ -1,40 +1,26 @@
 function runFillers() {
-    const contact = new Contact('contact');
-    contact.fillHeaderTemplate();
-    contact.fillContactCardTemplate();
-    contact.fillFooterTemplate();
+    const contact = new Contact('kontakt', 'pages/5', '?populate=deep');
+    contact.build().finally();
 }
 
 class Contact extends Page {
-    fillContactCardTemplate() {
-        const data = {
-            header: 'Skontaktuj się',
-            items: [
-                {
-                    icon: 'fa fa-map-marker',
-                    heading: 'Adres',
-                    summary: getShared('address'),
-                },
-                {
-                    icon: 'fa fa-phone',
-                    heading: 'Telefon',
-                    summary: getShared('tel'),
-                    link: `tel:${getShared('tel')}`,
-                },
-                {
-                    icon: 'fa fa-facebook',
-                    heading: 'Facebook',
-                    summary: getShared('facebook'),
-                    link: getShared('facebook'),
-                },
-                {
-                    icon: 'fa fa-instagram',
-                    heading: 'Instagram:',
-                    summary: getShared('instagram'),
-                    link: getShared('instagram'),
-                }
-            ]
-        };
-        this.useFiller(data, 'contact-card');
+    async fillContactCardTemplate() {
+        if (await this.fetchAndLoad()) {
+            this.useFiller(this.response, 'contact-card');
+        }
+    }
+
+    async build() {
+        const allMethods = [
+            this.fillHeaderTemplate(),
+            this.fillContactCardTemplate(),
+            this.fillFooterTemplate()
+        ];
+
+        for (const method of allMethods) {
+            await method;
+        }
+
+        document.querySelector('.preloader').classList.add('preloader-deactivate');
     }
 }

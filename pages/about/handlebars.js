@@ -1,45 +1,31 @@
 function runFillers() {
-    const about = new About('about');
-    about.fillHeaderTemplate();
-    about.fillServicesTemplate()
-    about.fillFooterTemplate();
+    const about = new About('o-nas', 'pages/2', '?populate[content][populate]=*');
+    about.build().finally();
 }
 
 class About extends Page {
-    fillServicesTemplate() {
-        const data = {
-            title: 'Oferujemy wiele usług medycznych z zakresu neurologii i rehabilitacji',
-            subtitle: 'Każdego dnia wspieramy naszych pacjentów, dając im dostęp do lekarzy neurologów, rehabilitantów czy fizjoterapeutów, zobacz jak wiele możemy dla Ciebie zrobić',
-            services: [
-                {
-                    title: 'Miastenia Gravis',
-                    description: 'Analizujemy każdy przypadek osobno, pomagamy stanąć na nogi i przywracamy naszym pacjentom siłę, której tak bardzo im brakuje',
-                    image: false,
-                    video: 'https://www.youtube.com/embed/tgbNymZ7vqY',
-                    modal_description: 'Miastenia Gravis'
-                },
-                {
-                    title: 'Miastenia Gravis 2',
-                    description: 'Analizujemy każdy przypadek osobno, pomagamy stanąć na nogi i przywracamy naszym pacjentom siłę, której tak bardzo im brakuje'
-                },
-                {
-                    title: 'Miastenia Gravis',
-                    description: 'Analizujemy każdy przypadek osobno, pomagamy stanąć na nogi i przywracamy naszym pacjentom siłę, której tak bardzo im brakuje'
-                },
-                {
-                    title: 'Miastenia Gravis',
-                    description: 'Analizujemy każdy przypadek osobno, pomagamy stanąć na nogi i przywracamy naszym pacjentom siłę, której tak bardzo im brakuje'
-                },
-                {
-                    title: 'Miastenia Gravis',
-                    description: 'Analizujemy każdy przypadek osobno, pomagamy stanąć na nogi i przywracamy naszym pacjentom siłę, której tak bardzo im brakuje'
-                },
-                {
-                    title: 'Miastenia Gravis',
-                    description: 'Analizujemy każdy przypadek osobno, pomagamy stanąć na nogi i przywracamy naszym pacjentom siłę, której tak bardzo im brakuje'
-                },
-            ]
+    async fillServicesTemplate() {
+        if (await this.fetchAndLoad()) {
+            const data = {
+                ...this.response,
+                services: await this.getExact('about-items.about-items'),
+            }
+            this.useFiller(data, 'services');
         }
-        this.useFiller(data, 'services');
     }
+
+    async build() {
+        const allMethods = [
+            this.fillHeaderTemplate(),
+            this.fillServicesTemplate(),
+            this.fillFooterTemplate()
+        ];
+
+        for (const method of allMethods) {
+            await method;
+        }
+
+        document.querySelector('.preloader').classList.add('preloader-deactivate');
+    }
+
 }

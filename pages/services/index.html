@@ -22,7 +22,7 @@
       name="viewport"
     />
     <title>Neuropol | Usługi</title>
-
+    <link rel="icon" type="image/x-icon" href="../../img/favicon.ico">
     <!-- Bootstrap CSS -->
     <link href="../../css/bootstrap.min.css" rel="stylesheet" />
     <!-- Nice Select CSS -->
@@ -47,7 +47,8 @@
     <link href="../../css/responsive.css" rel="stylesheet" />
 
     <!-- Utils -->
-    <script src="../../utils/handlebars_shared.js?updated=1"></script>
+    <script src="../../utils/fetch.js?updated=1"></script>
+    <script src="../../utils/shared.js?updated=2"></script>
     <script src="../../utils/handlebars_global.js?updated=1"></script>
 
     <!-- Handlebars -->
@@ -89,28 +90,13 @@
       <div class="topbar">
         <div class="container">
           <div class="row">
-            <div class="col-lg-6 col-md-5 col-12">
-              <!-- Contact -->
-              {{#each additional_links}}
-                <a href="{{this.href}}">
-                  {{this.name}}
-                </a>
-              {{/each}}
-              <!-- End Contact -->
-            </div>
-            <div class="col-lg-6 col-md-7 col-12">
+            <div class="offset-lg-6 col-lg-6 col-md-7 col-12">
               <!-- Top Contact -->
               <ul class="top-contact">
                 <li>
                   <i class="fa fa-phone"></i>
                   <a href="tel://{{phone_number}}">
                     {{phone_number}}
-                  </a>
-                </li>
-                <li>
-                  <i class="fa fa-envelope"></i>
-                  <a href="mailto://{{mail_address}}">
-                    {{mail_address}}
                   </a>
                 </li>
               </ul>
@@ -129,7 +115,7 @@
                 <!-- Start Logo -->
                 <div class="logo">
                   <a href="/pages/home">
-                    <img src="../../img/logo.png" alt="NEUROPOL LOGO" />
+                    <img src="../../img/logo.png?v=1" alt="NEUROPOL LOGO" />
                   </a>
                 </div>
                 <!-- End Logo -->
@@ -142,10 +128,10 @@
                 <div class="main-menu">
                   <nav class="navigation">
                     <ul class="nav menu">
-                      {{#each link_list}}
-                        <li class="{{this.class}}">
-                          <a href="{{this.href}}">
-                            {{this.name}}
+                      {{#each siteLinks}}
+                        <li class="{{this.attributes.class}}">
+                          <a href="{{this.attributes.href}}">
+                            {{this.attributes.name}}
                           </a>
                         </li>
                       {{/each}}
@@ -161,37 +147,36 @@
     </script>
     <!--/ End Header Inner -->
     <header class="header" id="header-output"></header>
+    <!-- End Header Area -->
 
     <!-- Pricing Table -->
-    <script id="pricing-template" type="text/x-handlebars-template">
+    <script id="services-template" type="text/x-handlebars-template">
       <div class="container">
           <div class="row">
               <div class="col-lg-12">
                   <div class="section-title">
                       <h2>
-                          Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                          {{this.title}}
                       </h2>
                       <img
                               alt="zakrzywiona linia przedstawiająca bicie serca"
                               src="../../img/section-img.png"
                       />
                       <p>
-                          Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                          Iure provident quae quam quo tempore
-                          ullam.
+                          {{this.Description}}
                       </p>
                   </div>
               </div>
           </div>
-          <div class="row">
+        {{#each content}}
+          <div class="row align-items-center justify-content-center">
               <!-- Single Table -->
-              {{#each columns}}
-                  <div class="{{../class}}">
+                  <div class="col-lg-6 col-12">
                       <div class="single-table">
                           <!-- Table Head -->
                           <div class="table-head">
                               <div class="icon">
-                                  <i class="{{this.icon}}"></i>
+                                  <i class="fa fa-tag"></i>
                               </div>
                               <h4 class="title">
                                   {{this.title}}
@@ -200,13 +185,13 @@
                           <!-- Table List -->
                           <table class="table table-striped table-white">
                               <tbody>
-                              {{#each items}}
+                              {{#each service_item}}
                                   <tr>
                                       <td>
                                           {{this.name}}
                                       </td>
-                                      {{#if this.value}}
-                                          <td>{{this.value}}</td>
+                                      {{#if this.price}}
+                                          <td>{{this.price}}zł</td>
                                       {{/if}}
                                   </tr>
                               {{/each}}
@@ -216,12 +201,12 @@
                           <!-- Table Bottom -->
                       </div>
                   </div>
-              {{/each}}
               <!-- End Single Table-->
           </div>
+        {{/each}}
       </div>
     </script>
-    <section class="pricing-table section" id="pricing-output"></section>
+    <section class="pricing-table section" id="services-output"></section>
     <!--/ End Pricing Table -->
 
     <!-- Footer Area -->
@@ -242,7 +227,7 @@
                 <ul class="social">
                   {{#each columns.0.socialLinks}}
                     <li title="{{this.title}}">
-                      <a href="{{this.href}}">
+                      <a href="{{this.href}}" target="blank">
                         <i class="{{this.icon}}"></i>
                       </a>
                     </li>
@@ -259,11 +244,11 @@
                 <div class="row">
                   <div class="col-lg-6 col-md-6 col-12">
                     <ul>
-                      {{#each columns.1.linkColumns.0.linkList}}
+                      {{#each columns.1.linkColumns.0.linkList.data}}
                         <li>
-                          <a href="{{this.href}}">
+                          <a href="{{this.attributes.href}}">
                             <i aria-hidden="true" class="fa fa-caret-right"></i>
-                            {{this.name}}
+                            {{this.attributes.name}}
                           </a>
                         </li>
                       {{/each}}
@@ -271,11 +256,11 @@
                   </div>
                   <div class="col-lg-6 col-md-6 col-12">
                     <ul>
-                      {{#each columns.1.linkColumns.1.linkList}}
+                      {{#each columns.1.linkColumns.1.linkList.data}}
                         <li>
-                          <a href="{{this.href}}">
+                          <a href="{{this.attributes.href}}">
                             <i aria-hidden="true" class="fa fa-caret-right"></i>
-                            {{this.name}}
+                            {{this.attributes.name}}
                           </a>
                         </li>
                       {{/each}}
@@ -293,11 +278,11 @@
                   {{columns.2.description}}
                 </p>
                 <ul class="time-sidual">
-                  {{#each columns.2.timeList}}
+                  {{#each columns.2.timeList.data}}
                     <li class="day">
-                      {{this.period}}
+                      {{this.attributes.period}}
                       <span>
-                        {{this.time}}
+                        {{this.attributes.time}}
                       </span>
                     </li>
                   {{/each}}
@@ -319,7 +304,7 @@
                 <p>
                   © Copyright 2018 | All Rights Reserved by
                   <a href="https://www.wpthemesgrid.com" target="_blank"
-                    >wpthemesgrid.com</a
+                  >wpthemesgrid.com</a
                   >
                 </p>
               </div>

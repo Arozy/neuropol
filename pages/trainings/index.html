@@ -23,7 +23,7 @@
     />
 
     <title>Neuropol | Szkolenia</title>
-
+    <link rel="icon" type="image/x-icon" href="../../img/favicon.ico">
     <!-- Bootstrap CSS -->
     <link href="../../css/bootstrap.min.css" rel="stylesheet" />
     <!-- Nice Select CSS -->
@@ -48,7 +48,8 @@
     <link href="../../css/responsive.css" rel="stylesheet" />
 
     <!-- Utils -->
-    <script src="../../utils/handlebars_shared.js?updated=1"></script>
+    <script src="../../utils/fetch.js?updated=1"></script>
+    <script src="../../utils/shared.js?updated=2"></script>
     <script src="../../utils/handlebars_global.js?updated=1"></script>
 
     <!-- Handlebars -->
@@ -98,16 +99,7 @@
       <div class="topbar">
         <div class="container">
           <div class="row">
-            <div class="col-lg-6 col-md-5 col-12">
-              <!-- Contact -->
-              {{#each additional_links}}
-                <a href="{{this.href}}">
-                  {{this.name}}
-                </a>
-              {{/each}}
-              <!-- End Contact -->
-            </div>
-            <div class="col-lg-6 col-md-7 col-12">
+            <div class="offset-lg-6 col-lg-6 col-md-7 col-12">
               <!-- Top Contact -->
               <ul class="top-contact">
                 <li>
@@ -145,10 +137,10 @@
                 <div class="main-menu">
                   <nav class="navigation">
                     <ul class="nav menu">
-                      {{#each link_list}}
-                        <li class="{{this.class}}">
-                          <a href="{{this.href}}">
-                            {{this.name}}
+                      {{#each siteLinks}}
+                        <li class="{{this.attributes.class}}">
+                          <a href="{{this.attributes.href}}">
+                            {{this.attributes.name}}
                           </a>
                         </li>
                       {{/each}}
@@ -164,6 +156,7 @@
     </script>
     <!--/ End Header Inner -->
     <header class="header" id="header-output"></header>
+    <!-- End Header Area -->
 
     <!-- Pricing Table -->
     <script id="training-template" type="text/x-handlebars-template">
@@ -172,23 +165,23 @@
               <div class="col-lg-12">
                   <div class="section-title">
                       <h2>
-                          {{this.heading}}
+                          {{this.title}}
                       </h2>
                       <img alt="#" src="../../img/section-img.png"/>
                       <p>
-                          {{this.description}}
+                          {{this.Description}}
                       </p>
                   </div>
               </div>
           </div>
           <hr/>
-          {{#each this.sections}}
+          {{#each this.content}}
               <h3 class="font-weight-bold py-4">
                   {{this.heading}}
               </h3>
               <div class="row">
                   <!-- Single Table -->
-                  {{#each this.columns}}
+                  {{#each this.item}}
                       <div class="col-lg-4 col-md-12 col-12">
                           <div class="single-table">
                               <!-- Table Head -->
@@ -210,16 +203,16 @@
                               </div>
                               <!-- Table List -->
                               <ul class="table-list">
-                                  {{#each this.items}}
+                                  {{#each this.training_entities.data}}
                                       <li>
                                           <i class="icofont icofont-ui-check"></i>
-                                          {{this}}
+                                          {{this.attributes.item}}
                                       </li>
                                   {{/each}}
-                                  {{#each this.out}}
+                                  {{#each this.outs}}
                                       <li class="cross">
                                           <i class="icofont icofont-ui-close"></i>
-                                          {{this}}
+                                          {{this.attributes.item}}
                                       </li>
                                   {{/each}}
                               </ul>
@@ -435,7 +428,7 @@
                 <ul class="social">
                   {{#each columns.0.socialLinks}}
                     <li title="{{this.title}}">
-                      <a href="{{this.href}}">
+                      <a href="{{this.href}}" target="blank">
                         <i class="{{this.icon}}"></i>
                       </a>
                     </li>
@@ -452,11 +445,11 @@
                 <div class="row">
                   <div class="col-lg-6 col-md-6 col-12">
                     <ul>
-                      {{#each columns.1.linkColumns.0.linkList}}
+                      {{#each columns.1.linkColumns.0.linkList.data}}
                         <li>
-                          <a href="{{this.href}}">
+                          <a href="{{this.attributes.href}}">
                             <i aria-hidden="true" class="fa fa-caret-right"></i>
-                            {{this.name}}
+                            {{this.attributes.name}}
                           </a>
                         </li>
                       {{/each}}
@@ -464,11 +457,11 @@
                   </div>
                   <div class="col-lg-6 col-md-6 col-12">
                     <ul>
-                      {{#each columns.1.linkColumns.1.linkList}}
+                      {{#each columns.1.linkColumns.1.linkList.data}}
                         <li>
-                          <a href="{{this.href}}">
+                          <a href="{{this.attributes.href}}">
                             <i aria-hidden="true" class="fa fa-caret-right"></i>
-                            {{this.name}}
+                            {{this.attributes.name}}
                           </a>
                         </li>
                       {{/each}}
@@ -486,11 +479,11 @@
                   {{columns.2.description}}
                 </p>
                 <ul class="time-sidual">
-                  {{#each columns.2.timeList}}
+                  {{#each columns.2.timeList.data}}
                     <li class="day">
-                      {{this.period}}
+                      {{this.attributes.period}}
                       <span>
-                        {{this.time}}
+                        {{this.attributes.time}}
                       </span>
                     </li>
                   {{/each}}
@@ -512,7 +505,7 @@
                 <p>
                   © Copyright 2018 | All Rights Reserved by
                   <a href="https://www.wpthemesgrid.com" target="_blank"
-                    >wpthemesgrid.com</a
+                  >wpthemesgrid.com</a
                   >
                 </p>
               </div>

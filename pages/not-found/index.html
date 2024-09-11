@@ -16,7 +16,7 @@
     <title>Neuropol | 404</title>
 
     <!-- Favicon -->
-    <link href="img/favicon.png" rel="icon" />
+    <link rel="icon" type="image/x-icon" href="../../img/favicon.ico">
 
     <!-- Google Fonts -->
     <link
@@ -39,7 +39,9 @@
     <link href="../../css/responsive.css" rel="stylesheet" />
 
     <!-- Utils -->
-    <script src="../../utils/handlebars_shared.js"></script>
+    <script src="../../utils/fetch.js?updated=1"></script>
+    <script src="../../utils/shared.js"></script>
+    <script src="../../utils/handlebars_global.js?updated=6"></script>
 
     <!-- Handlebars -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.7.8/handlebars.min.js"></script>
@@ -74,85 +76,6 @@
       </div>
     </div>
     <!-- End Preloader -->
-
-    <!-- Header Area -->
-    <script id="header-template" type="text/x-handlebars-template">
-      <!-- Topbar -->
-      <div class="topbar">
-        <div class="container">
-          <div class="row">
-            <div class="col-lg-6 col-md-5 col-12">
-              <!-- Contact -->
-              {{#each additional_links}}
-                <a href="{{this.href}}">
-                  {{this.name}}
-                </a>
-              {{/each}}
-              <!-- End Contact -->
-            </div>
-            <div class="col-lg-6 col-md-7 col-12">
-              <!-- Top Contact -->
-              <ul class="top-contact">
-                <li>
-                  <i class="fa fa-phone"></i>
-                  <a href="tel://{{phone_number}}">
-                    {{phone_number}}
-                  </a>
-                </li>
-                <li>
-                  <i class="fa fa-envelope"></i>
-                  <a href="mailto://{{mail_address}}">
-                    {{mail_address}}
-                  </a>
-                </li>
-              </ul>
-              <!-- End Top Contact -->
-            </div>
-          </div>
-        </div>
-      </div>
-      <!-- End Topbar -->
-      <!-- Header Inner -->
-      <div class="header-inner">
-        <div class="container">
-          <div class="inner">
-            <div class="row">
-              <div class="col-lg-3 col-md-3 col-12">
-                <!-- Start Logo -->
-                <div class="logo">
-                  <a href="">
-                    <img src="../../img/logo.png" alt="NEUROPOL LOGO" />
-                  </a>
-                </div>
-                <!-- End Logo -->
-                <!-- Mobile Nav -->
-                <div class="mobile-nav"></div>
-                <!-- End Mobile Nav -->
-              </div>
-              <div class="col-lg-9 col-md-9 col-12">
-                <!-- Main Menu -->
-                <div class="main-menu">
-                  <nav class="navigation">
-                    <ul class="nav menu">
-                      {{#each link_list}}
-                        <li class="{{this.class}}">
-                          <a href="{{this.href}}">
-                            {{this.name}}
-                          </a>
-                        </li>
-                      {{/each}}
-                    </ul>
-                  </nav>
-                </div>
-                <!--/ End Main Menu -->
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </script>
-    <!--/ End Header Inner -->
-    <header class="header" id="header-output"></header>
 
     <!-- Error Page -->
     <section class="error-page section">

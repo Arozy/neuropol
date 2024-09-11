@@ -34,7 +34,7 @@ Version:	1.1
 =========================================*/
 (function($) {
     "use strict";
-     $(document).on('ready', function() {
+     $(document).ready(function() {
 
         jQuery(window).on('scroll', function() {
 			if ($(this).scrollTop() > 200) {
@@ -88,7 +88,7 @@ Version:	1.1
 			items:1,
 			nav:true,
 			navText: ['<i class="fa fa-angle-left" aria-hidden="true"></i>', '<i class="fa fa-angle-right" aria-hidden="true"></i>'],
-			dots:true,
+			dots: true,
 		});
 
 		/*===============================
@@ -299,16 +299,28 @@ Version:	1.1
 		  horizontalOffset: 0,
 		  verticalOffset: 0
 		});
+
+		/*====================
+			Google Maps JS
+		======================*/
+		var map = new GMaps({
+				el: '#map',
+				lat: 23.011245,
+				lng: 90.884780,
+				scrollwheel: false,
+			});
+			map.addMarker({
+				lat: 23.011245,
+				lng: 90.884780,
+				title: 'Marker with InfoWindow',
+				infoWindow: {
+				content: '<p>welcome to Medipro</p>'
+			}
+
+		});
 	});
 
-	/*====================
-		Preloader JS
-	======================*/
-	$(window).on('load', function() {
-		$('.preloader').addClass('preloader-deactivate');
-	});
-
-	$('#header-outer').on('load', function(){
+	$('body').on('load', function(){
 		/*====================================
 			Mobile Menu
 		======================================*/

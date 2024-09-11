@@ -7,107 +7,144 @@ onchange = () => {
 }
 
 function runFillers() {
-    const training = new Training('trainings');
-    training.fillHeaderTemplate();
-    training.fillTrainingsTemplate();
-    training.fillFormTemplate();
-    training.fillFooterTemplate();
+    const training = new Training('szkolenia', 'pages/6', '?populate[2]=content.item.training_entities');
+    training.build().finally();
 }
 
 class Training extends Page {
-    fillTrainingsTemplate() {
-        const data = {
-            heading: 'Oferujemy wiele szkoleń z zakresu Lorem ipsum dolor sit amet consectetur adipisicing elit.',
-            description: 'W Neuropol nie tylko leczymy, ale też edukujemy o zdrowiu. ' +
-                'Lorem ipsum dolor sit amet, consectetur adipisicing elit. ' +
-                'Distinctiodoloribus enim explicabo fuga ipsa numquam pariatur perspiciatisrepudiandae temporibus veniam.',
-            sections: [
-                {
-                    name: 'pierwsza-pomoc',
-                    heading: 'Szkolenia z pierwszej pomocy',
-                    columns: [
-                        {
-                            type: 'podstawowy',
-                            title: 'Pakiet Podstawowy',
-                            price: 90,
-                            items: [
-                                'RKO u dorosłych i dzieci',
-                                'wezwanie pomocy',
-                                'ułożenie w pozycji bocznej bezpiecznej'
-                            ],
-                            out: [
-                                'pierwsza pomoc w przypadku omdleń',
-                                'pierwsza pomoc w przypadku udarów',
-                                'pierwsza pomoc w przypadku poparzeń',
-                                'pierwsza pomoc w zadławieniach',
-                                'opatrywanie po złamaniu',
-                                'opatrywanie po pogryzieniu',
-                                'opatrywanie po postrzale',
-                                'tamowanie krwotoków',
-                                'urazy kostno-stawowe',
-                                'możliwość rozbudowania pakietu'
-                            ]
-                        },
-                        {
-                            type: 'standard',
-                            title: 'Pakiet Standard',
-                            price: 100,
-                            items: [
-                                'RKO u dorosłych i dzieci',
-                                'wezwanie pomocy',
-                                'ułożenie w pozycji bocznej bezpiecznej',
-                                'pierwsza pomoc w przypadku omdleń',
-                                'pierwsza pomoc w przypadku udarów',
-                                'pierwsza pomoc w przypadku poparzeń',
-                            ],
-                            out: [
-                                'pierwsza pomoc w zadławieniach',
-                                'opatrywanie po złamaniu',
-                                'opatrywanie po pogryzieniu',
-                                'opatrywanie po postrzale',
-                                'tamowanie krwotoków',
-                                'urazy kostno-stawowe',
-                                'możliwość rozbudowania pakietu'
-                            ]
-                        },
-                        {
-                            type: 'premium',
-                            title: 'Pakiet Premium',
-                            price: 120,
-                            items: [
-                                'RKO u dorosłych i dzieci',
-                                'wezwanie pomocy',
-                                'ułożenie w pozycji bocznej bezpiecznej',
-                                'pierwsza pomoc w przypadku omdleń',
-                                'pierwsza pomoc w przypadku udarów',
-                                'pierwsza pomoc w przypadku poparzeń',
-                                'pierwsza pomoc w zadławieniach',
-                                'opatrywanie po złamaniu',
-                                'opatrywanie po pogryzieniu',
-                                'opatrywanie po postrzale',
-                                'tamowanie krwotoków',
-                                'urazy kostno-stawowe',
-                                'możliwość rozbudowania pakietu'
-                            ]
-                        }
-                    ],
-                    additionalInformation: [
-                        'Cena może się różnić w zależności od ilości uczestników. Powyżej 50 osób doliczamy rabat 5%, powyżej 100, 10%',
-                        'Kurs kończy się wydaniem certyfikatów uczestnikom'
-                    ]
-                }
-            ]
-
+    async fillTrainingsTemplate() {
+        if (await this.fetchAndLoad()) {
+            this.response.content?.map(content => this._resolveOuts(content.item));
+            this.useFiller(this.response, 'training');
         }
-        this.useFiller(data, 'training');
+
+        // const data = {
+        //     heading: 'Oferujemy wiele szkoleń z zakresu pierwszej pomocy.',
+        //     description: 'W Neuropol nie tylko leczymy, ale też edukujemy o zdrowiu.',
+        //     sections: [
+        //         {
+        //             name: 'pierwsza-pomoc',
+        //             heading: 'Szkolenia z pierwszej pomocy',
+        //             columns: [
+        //                 {
+        //                     type: 'podstawowy',
+        //                     title: 'Pakiet Podstawowy',
+        //                     price: 90,
+        //                     items: [
+        //                         'RKO u dorosłych i dzieci',
+        //                         'wezwanie pomocy',
+        //                         'ułożenie w pozycji bocznej bezpiecznej'
+        //                     ],
+        //                     out: [
+        //                         'pierwsza pomoc w przypadku omdleń',
+        //                         'pierwsza pomoc w przypadku udarów',
+        //                         'pierwsza pomoc w przypadku poparzeń',
+        //                         'pierwsza pomoc w zadławieniach',
+        //                         'opatrywanie po złamaniu',
+        //                         'opatrywanie po pogryzieniu',
+        //                         'opatrywanie po postrzale',
+        //                         'tamowanie krwotoków',
+        //                         'urazy kostno-stawowe',
+        //                         'możliwość rozbudowania pakietu'
+        //                     ]
+        //                 },
+        //                 {
+        //                     type: 'standard',
+        //                     title: 'Pakiet Standard',
+        //                     price: 100,
+        //                     items: [
+        //                         'RKO u dorosłych i dzieci',
+        //                         'wezwanie pomocy',
+        //                         'ułożenie w pozycji bocznej bezpiecznej',
+        //                         'pierwsza pomoc w przypadku omdleń',
+        //                         'pierwsza pomoc w przypadku udarów',
+        //                         'pierwsza pomoc w przypadku poparzeń',
+        //                     ],
+        //                     out: [
+        //                         'pierwsza pomoc w zadławieniach',
+        //                         'opatrywanie po złamaniu',
+        //                         'opatrywanie po pogryzieniu',
+        //                         'opatrywanie po postrzale',
+        //                         'tamowanie krwotoków',
+        //                         'urazy kostno-stawowe',
+        //                         'możliwość rozbudowania pakietu'
+        //                     ]
+        //                 },
+        //                 {
+        //                     type: 'premium',
+        //                     title: 'Pakiet Premium',
+        //                     price: 120,
+        //                     items: [
+        //                         'RKO u dorosłych i dzieci',
+        //                         'wezwanie pomocy',
+        //                         'ułożenie w pozycji bocznej bezpiecznej',
+        //                         'pierwsza pomoc w przypadku omdleń',
+        //                         'pierwsza pomoc w przypadku udarów',
+        //                         'pierwsza pomoc w przypadku poparzeń',
+        //                         'pierwsza pomoc w zadławieniach',
+        //                         'opatrywanie po złamaniu',
+        //                         'opatrywanie po pogryzieniu',
+        //                         'opatrywanie po postrzale',
+        //                         'tamowanie krwotoków',
+        //                         'urazy kostno-stawowe',
+        //                         'możliwość rozbudowania pakietu'
+        //                     ]
+        //                 }
+        //             ],
+        //             additionalInformation: [
+        //                 'Cena może się różnić w zależności od ilości uczestników. Powyżej 50 osób doliczamy rabat 5%, powyżej 100, 10%',
+        //                 'Kurs kończy się wydaniem certyfikatów uczestnikom'
+        //             ]
+        //         }
+        //     ]
+        //
+        // }
     }
 
-    fillFormTemplate() {
+    async fillFormTemplate() {
         const data = {
             heading: 'Uzyskaj ofertę dla swojej firmy',
         }
         this.useFiller(data, 'purchase');
-        readData();
+        await readData();
+    }
+
+    async build() {
+        const allMethods = [
+            this.fillHeaderTemplate(),
+            this.fillTrainingsTemplate(),
+            this.fillFormTemplate(),
+            this.fillFooterTemplate()
+        ];
+
+        for (const method of allMethods) {
+            await method;
+        }
+
+        document.querySelector('.preloader').classList.add('preloader-deactivate');
+    }
+
+    _resolveOuts(items) {
+        const allElements = (items.slice(-1).pop()).training_entities.data;
+
+        items.map((item) => {
+            let outs;
+            let elements = item.training_entities.data;
+
+            outs = allElements.map((element, index) => {
+                if (element.attributes.item !== elements[index]?.attributes?.item) {
+                    return element;
+                }
+            })
+
+            outs = outs.filter(function (element) {
+                return element !== undefined;
+            });
+
+            Object.assign(item, {outs: outs})
+        });
+
+        return items;
     }
 }
 

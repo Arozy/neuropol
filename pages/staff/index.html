@@ -22,7 +22,7 @@
             name="viewport"
     />
     <title>Neuropol - Nasi Specjaliści</title>
-
+    <link rel="icon" type="image/x-icon" href="../../img/favicon.ico">
     <!-- Bootstrap CSS -->
     <link href="../../css/bootstrap.min.css" rel="stylesheet" />
     <!-- Nice Select CSS -->
@@ -47,7 +47,8 @@
     <link href="../../css/responsive.css" rel="stylesheet" />
 
     <!-- Utils -->
-    <script src="../../utils/handlebars_shared.js?updated=1"></script>
+    <script src="../../utils/fetch.js?updated=1"></script>
+    <script src="../../utils/shared.js?updated=1"></script>
     <script src="../../utils/handlebars_global.js?updated=1"></script>
 
     <!-- Handlebars -->
@@ -89,16 +90,7 @@
       <div class="topbar">
         <div class="container">
           <div class="row">
-            <div class="col-lg-6 col-md-5 col-12">
-              <!-- Contact -->
-              {{#each additional_links}}
-                <a href="{{this.href}}">
-                  {{this.name}}
-                </a>
-              {{/each}}
-              <!-- End Contact -->
-            </div>
-            <div class="col-lg-6 col-md-7 col-12">
+            <div class="offset-lg-6 col-lg-6 col-md-7 col-12">
               <!-- Top Contact -->
               <ul class="top-contact">
                 <li>
@@ -136,10 +128,10 @@
                 <div class="main-menu">
                   <nav class="navigation">
                     <ul class="nav menu">
-                      {{#each link_list}}
-                        <li class="{{this.class}}">
-                          <a href="{{this.href}}">
-                            {{this.name}}
+                      {{#each siteLinks}}
+                        <li class="{{this.attributes.class}}">
+                          <a href="{{this.attributes.href}}">
+                            {{this.attributes.name}}
                           </a>
                         </li>
                       {{/each}}
@@ -155,6 +147,7 @@
     </script>
     <!--/ End Header Inner -->
     <header class="header" id="header-output"></header>
+    <!-- End Header Area -->
 
     <!-- Specialists Area -->
 
@@ -163,18 +156,18 @@
           <div class="row">
               <div class="col-12 section-title">
                   <h2>
-                      {{header}}
+                      {{this.title}}
                   </h2>
                   <img
                           alt="zakrzywiona linia przedstawiająca bicie serca"
                           src="../../img/section-img.png"
                   />
                   <p>
-                      {{description}}
+                      {{this.description}}
                   </p>
               </div>
           </div>
-          {{#each staff}}
+          {{#each this.items}}
               <hr class="my-4"/>
               <div class="row">
                   <div class="col-12 section-title mb-0">
@@ -193,27 +186,28 @@
               <div class="my-4 row staff-stack">
                   {{#each this.items}}
                       <div
-                              class="align-items-center bg-secondary col-lg-12 d-flex flex-column flex-lg-row flex-md-column my-4 rounded"
+                              class="align-items-center col-lg-12 d-flex flex-column flex-lg-row flex-md-column my-4 rounded"
+                              style="background: white; filter: drop-shadow(2px 5px 15px rgba(0, 0, 0, 0.5)); transform: scale(0.9)"
                       >
                           <div class="p-4" style="">
                               <img
-                                      alt="{{this.alt}}"
+                                      alt="{{this.photo.data.attributes.alternativeText}}"
                                       class="img-fluid p-2 rounded"
-                                      src="{{this.image}}"
-                                      style="border: 2px solid var(--basic-color)"
+                                      src="{{placeholder this.photo.data.attributes.formats.small.url}}"
                                       width="300"
                               />
                           </div>
                           <div class="d-flex flex-column p-4 w-100">
-                              <h3 class="text-white">
+                              <h3>
                                   {{this.name}}
                               </h3>
-                              <span class="text-white">
-                                            {{../this.singleItemTitle}} {{#if this.specialization}}
-                                  | {{this.specialization}}{{/if}}
-                                        </span>
+                              <span style="color: var(--basic-color)">
+                                {{#if position}}
+                                  {{position}}
+                                {{/if}}
+                              </span>
                               <hr class="my-2"/>
-                              <p class="my-2 text-white">
+                              <p class="my-2">
                                   {{this.description}}
                               </p>
                           </div>
@@ -245,7 +239,7 @@
                 <ul class="social">
                   {{#each columns.0.socialLinks}}
                     <li title="{{this.title}}">
-                      <a href="{{this.href}}">
+                      <a href="{{this.href}}" target="blank">
                         <i class="{{this.icon}}"></i>
                       </a>
                     </li>
@@ -262,11 +256,11 @@
                 <div class="row">
                   <div class="col-lg-6 col-md-6 col-12">
                     <ul>
-                      {{#each columns.1.linkColumns.0.linkList}}
+                      {{#each columns.1.linkColumns.0.linkList.data}}
                         <li>
-                          <a href="{{this.href}}">
+                          <a href="{{this.attributes.href}}">
                             <i aria-hidden="true" class="fa fa-caret-right"></i>
-                            {{this.name}}
+                            {{this.attributes.name}}
                           </a>
                         </li>
                       {{/each}}
@@ -274,11 +268,11 @@
                   </div>
                   <div class="col-lg-6 col-md-6 col-12">
                     <ul>
-                      {{#each columns.1.linkColumns.1.linkList}}
+                      {{#each columns.1.linkColumns.1.linkList.data}}
                         <li>
-                          <a href="{{this.href}}">
+                          <a href="{{this.attributes.href}}">
                             <i aria-hidden="true" class="fa fa-caret-right"></i>
-                            {{this.name}}
+                            {{this.attributes.name}}
                           </a>
                         </li>
                       {{/each}}
@@ -296,11 +290,11 @@
                   {{columns.2.description}}
                 </p>
                 <ul class="time-sidual">
-                  {{#each columns.2.timeList}}
+                  {{#each columns.2.timeList.data}}
                     <li class="day">
-                      {{this.period}}
+                      {{this.attributes.period}}
                       <span>
-                        {{this.time}}
+                        {{this.attributes.time}}
                       </span>
                     </li>
                   {{/each}}
@@ -322,7 +316,7 @@
                 <p>
                   © Copyright 2018 | All Rights Reserved by
                   <a href="https://www.wpthemesgrid.com" target="_blank"
-                    >wpthemesgrid.com</a
+                  >wpthemesgrid.com</a
                   >
                 </p>
               </div>
