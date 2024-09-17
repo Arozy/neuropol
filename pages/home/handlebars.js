@@ -55,9 +55,7 @@ class Home extends Page {
     }
 
     async fillCardsTemplate() {
-        this.useFiller(await this.getExact('cards.card-section'), 'cards')
-
-        console.log(await this.getExact('cards.card-section'))
+        this.useFiller(await this.getExact('cards.card-section'), 'cards');
     }
 
     async fillFeaturesTemplate() {
