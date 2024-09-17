@@ -241,7 +241,7 @@
       <div class="container">
         <div class="schedule-inner">
           <div class="row">
-            {{#each this}}
+            {{#each this.0.cards}}
               <div class="col-lg-4 col-md-6 col-12 mb-4">
                 <!-- single-schedule -->
                 <div class='single-schedule {{#if @first}}first{{/if}}{{#if @last}}last{{/if}} h-100'>
@@ -260,9 +260,9 @@
                       {{/if}}
                       {{#if this.hours}}
                         <ul class="time-sidual">
-                          {{#each this.hours}}
+                          {{#each this.hours.data}}
                           <li class="day">
-                            {{this.period}} <span>{{this.time}}</span>
+                            {{this.attributes.period}} <span>{{this.attributes.time}}</span>
                           </li>
                           {{/each}}
                         </ul>

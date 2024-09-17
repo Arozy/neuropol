@@ -1,5 +1,5 @@
 function runFillers() {
-    const homepage = new Home('strona-glowna', 'pages/1', '?populate[content][populate]=*');
+    const homepage = new Home('strona-glowna', 'pages/1', '?populate=deep');
     homepage.build().finally();
 }
 
@@ -55,7 +55,9 @@ class Home extends Page {
     }
 
     async fillCardsTemplate() {
-        this.useFiller(await this.getExact('cards.card'), 'cards')
+        this.useFiller(await this.getExact('cards.card-section'), 'cards')
+
+        console.log(await this.getExact('cards.card-section'))
     }
 
     async fillFeaturesTemplate() {
